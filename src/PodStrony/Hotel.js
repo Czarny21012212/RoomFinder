@@ -22,22 +22,130 @@ export function Hotel() {
     const[end, setEnd] = useState(null);
     const[place, setPlace] = useState(null);
     const[people, setPeople] = useState(null);
-    const[search, setSearch] = useState(false);
+    const[save, setSave] = useState()
+    const[search, setSearch] = useState(localStorage.getItem('Search') ? localStorage.getItem('Search') : false);
     const[countCarts, setCountCarts] = useState(0);
     const[valueOfPrice, setValueOfPrice] = useState();
     const[DayOfTrip, setDayOfTrip] = useState()
     const[city, setCity] = useState()
+    const[localCountry, setLocalCountry] = useState(localStorage.getItem('Country'))
+    const[localPeople, setLocalPeople] = useState(localStorage.getItem('People'))
+    const[localStart, setLocalStart] = useState(localStorage.getItem('Start'))
+    const[localEnd, setLocalEnd] = useState(localStorage.getItem('End'))
+    const[localPrice, setLocalPrice] = useState(localStorage.getItem('Price'));
+    const[localTrue, setLocalTrue] = useState(localStorage.getItem('localTrue') ? localStorage.getItem('localTrue') : false);
 
-    useEffect(() =>{
-        setCity(place)
-        const date1 = new Date(start);
-        const date2 = new Date(end);
+   
 
-        setDayOfTrip((date2 - date1) / (1000 * 60 * 60 * 24));
-
-    }, [search])
+    useEffect(() => {
+        if (start && end) {
+            const date1 = new Date(start);
+            const date2 = new Date(end);
+            const days = (date2 - date1) / (1000 * 60 * 60 * 24);
+            setDayOfTrip(days);
+        }
+    }, [start, end]);
+    
+    useEffect(() => {
+        if (DayOfTrip && people) {
+            const price = parseInt(people) * parseInt(DayOfTrip);
+            setLocalPrice(price);
+            localStorage.setItem('Price', price);
+        }
+    }, [DayOfTrip, people]);
+    
+    useEffect(() => {
+        if (localTrue) {
+            setPlace(localStorage.getItem('Country'));
+            setPeople(localStorage.getItem('People'));
+            setStart(localStorage.getItem('Start'));
+            setEnd(localStorage.getItem('End'));
+            setLocalPrice(parseInt(localStorage.getItem('Price')));
+        }
+    }, [localTrue]);
     
 
+    useEffect(() =>{
+        if(place){
+            localStorage.setItem('Country', place)
+            
+            if(localTrue){    
+                setPlace(localStorage.getItem('Country'))
+            }
+        }
+        if(people){
+            localStorage.setItem('People', people)
+            if(localTrue){
+                setPeople(localStorage.getItem('People'))
+            }
+        }
+        if(start){
+            localStorage.setItem('Start', start)
+            if(localTrue){
+                setStart(localStorage.getItem('Start'))
+            }
+        }
+        if(end){
+            localStorage.setItem('End', end)
+            if(localTrue){
+                setEnd(localStorage.getItem('End'))
+            }
+        }
+        if (DayOfTrip && people) {
+            const price = parseInt(DayOfTrip);
+            setLocalPrice(price);
+            localStorage.setItem('Price', price);
+        }
+        if(filtrStart){
+            localStorage.setItem('PricePerNight', RealvalueOfPrice)
+            setFiltrStart(true)
+        }
+        
+        
+        localStorage.setItem('Search', true)
+        localStorage.setItem('localTrue', true)
+
+    }, [search, save])
+
+    const[checkBoxTrue1, setCheckBoxTrue1] = useState(localStorage.getItem('checkBox1'))
+    const[checkBoxTrue2, setCheckBoxTrue2] = useState(localStorage.getItem('checkBox2'))
+    const[checkBoxTrue3, setCheckBoxTrue3] = useState(localStorage.getItem('checkBox3'))
+
+    const[pricePerNightTrue, setPricePerNightTrue] = useState(localStorage.getItem('PricePerNightTrue'))
+
+
+    useEffect(() => {
+        
+        setPlace(localStorage.getItem('Country'))
+        setPeople(localStorage.getItem('People'))
+        setStart(localStorage.getItem('Start'))
+        setEnd(localStorage.getItem('End'))
+        setRealValueOfPrice(localStorage.getItem('FiltrPrice'))
+
+        if(checkBoxTrue1){
+            setDistanceToCenter(1)
+            setDistanceToCenterTrue(true)
+            console.log("Siema1")
+        }else if(checkBoxTrue2){
+            setDistanceToCenter(2)
+            setDistanceToCenterTrue(true)
+            console.log("Siema2")
+        }else if(checkBoxTrue3){
+            setDistanceToCenter(distanceToCenter > 2)
+            setDistanceToCenterTrue(true)
+            console.log("Siema3")
+        }
+
+        if(pricePerNightTrue){
+            setRealValueOfPrice(localStorage.getItem('PricePerNight'))
+            setFiltrStart(true)
+        }
+
+        console.log("Local True: " + localTrue)
+        
+        filterHotels()
+    }, [localTrue])
+    
     const filterHotels = () => {
         return HotelData.filter(index =>  index.country === place &&index.maxPeople >= people && search &&  (filtrStart ? index.pricePerNight * people * DayOfTrip < RealvalueOfPrice :index.pricePerNight > 0)  && (!distanceToCenterTrue || index.distanceToCenter === distanceToCenter) && (!ratingTrue || index.rating === ratingToFiltr) && (!beachToFiltr || index.isBeachfront === true))
     }
@@ -62,20 +170,29 @@ export function Hotel() {
     const[beachCheckbox1, setbeachCheckbox1] = useState(false);
     const[beachCheckbox2, setbeachCheckbox2] = useState(false);
     const[beachToFiltr, setBeachToFiltr] = useState(false)
-    const[filtrStart, useFiltrStart] = useState(false)
+    const[filtrStart, setFiltrStart] = useState(false)
+    const[localDistanceToCenterTrue, setLoaclDistanceToCenterTrue] = useState(false)
 
     const FiltrStart = () => {
-            useFiltrStart(true)
-            setRealValueOfPrice(valueOfPrice)
+                setFiltrStart(true)
+                setRealValueOfPrice(valueOfPrice)
+                localStorage.setItem('PricePerNight', valueOfPrice)
+                localStorage.setItem('PricePerNightTrue', true)
 
             if(checkbox1){
                 setDistanceToCenterTrue(true)
+                localStorage.setItem('checkBox1', true )
+                localStorage.setItem('distanceToCenterTrue', true )
                 setDistanceToCenter(1)
             }else if(checkbox2){
                 setDistanceToCenterTrue(true)
+                localStorage.setItem('checkBox2', true )
+                localStorage.setItem('distanceToCenterTrue', true )
                 setDistanceToCenter(2)
             }else if(checkbox3){
                 setDistanceToCenterTrue(true)
+                localStorage.setItem('checkBox3', true )
+                localStorage.setItem('distanceToCenterTrue', true )
                 setDistanceToCenter(distanceToCenter > 2)
             }else{
                 setDistanceToCenterTrue(false)
@@ -109,7 +226,7 @@ export function Hotel() {
         const filtred = filterHotels()
         setCountCarts(filtred.length)
 
-    },[Search, FiltrStart] )
+    },[Search, FiltrStart, localTrue] )
 
     const[sortTrue, setSortTrue] = useState(false)
     const[Sort, setSort] = useState(false);
@@ -161,6 +278,9 @@ export function Hotel() {
             <div className='header-items'>
                 <div className='header-top'>
                     <h1>RoomFinder.com</h1>
+                    <Link to={`/ulubione`} className='favouriteLink'>
+                        <p className='favouriteLinkP'>❤️</p>
+                    </Link>
                 </div>
                 <div className='header-center'>
                     <ul>
@@ -174,10 +294,10 @@ export function Hotel() {
                 </div>
                 <div className='header-bottom'>
                     <div className='header-bottom-items'>
-                        <input type='input' placeholder='Dokąd się wybierasz?' onChange={(event) => setPlace(event.target.value)}></input>
-                        <input type='date' placeholder='Od Kiedy?' onChange={(event) => setStart(event.target.value)}></input>
-                        <input type='date' placeholder='Do kiedy?' onChange={(event) => setEnd(event.target.value)}></input>
-                        <input type='Number' placeholder='Ile osób podróżuje?' onChange={(event) => setPeople(event.target.value)}></input>
+                        <input type='input' placeholder='Dokąd się wybierasz?'  defaultValue={localCountry} onChange={(event) => setPlace(event.target.value)}></input>
+                        <input type='date' placeholder='Od Kiedy?' defaultValue={localTrue ? localStart : ''} onChange={(event) => setStart(event.target.value)}></input>
+                        <input type='date' placeholder='Do kiedy?' defaultValue={localEnd} onChange={(event) => setEnd(event.target.value)}></input>
+                        <input type='Number' placeholder='Ile osób podróżuje?' defaultValue={localPeople} onChange={(event) => setPeople(event.target.value)}></input>
                         <input type='submit' value="Szukaj" onClick={Search}></input>
                     </div>
                 </div>
@@ -198,7 +318,7 @@ export function Hotel() {
                         <div className='Filter'>
                             <h2>Twój przedział cenowy</h2>
                             <p>Cena: 0zł - {valueOfPrice}zł</p>
-                            <input type='range' id='PriceMax' max={`${search ? 1000 * DayOfTrip : 1000}`} defaultValue={200 * DayOfTrip} onChange={(event) => setValueOfPrice(event.target.value)}></input>
+                            <input type='range' id='PriceMax' max={`${search ? 1000 * DayOfTrip : 1000}`} defaultValue={pricePerNightTrue ? 1000  : 200} onChange={(event) => setValueOfPrice(event.target.value)}></input>
                         </div>
 
                         <div className='Filter'>
@@ -207,21 +327,22 @@ export function Hotel() {
                             
                                 <input 
                                 type='checkbox' 
-                                checked={checkbox1}
+                                defaultChecked={localStorage.getItem('checkBox1') === 'true'} 
                                 onChange={(event) => setCheckbox1(event.target.checked)} 
+                                value={true}
                                 />
                                 <label>1km</label><br></br>
                             
                                 <input 
-                                type='checkbox' 
-                                checked={checkbox2} 
+                                type='checkbox'
+                                defaultChecked={localStorage.getItem('checkBox2') === 'true'} 
                                 onChange={(event) => setCheckbox2(event.target.checked)} 
                                 />
                                 <label>2km</label><br></br>
 
                                 <input 
                                 type='checkbox' 
-                                checked={checkbox3} 
+                                checked={localStorage.getItem('checkBox3')}
                                 onChange={(event) => setCheckbox3(event.target.checked)} 
                                 />
                                 <label>Dalej</label>
@@ -284,7 +405,7 @@ export function Hotel() {
                         type='submit'
                         onClick={sort}
                         className='sortButton'
-                        value="Filtruj według"
+                        value="Sortuje według"
                         ></input>
                         {sortTrue && 
                         <div className='sortOptions'>
@@ -312,7 +433,7 @@ export function Hotel() {
                      {hotelSort.map(index => {
                         const filterIf = (index.country === place &&index.maxPeople >= people && search &&  (filtrStart ? index.pricePerNight * people * DayOfTrip < RealvalueOfPrice :index.pricePerNight > 0)  && (!distanceToCenterTrue || index.distanceToCenter === distanceToCenter) && (!ratingTrue || index.rating === ratingToFiltr) && (!beachToFiltr || index.isBeachfront === true))
                         const filterIf2 = (index.country === place &&index.maxPeople >= people &&index.pricePerNight * people<= RealvalueOfPrice &&(!distanceToCenterTrue || index.distanceToCenter === distanceToCenter) && (!ratingTrue || index.rating === ratingToFiltr) && (!beachToFiltr || index.isBeachfront === true))                       
-                    if(index.country){
+                    if(index.country === place){
                         if(filterIf){
                             return(
                                 <div key={index.id} className='Cart'>
@@ -352,13 +473,15 @@ export function Hotel() {
     
                                                 <div className='Cart-right-bottom'>
                                                         <div>
-                                                            <p className='Price'>{people <= 0 ? index.pricePerNight * DayOfTrip : index.pricePerNight * people * DayOfTrip} zł</p>
+                                                            <p className='Price'>{people <= 0 ? index.pricePerNight * DayOfTrip : (!localTrue ? index.pricePerNight * people * DayOfTrip : index.pricePerNight * localPrice )}
+                                                            zł</p>
                                                             <p className='bills'>Zawiera opłaty i podatki</p>
                                                             <Link to={`/hotel/${index.id}`}>
                                                                     <input
                                                                     type='submit'
                                                                     value="Zobacz dostępność"
                                                                     className='inputLink'
+                                                                    onClick={save}
                                                                     ></input>
                                                                     
                                                             </Link>
@@ -369,65 +492,7 @@ export function Hotel() {
                                     
                                 </div>
                             ) 
-                        }else if(!search){
-                            return(
-                                <div key={index.id} className='Cart'>
-                                    
-                                    <div className='Cart-items'>
-                                            <div className='Cart-left'>
-                                                <img src={index.photo} style={{width: '250px',height: '250px', borderRadius: '10px' ,objectFit: 'cover'}}></img>
-                                                <input
-                                                            type='submit'
-                                                            value="❤️"
-                                                            onClick={() => sendToFavourite(index.id)}
-                                                        ></input>
-                                            </div>
-                                            <div className='Cart-center'>
-                                                <div>
-                                                    <h1>{index.name}</h1>
-                                                        
-                                                        
-                                                </div>
-                                                <div>
-                                                    <p>{index.description}</p>
-                                                </div>
-                                            </div>
-                                            <div className='Cart-right'>
-                                                <div className='Cart-right-top'>
-                                                    <div className='Cart-right-top-first'>
-                                                        <div className='Cart-right-top-first-left'>
-                                                            <h2>{index.verbalRating}</h2>
-                                                            <p>{index.reviewsCount} opinii</p>
-                                                        </div>
-                                                        <div className='Cart-right-top-first-right'>
-                                                            <h2>{index.guestRating}</h2>
-                                                        </div>
-                                                    </div>
-                                                    <div className='Cart-right-top-second'>
-                                                        <p>Komfort {index.comfort}</p>
-                                                    </div>
-                                                </div>
-    
-                                                <div className='Cart-right-bottom'>
-                                                        <div>
-                                                            <p className='Price'>{index.pricePerNight}  zł</p>
-                                                            <p className='bills'>Zawiera opłaty i podatki</p>
-                                                            <Link to={`/hotel/${index.id}`}>
-                                                                    <input
-                                                                    type='submit'
-                                                                    value="Zobacz dostępność"
-                                                                    className='inputLink'
-                                                                    ></input>
-                                                                    
-                                                            </Link>
-                                                        </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    
-                                </div>
-                            ) 
-                        }else if(index.country === place && place === 0){
+                        }else if(!index.country){
                             return(
                                 <div className='info2'>
                                     <p>Brak ofert...</p>
@@ -438,9 +503,64 @@ export function Hotel() {
                        return(
                         <div className='info'>
                             <p className='pl'>!</p>
-                            <p>W naczej ofercie nie ma takiego państwa</p>
+                            <p>Coś poszło nie tak</p>
                         </div>
                        );
+                    }else if(!search || filterIf){
+                        return(
+                            <div key={index.id} className='Cart'>
+                                <div className='Cart-items'>
+                                        <div className='Cart-left'>
+                                            <img src={index.photo} style={{width: '250px',height: '250px', borderRadius: '10px' ,objectFit: 'cover'}}></img>
+                                            <input
+                                                        type='submit'
+                                                        value="❤️"
+                                                        onClick={() => sendToFavourite(index.id)}
+                                                    ></input>
+                                        </div>
+                                        <div className='Cart-center'>
+                                            <div>
+                                                <h1>{index.name}</h1>   
+                                            </div>
+                                            <div>
+                                                <p>{index.description}</p>
+                                            </div>
+                                        </div>
+                                        <div className='Cart-right'>
+                                            <div className='Cart-right-top'>
+                                                <div className='Cart-right-top-first'>
+                                                    <div className='Cart-right-top-first-left'>
+                                                        <h2>{index.verbalRating}</h2>
+                                                        <p>{index.reviewsCount} opinii</p>
+                                                    </div>
+                                                    <div className='Cart-right-top-first-right'>
+                                                        <h2>{index.guestRating}</h2>
+                                                    </div>
+                                                </div>
+                                                <div className='Cart-right-top-second'>
+                                                    <p>Komfort {index.comfort}</p>
+                                                </div>
+                                            </div>
+
+                                            <div className='Cart-right-bottom'>
+                                                    <div>
+                                                        <p className='Price'>{localTrue ? parseInt(localPrice) * index.pricePerNight : index.pricePerNight}  zł</p>
+                                                        <p className='bills'>Zawiera opłaty i podatki</p>
+                                                        <Link to={`/hotel/${index.id}`}>
+                                                                <input
+                                                                type='submit'
+                                                                value="Zobacz dostępność"
+                                                                className='inputLink'
+                                                                ></input>
+                                                                
+                                                        </Link>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                        ) 
                     }
                 })}
                 </div>

@@ -61,8 +61,8 @@ function Info() {
                       </div>
                 </div>
                 <div className='infoHotel-bottom-right'>
-
-                </div>
+                    
+                    </div>
 
               </div>
           </div>
