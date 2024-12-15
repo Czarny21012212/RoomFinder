@@ -54,6 +54,7 @@ export function Hotel() {
         }
     }, [DayOfTrip, people]);
     
+    
     useEffect(() => {
         if (localTrue) {
             setPlace(localStorage.getItem('Country'));
@@ -61,6 +62,7 @@ export function Hotel() {
             setStart(localStorage.getItem('Start'));
             setEnd(localStorage.getItem('End'));
             setLocalPrice(parseInt(localStorage.getItem('Price')));
+            setValueOfPrice(localStorage.getItem('PricePerNight'))
         }
     }, [localTrue]);
     
@@ -111,6 +113,10 @@ export function Hotel() {
     const[checkBoxTrue2, setCheckBoxTrue2] = useState(localStorage.getItem('checkBox2'))
     const[checkBoxTrue3, setCheckBoxTrue3] = useState(localStorage.getItem('checkBox3'))
 
+    const[ratingCheckBoxTrue1, setRatingCheckBoxTrue1]= useState(localStorage.getItem('ratingCheckBoxTrue1'))
+    const[ratingCheckBoxTrue2, setRatingCheckBoxTrue2]= useState(localStorage.getItem('ratingCheckBoxTrue2'))
+    const[ratingCheckBoxTrue3, setRatingCheckBoxTrue3]= useState(localStorage.getItem('ratingCheckBoxTrue3'))
+
     const[pricePerNightTrue, setPricePerNightTrue] = useState(localStorage.getItem('PricePerNightTrue'))
 
 
@@ -136,18 +142,42 @@ export function Hotel() {
             console.log("Siema3")
         }
 
+        if(ratingCheckBoxTrue1 == 'true'){
+            setRatingToFiltr(5)
+            setRatingTrue(true)
+        }else if(ratingCheckBoxTrue2 == 'true'){
+            setRatingToFiltr(4.5)
+            setRatingTrue(true)
+        }else if(ratingCheckBoxTrue3 == 'true'){
+            setRatingToFiltr(4)
+            setRatingTrue(true)
+        }
+
         if(pricePerNightTrue){
             setRealValueOfPrice(localStorage.getItem('PricePerNight'))
             setFiltrStart(true)
         }
+        const beachCheckboxTrue = localStorage.getItem('beachCheckbox')
+        console.log("Tutaj: " + beachCheckboxTrue);
+
+        if(beachCheckboxTrue == 'true'){
+            setBeachToFiltr(true)
+        }else{
+            setBeachToFiltr(false)
+        }
 
         console.log("Local True: " + localTrue)
+        console.log("cena: " + RealvalueOfPrice)
         
+        console.log(ratingToFiltr)
         filterHotels()
     }, [localTrue])
     
     const filterHotels = () => {
-        return HotelData.filter(index =>  index.country === place &&index.maxPeople >= people && search &&  (filtrStart ? index.pricePerNight * people * DayOfTrip < RealvalueOfPrice :index.pricePerNight > 0)  && (!distanceToCenterTrue || index.distanceToCenter === distanceToCenter) && (!ratingTrue || index.rating === ratingToFiltr) && (!beachToFiltr || index.isBeachfront === true))
+        return HotelData.filter(index =>  index.country === place &&index.maxPeople >= people && search &&  (filtrStart 
+            ? (index.pricePerNight * people * DayOfTrip <= Number(localStorage.getItem('PricePerNight')))
+            : (index.pricePerNight > 0))  && 
+            (!distanceToCenterTrue || index.distanceToCenter === distanceToCenter) && (!ratingTrue || index.rating === ratingToFiltr) && (!beachToFiltr || index.isBeachfront === true))
     }
 
     const Search = () => {
@@ -176,23 +206,32 @@ export function Hotel() {
     const FiltrStart = () => {
                 setFiltrStart(true)
                 setRealValueOfPrice(valueOfPrice)
-                localStorage.setItem('PricePerNight', valueOfPrice)
+                if(valueOfPrice){
+                    localStorage.setItem('PricePerNight', valueOfPrice)
+                    console.log("cena2: " + valueOfPrice)
+                }else{
+                    localStorage.setItem('PricePerNight', localStorage.getItem('PricePerNight'))
+                    console.log(localStorage.getItem('PricePerNight'))
+                }
                 localStorage.setItem('PricePerNightTrue', true)
 
             if(checkbox1){
                 setDistanceToCenterTrue(true)
                 localStorage.setItem('checkBox1', true )
                 localStorage.setItem('distanceToCenterTrue', true )
+                localStorage.setItem('distanceToCenter', 1)
                 setDistanceToCenter(1)
             }else if(checkbox2){
                 setDistanceToCenterTrue(true)
                 localStorage.setItem('checkBox2', true )
                 localStorage.setItem('distanceToCenterTrue', true )
+                localStorage.setItem('distanceToCenter', 2)
                 setDistanceToCenter(2)
             }else if(checkbox3){
                 setDistanceToCenterTrue(true)
                 localStorage.setItem('checkBox3', true )
                 localStorage.setItem('distanceToCenterTrue', true )
+                localStorage.setItem('distanceToCenter', distanceToCenter > 2)
                 setDistanceToCenter(distanceToCenter > 2)
             }else{
                 setDistanceToCenterTrue(false)
@@ -202,23 +241,33 @@ export function Hotel() {
 
             if(ratingCheckbox1){
                 setRatingToFiltr(5)
+                localStorage.setItem('ratingCheckBoxTrue1', true)
+                localStorage.setItem('ratingCheckBoxTrue2', false)
+                localStorage.setItem('ratingCheckBoxTrue3', false)
                 setRatingTrue(true)
             }else if(ratingCheckbox2){
                 setRatingToFiltr(4.5)
+                localStorage.setItem('ratingCheckBoxTrue1', false)
+                localStorage.setItem('ratingCheckBoxTrue2', true)
+                localStorage.setItem('ratingCheckBoxTrue3', false)
                 setRatingTrue(true)
             }else if(ratingCheckbox3){
                 setRatingToFiltr(4)
+                localStorage.setItem('ratingCheckBoxTrue1', false)
+                localStorage.setItem('ratingCheckBoxTrue2', false)
+                localStorage.setItem('ratingCheckBoxTrue3', true)
                 setRatingTrue(true)
             }else{
                 setRatingTrue(false)
             }
 
+
             if(beachCheckbox1){
                 setBeachToFiltr(true)
-
-            }else{
+                localStorage.setItem('beachCheckbox', true)
+            }else if(beachCheckbox2){
                 setBeachToFiltr(false)
-
+                localStorage.setItem('beachCheckbox', false)
             }
     }
 
@@ -269,8 +318,7 @@ export function Hotel() {
         );   
     }
 
-    
-
+    console.log(localStorage.getItem('ratingCheckBoxTrue1'))
 
   return (
    <div className='all'>
@@ -318,8 +366,15 @@ export function Hotel() {
                         <div className='Filter'>
                             <h2>Twój przedział cenowy</h2>
                             <p>Cena: 0zł - {valueOfPrice}zł</p>
-                            <input type='range' id='PriceMax' max={`${search ? 1000 * DayOfTrip : 1000}`} defaultValue={pricePerNightTrue ? 1000  : 200} onChange={(event) => setValueOfPrice(event.target.value)}></input>
-                        </div>
+                                <input 
+                                    type="range" 
+                                    id="PriceMax" 
+                                    max={search ? 1000 * DayOfTrip : 1000} 
+                                    value={valueOfPrice} 
+                                    defaultValue={localStorage.getItem('PricePerNight')}
+                                    onChange={(event) => setValueOfPrice(Number(event.target.value))}
+                                />
+                                </div>
 
                         <div className='Filter'>
                             <h2>Odległość od centrum</h2>
@@ -342,7 +397,7 @@ export function Hotel() {
 
                                 <input 
                                 type='checkbox' 
-                                checked={localStorage.getItem('checkBox3')}
+                                defaultChecked={localStorage.getItem('checkBox3') === 'true'}
                                 onChange={(event) => setCheckbox3(event.target.checked)} 
                                 />
                                 <label>Dalej</label>
@@ -355,21 +410,21 @@ export function Hotel() {
 
                             <input 
                             type='checkbox' 
-                            checked={ratingCheckbox1} 
+                            defaultChecked={localStorage.getItem('ratingCheckBoxTrue1') === 'true'} 
                             onChange={(event) => setRatingCheckbox1(event.target.checked)} 
                             ></input>
                             <label>5.0⭐</label><br></br>
 
                             <input 
                             type='checkbox' 
-                            checked={ratingCheckbox2} 
+                            defaultChecked={localStorage.getItem('ratingCheckBoxTrue2') === 'true'}  
                             onChange={(event) => setRatingCheckbox2(event.target.checked)} 
                             ></input>
                             <label>4.5⭐</label><br></br>
 
                             <input 
                             type='checkbox' 
-                            checked={ratingCheckbox3} 
+                            defaultChecked={localStorage.getItem('ratingCheckBoxTrue3') === 'true'} 
                             onChange={(event) => setRatingCheckbox3(event.target.checked)} 
                             ></input>
                             <label>4.0⭐</label><br></br>
@@ -379,13 +434,13 @@ export function Hotel() {
                             <h2>Blisko plarzy</h2>
                             <input
                             type='checkbox'
-                            checked={beachCheckbox1}
+                            defaultChecked={localStorage.getItem('beachCheckbox') === 'true'}
                             onChange={(event) => setbeachCheckbox1(event.target.checked)}
                             ></input><label>Tak</label><br></br>
 
                             <input
                             type='checkbox'
-                            checked={beachCheckbox2}
+                            defaultChecked={localStorage.getItem('beachCheckbox') === 'false'}
                             onChange={(event) => setbeachCheckbox2(event.target.checked)}
                             ></input><label>Nie</label><br></br>
                         </div>
@@ -431,7 +486,9 @@ export function Hotel() {
                         
                     </div>
                      {hotelSort.map(index => {
-                        const filterIf = (index.country === place &&index.maxPeople >= people && search &&  (filtrStart ? index.pricePerNight * people * DayOfTrip < RealvalueOfPrice :index.pricePerNight > 0)  && (!distanceToCenterTrue || index.distanceToCenter === distanceToCenter) && (!ratingTrue || index.rating === ratingToFiltr) && (!beachToFiltr || index.isBeachfront === true))
+
+                        const filterIf = (index.country === place &&index.maxPeople >= people && search &&  (filtrStart 
+                            ? (index.pricePerNight * people * DayOfTrip <= Number(localStorage.getItem('PricePerNight'))) : (index.pricePerNight > 0))  && (!distanceToCenterTrue || index.distanceToCenter === distanceToCenter) && (!ratingTrue || index.rating === ratingToFiltr) && (!beachToFiltr || index.isBeachfront === true))
                         const filterIf2 = (index.country === place &&index.maxPeople >= people &&index.pricePerNight * people<= RealvalueOfPrice &&(!distanceToCenterTrue || index.distanceToCenter === distanceToCenter) && (!ratingTrue || index.rating === ratingToFiltr) && (!beachToFiltr || index.isBeachfront === true))                       
                     if(index.country === place){
                         if(filterIf){
@@ -442,10 +499,10 @@ export function Hotel() {
                                     <div className='Cart-left'>
                                                 <img src={index.photo} style={{width: '250px',height: '250px', borderRadius: '10px', objectFit: 'cover' }}></img>
                                                 <input
-                                                            type='submit'
-                                                            value="❤️"
-                                                            onClick={() => sendToFavourite(index.id)}
-                                                        ></input>
+                                                    type='submit'
+                                                    value="❤️"
+                                                    onClick={() => sendToFavourite(index.id)}
+                                                ></input>
                                             </div>
                                             <div className='Cart-center'>
                                                 <div>
