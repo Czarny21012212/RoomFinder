@@ -17,7 +17,6 @@ export function Hotel() {
         localStorage.setItem('FavouritID', id)
     }
 
-
     const[start, setStart] = useState(null);
     const[end, setEnd] = useState(null);
     const[place, setPlace] = useState(null);
@@ -35,8 +34,6 @@ export function Hotel() {
     const[localPrice, setLocalPrice] = useState(localStorage.getItem('Price'));
     const[localTrue, setLocalTrue] = useState(localStorage.getItem('localTrue') ? localStorage.getItem('localTrue') : false);
 
-   
-
     useEffect(() => {
         if (start && end) {
             const date1 = new Date(start);
@@ -44,7 +41,8 @@ export function Hotel() {
             const days = (date2 - date1) / (1000 * 60 * 60 * 24);
             setDayOfTrip(days);
         }
-    }, [start, end]);
+    }, [start, end])
+
     
     useEffect(() => {
         if (DayOfTrip && people) {
@@ -54,7 +52,7 @@ export function Hotel() {
         }
     }, [DayOfTrip, people]);
     
-    
+
     useEffect(() => {
         if (localTrue) {
             setPlace(localStorage.getItem('Country'));
@@ -65,33 +63,32 @@ export function Hotel() {
             setValueOfPrice(localStorage.getItem('PricePerNight'))
         }
     }, [localTrue]);
-    
 
+    
     useEffect(() =>{
         if(place){
             localStorage.setItem('Country', place)
-            
-            if(localTrue){    
-                setPlace(localStorage.getItem('Country'))
-            }
+                if(localTrue){    
+                    setPlace(localStorage.getItem('Country'))
+                }
         }
         if(people){
             localStorage.setItem('People', people)
-            if(localTrue){
-                setPeople(localStorage.getItem('People'))
-            }
+                if(localTrue){
+                    setPeople(localStorage.getItem('People'))
+                }
         }
         if(start){
             localStorage.setItem('Start', start)
-            if(localTrue){
-                setStart(localStorage.getItem('Start'))
-            }
+                if(localTrue){
+                    setStart(localStorage.getItem('Start'))
+                }
         }
         if(end){
             localStorage.setItem('End', end)
-            if(localTrue){
-                setEnd(localStorage.getItem('End'))
-            }
+                if(localTrue){
+                    setEnd(localStorage.getItem('End'))
+                }
         }
         if (DayOfTrip && people) {
             const price = parseInt(DayOfTrip);
@@ -103,11 +100,11 @@ export function Hotel() {
             setFiltrStart(true)
         }
         
-        
         localStorage.setItem('Search', true)
         localStorage.setItem('localTrue', true)
 
     }, [search, save])
+
 
     const[checkBoxTrue1, setCheckBoxTrue1] = useState(localStorage.getItem('checkBox1'))
     const[checkBoxTrue2, setCheckBoxTrue2] = useState(localStorage.getItem('checkBox2'))
@@ -119,7 +116,6 @@ export function Hotel() {
 
     const[pricePerNightTrue, setPricePerNightTrue] = useState(localStorage.getItem('PricePerNightTrue'))
 
-
     useEffect(() => {
         
         setPlace(localStorage.getItem('Country'))
@@ -128,19 +124,23 @@ export function Hotel() {
         setEnd(localStorage.getItem('End'))
         setRealValueOfPrice(localStorage.getItem('FiltrPrice'))
 
-        if(checkBoxTrue1){
-            setDistanceToCenter(1)
-            setDistanceToCenterTrue(true)
-            console.log("Siema1")
-        }else if(checkBoxTrue2){
-            setDistanceToCenter(2)
-            setDistanceToCenterTrue(true)
-            console.log("Siema2")
-        }else if(checkBoxTrue3){
-            setDistanceToCenter(distanceToCenter > 2)
-            setDistanceToCenterTrue(true)
-            console.log("Siema3")
+        if (checkBoxTrue1 === 'true') {
+            setDistanceToCenter();
+            setDistanceToCenter(localStorage.getItem('distanceToCenter'))
+            setDistanceToCenterTrue(true);
+        } else if (checkBoxTrue2 === 'true') {
+            setDistanceToCenter(2);
+            setDistanceToCenter(localStorage.getItem('distanceToCenter'))
+            setDistanceToCenterTrue(true);
+        } else if (checkBoxTrue3 === 'true') {
+            const newDistance = distanceToCenter > 2 ? distanceToCenter : 3;
+            localStorage.setItem("distanceToCenter", newDistance);
+            setDistanceToCenter(newDistance);
+            console.log("Setting distanceToCenter to", newDistance);
+            setDistanceToCenterTrue(true);
         }
+        
+        
 
         if(ratingCheckBoxTrue1 == 'true'){
             setRatingToFiltr(5)
@@ -157,6 +157,7 @@ export function Hotel() {
             setRealValueOfPrice(localStorage.getItem('PricePerNight'))
             setFiltrStart(true)
         }
+
         const beachCheckboxTrue = localStorage.getItem('beachCheckbox')
         console.log("Tutaj: " + beachCheckboxTrue);
 
@@ -166,19 +167,25 @@ export function Hotel() {
             setBeachToFiltr(false)
         }
 
-        console.log("Local True: " + localTrue)
-        console.log("cena: " + RealvalueOfPrice)
-        
-        console.log(ratingToFiltr)
         filterHotels()
     }, [localTrue])
     
     const filterHotels = () => {
-        return HotelData.filter(index =>  index.country === place &&index.maxPeople >= people && search &&  (filtrStart 
-            ? (index.pricePerNight * people * DayOfTrip <= Number(localStorage.getItem('PricePerNight')))
-            : (index.pricePerNight > 0))  && 
-            (!distanceToCenterTrue || index.distanceToCenter === distanceToCenter) && (!ratingTrue || index.rating === ratingToFiltr) && (!beachToFiltr || index.isBeachfront === true))
-    }
+        console.log("distanceToCenterTrue:", distanceToCenterTrue);
+        console.log("distanceToCenter:", distanceToCenter);
+    
+        return HotelData.filter(index =>
+            index.country === place &&
+            index.maxPeople >= people &&
+            search &&
+            (filtrStart
+                ? index.pricePerNight * people * DayOfTrip <= Number(localStorage.getItem('PricePerNight'))
+                : index.pricePerNight > 0) &&
+            (!distanceToCenterTrue || index.distanceToCenter === Number(distanceToCenter)) &&
+            (!ratingTrue || index.rating === ratingToFiltr) &&
+            (!beachToFiltr || index.isBeachfront === true)
+        );
+    };
 
     const Search = () => {
         setSearch(true)
@@ -204,61 +211,126 @@ export function Hotel() {
     const[localDistanceToCenterTrue, setLoaclDistanceToCenterTrue] = useState(false)
 
     const FiltrStart = () => {
-                setFiltrStart(true)
+            setFiltrStart(true)
+
+           if(localTrue){
+                if(valueOfPrice === localStorage.getItem('PricePerNight')){
+                    setRealValueOfPrice(localStorage.getItem('PricePerNight'));
+                }else{
+                    localStorage.setItem('PricePerNight', valueOfPrice)
+                    setRealValueOfPrice(localStorage.getItem('PricePerNight'))
+                }
+           }else{
                 setRealValueOfPrice(valueOfPrice)
                 if(valueOfPrice){
                     localStorage.setItem('PricePerNight', valueOfPrice)
-                    console.log("cena2: " + valueOfPrice)
                 }else{
                     localStorage.setItem('PricePerNight', localStorage.getItem('PricePerNight'))
-                    console.log(localStorage.getItem('PricePerNight'))
                 }
                 localStorage.setItem('PricePerNightTrue', true)
+           }
 
-            if(checkbox1){
-                setDistanceToCenterTrue(true)
-                localStorage.setItem('checkBox1', true )
-                localStorage.setItem('distanceToCenterTrue', true )
-                localStorage.setItem('distanceToCenter', 1)
-                setDistanceToCenter(1)
-            }else if(checkbox2){
-                setDistanceToCenterTrue(true)
-                localStorage.setItem('checkBox2', true )
-                localStorage.setItem('distanceToCenterTrue', true )
-                localStorage.setItem('distanceToCenter', 2)
-                setDistanceToCenter(2)
-            }else if(checkbox3){
-                setDistanceToCenterTrue(true)
-                localStorage.setItem('checkBox3', true )
-                localStorage.setItem('distanceToCenterTrue', true )
-                localStorage.setItem('distanceToCenter', distanceToCenter > 2)
-                setDistanceToCenter(distanceToCenter > 2)
-            }else{
-                setDistanceToCenterTrue(false)
-                setDistanceToCenter(1)
+           if (localTrue) {
+            const storedDistance = parseInt(localStorage.getItem('distanceToCenter'));
+        
+            if (checkbox1) {
+                localStorage.setItem('checkBox1', true);
+                localStorage.setItem('checkBox2', false);
+                localStorage.setItem('checkBox3', false);
+                localStorage.setItem('distanceToCenter', 1);
+                setDistanceToCenter(1);
+            } else if (checkbox2) {
+                localStorage.setItem('checkBox1', false);
+                localStorage.setItem('checkBox2', true);
+                localStorage.setItem('checkBox3', false);
+                localStorage.setItem('distanceToCenter', 2);
+                setDistanceToCenter(2);
+            } else if (checkbox3) {
+                const newDistance = distanceToCenter > 2 ? distanceToCenter : 3;
+                localStorage.setItem('checkBox1', false);
+                localStorage.setItem('checkBox2', false);
+                localStorage.setItem('checkBox3', true);
+                localStorage.setItem('distanceToCenter', newDistance);
+                setDistanceToCenter(newDistance);
+            } else {
+                setDistanceToCenter(storedDistance || 1);
             }
+        } else {
+            if (checkbox1) {
+                setDistanceToCenterTrue(true);
+                localStorage.setItem('checkBox1', true);
+                localStorage.setItem('checkBox2', false);
+                localStorage.setItem('checkBox3', false);
+                localStorage.setItem('distanceToCenterTrue', true);
+                localStorage.setItem('distanceToCenter', 1);
+                setDistanceToCenter(1);
+            } else if (checkbox2) {
+                setDistanceToCenterTrue(true);
+                localStorage.setItem('checkBox1', false);
+                localStorage.setItem('checkBox2', true);
+                localStorage.setItem('checkBox3', false);
+                localStorage.setItem('distanceToCenterTrue', true);
+                localStorage.setItem('distanceToCenter', 2);
+                setDistanceToCenter(2);
+            } else if (checkbox3) {
+                setDistanceToCenterTrue(true);
+                const newDistance = distanceToCenter > 2 ? distanceToCenter : 3;
+                localStorage.setItem('checkBox1', false);
+                localStorage.setItem('checkBox2', false);
+                localStorage.setItem('checkBox3', true);
+                localStorage.setItem('distanceToCenterTrue', true);
+                localStorage.setItem('distanceToCenter', newDistance);
+                setDistanceToCenter(newDistance);
+            } else {
+                setDistanceToCenterTrue(false);
+                localStorage.setItem('distanceToCenterTrue', false);
+                localStorage.setItem('distanceToCenter', 1);
+                setDistanceToCenter(1);
+            }
+        }
+        
+        const updatedDistance = parseInt(localStorage.getItem('distanceToCenter'));
+        console.log("Systans " + updatedDistance);
+        
+        
 
+        
 
-            if(ratingCheckbox1){
-                setRatingToFiltr(5)
-                localStorage.setItem('ratingCheckBoxTrue1', true)
-                localStorage.setItem('ratingCheckBoxTrue2', false)
-                localStorage.setItem('ratingCheckBoxTrue3', false)
-                setRatingTrue(true)
-            }else if(ratingCheckbox2){
-                setRatingToFiltr(4.5)
-                localStorage.setItem('ratingCheckBoxTrue1', false)
-                localStorage.setItem('ratingCheckBoxTrue2', true)
-                localStorage.setItem('ratingCheckBoxTrue3', false)
-                setRatingTrue(true)
-            }else if(ratingCheckbox3){
-                setRatingToFiltr(4)
-                localStorage.setItem('ratingCheckBoxTrue1', false)
-                localStorage.setItem('ratingCheckBoxTrue2', false)
-                localStorage.setItem('ratingCheckBoxTrue3', true)
-                setRatingTrue(true)
+            if(localTrue){
+                console.log("Ratting: " + ratingToFiltr)
+                console.log((parseInt(ratingToFiltr) === parseInt(localStorage.getItem('resultRating'))))
+
+                if(parseInt(ratingToFiltr) === parseInt(localStorage.getItem('resultRating'))){
+                    setRatingToFiltr(ratingToFiltr);
+                }else{
+                    localStorage.setItem('resultRating', ratingToFiltr);
+                    setRatingToFiltr(parseInt(localStorage.getItem('resultRating')));
+                }
             }else{
-                setRatingTrue(false)
+                if(ratingCheckbox1){
+                    setRatingToFiltr(5)
+                    localStorage.setItem('resultRating', 5)
+                    localStorage.setItem('ratingCheckBoxTrue1', true)
+                    localStorage.setItem('ratingCheckBoxTrue2', false)
+                    localStorage.setItem('ratingCheckBoxTrue3', false)
+                    setRatingTrue(true)
+                }else if(ratingCheckbox2){
+                    setRatingToFiltr(4.5)
+                    localStorage.setItem('resultRating', 4.5)
+                    localStorage.setItem('ratingCheckBoxTrue1', false)
+                    localStorage.setItem('ratingCheckBoxTrue2', true)
+                    localStorage.setItem('ratingCheckBoxTrue3', false)
+                    setRatingTrue(true)
+                }else if(ratingCheckbox3){
+                    setRatingToFiltr(4)
+                    localStorage.setItem('resultRating', 4)
+                    localStorage.setItem('ratingCheckBoxTrue1', false)
+                    localStorage.setItem('ratingCheckBoxTrue2', false)
+                    localStorage.setItem('ratingCheckBoxTrue3', true)
+                    setRatingTrue(true)
+                }else{
+                    setRatingTrue(false)
+                }
             }
 
 
@@ -487,9 +559,16 @@ export function Hotel() {
                     </div>
                      {hotelSort.map(index => {
 
-                        const filterIf = (index.country === place &&index.maxPeople >= people && search &&  (filtrStart 
-                            ? (index.pricePerNight * people * DayOfTrip <= Number(localStorage.getItem('PricePerNight'))) : (index.pricePerNight > 0))  && (!distanceToCenterTrue || index.distanceToCenter === distanceToCenter) && (!ratingTrue || index.rating === ratingToFiltr) && (!beachToFiltr || index.isBeachfront === true))
-                        const filterIf2 = (index.country === place &&index.maxPeople >= people &&index.pricePerNight * people<= RealvalueOfPrice &&(!distanceToCenterTrue || index.distanceToCenter === distanceToCenter) && (!ratingTrue || index.rating === ratingToFiltr) && (!beachToFiltr || index.isBeachfront === true))                       
+                        const filterIf = (index.country === place &&
+                            index.maxPeople >= people &&
+                            search &&
+                            (filtrStart
+                                ? index.pricePerNight * people * DayOfTrip <= Number(localStorage.getItem('PricePerNight'))
+                                : index.pricePerNight > 0) &&
+                            (!distanceToCenterTrue || index.distanceToCenter === Number(distanceToCenter)) &&
+                            (!ratingTrue || index.rating === ratingToFiltr) &&
+                            (!beachToFiltr || index.isBeachfront === true))
+                        const filterIf2 = (index.country === place &&index.maxPeople >= people && index.pricePerNight * people <= RealvalueOfPrice &&(!distanceToCenterTrue || index.distanceToCenter === distanceToCenter) && (!ratingTrue || index.rating === ratingToFiltr) && (!beachToFiltr || index.isBeachfront === true))                       
                     if(index.country === place){
                         if(filterIf){
                             return(
@@ -530,7 +609,7 @@ export function Hotel() {
     
                                                 <div className='Cart-right-bottom'>
                                                         <div>
-                                                            <p className='Price'>{people <= 0 ? index.pricePerNight * DayOfTrip : (!localTrue ? index.pricePerNight * people * DayOfTrip : index.pricePerNight * localPrice )}
+                                                            <p className='Price'>{people <= 0 ? index.pricePerNight * people * DayOfTrip  : (!localTrue ? index.pricePerNight * people * DayOfTrip : index.pricePerNight * localPrice  )}
                                                             zł</p>
                                                             <p className='bills'>Zawiera opłaty i podatki</p>
                                                             <Link to={`/hotel/${index.id}`}>
