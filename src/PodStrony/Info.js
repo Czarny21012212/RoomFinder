@@ -7,6 +7,13 @@ import Lot from './Image/Loty.png';
 import Car from './Image/Car.png';
 import Atrakcje from './Image/Atrakcje.png';
 
+import family from './Image/family.png'
+import pool from './Image/pool.png'
+import restaurant from './Image/restaurant.png'
+import freeSmoke from './Image/freeSmoke.png'
+import parking from './Image/parking.png'
+import wifi from './Image/wifi.png'
+
 function Info() {
   const { id } = useParams(); // Pobierz parametr 'id' z URL
   const hotel = HotelData.find(hotel => hotel.id === parseInt(id)); 
@@ -61,11 +68,88 @@ function Info() {
                       </div>
                 </div>
                 <div className='infoHotel-bottom-right'>
-                    
+                    <div className='infoHotel-bottom-right-top'>
+                        <div className='Cart-right-top'>
+                            <div className='Cart-right-top-first'>
+                                <div className='Cart-right-top-first-left'>
+                                    <h2>{hotel.verbalRating}</h2>
+                                    <p>{hotel.reviewsCount} opinii</p>
+                                </div>
+                                <div className='Cart-right-top-first-right'>
+                                    <h2>{hotel.guestRating}</h2>
+                                </div>
+                            </div>
+                                <div className='Cart-right-top-second'>
+                                        <p>Komfort {hotel.comfort}</p>
+                                </div>
+                            </div>                              
                     </div>
-
+                    <div className='infoHotel-bottom-right-bottom'>
+                        <div className='infoHotel-bottom-right-bottom-top'>
+                            <h1>{localStorage.getItem('Price') ? (hotel.pricePerNight * localStorage.getItem('Price')) + " zł"  : "Brak informacji"}</h1>
+                        </div>    
+                        <div className='infoHotel-bottom-right-bottom-bottom'>
+                            <input
+                            type='submit'
+                            value="Zarezerwuj Teraz"
+                            >
+                            </input>
+                        </div>                          
+                    </div>
+                    
+                </div>
               </div>
           </div>
+        </div>
+        <div className='amenities-box'>
+            <div className='amenities'>
+                <div className='amenities-h1'>
+                    <h1>Najpopularniejsze udogodnienia</h1>
+                </div>
+                <div className='amenities-text'>
+                    {hotel.family && (
+                        <div className='amenities-true'>
+                            <img src={family}></img>
+                            <p> Pokoje Rodzinne</p>
+                        </div>
+                    )}
+
+                    {hotel.pool && (
+                        <div className='amenities-true'>
+                            <img src={pool}></img>
+                            <p> basen</p>
+                        </div>
+                    )}
+
+                    {hotel.restaurant && (
+                        <div className='amenities-true'>
+                            <img src={restaurant}></img>
+                            <p> Restauracja</p>
+                        </div>
+                    )}
+
+                    {hotel.freeSmoke && (
+                        <div className='amenities-true'>
+                            <img src={freeSmoke}></img>
+                            <p> Pokoje dla niepalących </p>
+                        </div>
+                    )}
+
+                    {hotel.parking && (
+                        <div className='amenities-true'>
+                            <img src={parking}></img>
+                            <p> Prywatny parking</p>
+                        </div>
+                    )}
+
+                    {hotel.wifi && (
+                        <div className='amenities-true'>
+                            <img src={wifi}></img>
+                            <p>Darmowe WI-FI</p>
+                        </div>
+                    )}
+                </div>
+            </div>
         </div>
 
     </div>

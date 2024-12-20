@@ -26,7 +26,13 @@
     "freeCancellation": true,
     "reviewsCount": 105,
     "verbalRating": "Fantastyczny",
-    "comfort": 9.5
+    "comfort": 9.5,
+    "pool" : true,
+    "restaurant" : true,
+    "family" : true,
+    "freeSmoke": false,
+    "parking" : true,
+    "wifi": true
   },
   {
     "id": 2,
@@ -55,7 +61,13 @@
     "freeCancellation": true,
     "reviewsCount": 215,
     "verbalRating": "Fantastyczny",
-    "comfort": 9.8
+    "comfort": 9.8,
+    "pool" : false,
+    "restaurant" : false,
+    "family" : true,
+    "freeSmoke": true,
+    "parking" : true,
+    "wifi": false
   },
   {
     "id": 3,
@@ -84,7 +96,13 @@
     "freeCancellation": false,
     "reviewsCount": 320,
     "verbalRating": "Znakomity",
-    "comfort": 9.4
+    "comfort": 9.4,
+    "pool" : false,
+    "restaurant" : true,
+    "family" : false,
+    "freeSmoke": true,
+    "parking" : false,
+    "wifi": true
   },
   {
     "id": 4,
@@ -113,7 +131,13 @@
     "freeCancellation": true,
     "reviewsCount": 175,
     "verbalRating": "Znakomity",
-    "comfort": 8.9
+    "comfort": 8.9,
+    "pool" : true,
+    "restaurant" : false,
+    "family" : true,
+    "freeSmoke": false,
+    "parking" : true,
+    "wifi": false
   },
   {
     "id": 5,
@@ -142,7 +166,13 @@
     "freeCancellation": false,
     "reviewsCount": 98,
     "verbalRating": "Dobry",
-    "comfort": 8.1
+    "comfort": 8.1,
+    "pool" : true,
+    "restaurant" : true,
+    "family" : true,
+    "freeSmoke": false,
+    "parking" : false,
+    "wifi": false
   },
   {
     "id": 6,
@@ -171,6 +201,13 @@
     "freeCancellation": false,
     "reviewsCount": 98,
     "verbalRating": "Dobry",
-    "comfort": 8.1
+    "comfort": 8.1,
+    "pool" : true,
+    "restaurant" : true,
+    "family" : false,
+    "freeSmoke": false,
+    "parking" : true,
+    "wifi": false
+
   }
 ]
