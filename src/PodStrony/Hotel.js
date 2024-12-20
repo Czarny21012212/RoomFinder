@@ -17,6 +17,7 @@ export function Hotel() {
         localStorage.setItem('FavouritID', id)
     }
 
+
     const[start, setStart] = useState(null);
     const[end, setEnd] = useState(null);
     const[place, setPlace] = useState(null);
@@ -33,6 +34,12 @@ export function Hotel() {
     const[localEnd, setLocalEnd] = useState(localStorage.getItem('End'))
     const[localPrice, setLocalPrice] = useState(localStorage.getItem('Price'));
     const[localTrue, setLocalTrue] = useState(localStorage.getItem('localTrue') ? localStorage.getItem('localTrue') : false);
+
+
+    const Search = () => {
+        setSearch(true)
+   
+    }
 
     useEffect(() => {
         if (start && end) {
@@ -125,37 +132,49 @@ export function Hotel() {
         setRealValueOfPrice(localStorage.getItem('FiltrPrice'))
 
         if (checkBoxTrue1 === 'true') {
+
             setDistanceToCenter();
             setDistanceToCenter(localStorage.getItem('distanceToCenter'))
             setDistanceToCenterTrue(true);
+
         } else if (checkBoxTrue2 === 'true') {
+
             setDistanceToCenter(2);
             setDistanceToCenter(localStorage.getItem('distanceToCenter'))
             setDistanceToCenterTrue(true);
+
         } else if (checkBoxTrue3 === 'true') {
+
             const newDistance = distanceToCenter > 2 ? distanceToCenter : 3;
             localStorage.setItem("distanceToCenter", newDistance);
             setDistanceToCenter(newDistance);
             console.log("Setting distanceToCenter to", newDistance);
             setDistanceToCenterTrue(true);
+
         }
-        
-        
 
         if(ratingCheckBoxTrue1 == 'true'){
+
             setRatingToFiltr(5)
             setRatingTrue(true)
+
         }else if(ratingCheckBoxTrue2 == 'true'){
+
             setRatingToFiltr(4.5)
             setRatingTrue(true)
+
         }else if(ratingCheckBoxTrue3 == 'true'){
+
             setRatingToFiltr(4)
             setRatingTrue(true)
+
         }
 
         if(pricePerNightTrue){
+
             setRealValueOfPrice(localStorage.getItem('PricePerNight'))
             setFiltrStart(true)
+
         }
 
         const beachCheckboxTrue = localStorage.getItem('beachCheckbox')
@@ -171,25 +190,23 @@ export function Hotel() {
     }, [localTrue])
     
     const filterHotels = () => {
-        console.log("distanceToCenterTrue:", distanceToCenterTrue);
-        console.log("distanceToCenter:", distanceToCenter);
-    
         return HotelData.filter(index =>
             index.country === place &&
             index.maxPeople >= people &&
             search &&
-            (filtrStart
-                ? index.pricePerNight * people * DayOfTrip <= Number(localStorage.getItem('PricePerNight'))
-                : index.pricePerNight > 0) &&
+            (
+                filtrStart
+                    ? index.pricePerNight * people * DayOfTrip <= Number(localStorage.getItem('PricePerNight'))
+                    : index.pricePerNight > 0
+            ) &&
             (!distanceToCenterTrue || index.distanceToCenter === Number(distanceToCenter)) &&
             (!ratingTrue || index.rating === ratingToFiltr) &&
             (!beachToFiltr || index.isBeachfront === true)
         );
+        
     };
 
-    const Search = () => {
-        setSearch(true)
-    }
+   
 
     const[RealvalueOfPrice, setRealValueOfPrice] = useState(1000);
     const[checkbox1, setCheckbox1] = useState(false)
@@ -234,26 +251,49 @@ export function Hotel() {
             const storedDistance = parseInt(localStorage.getItem('distanceToCenter'));
         
             if (checkbox1) {
+
                 localStorage.setItem('checkBox1', true);
                 localStorage.setItem('checkBox2', false);
                 localStorage.setItem('checkBox3', false);
+
                 localStorage.setItem('distanceToCenter', 1);
+                localStorage.setItem('distanceToCenterTrue', true);
+
+                setDistanceToCenterTrue(true);
                 setDistanceToCenter(1);
             } else if (checkbox2) {
+
                 localStorage.setItem('checkBox1', false);
                 localStorage.setItem('checkBox2', true);
                 localStorage.setItem('checkBox3', false);
+
                 localStorage.setItem('distanceToCenter', 2);
+                localStorage.setItem('distanceToCenterTrue', true);
+
+                setDistanceToCenterTrue(true);
                 setDistanceToCenter(2);
             } else if (checkbox3) {
+
                 const newDistance = distanceToCenter > 2 ? distanceToCenter : 3;
+
                 localStorage.setItem('checkBox1', false);
                 localStorage.setItem('checkBox2', false);
                 localStorage.setItem('checkBox3', true);
+
                 localStorage.setItem('distanceToCenter', newDistance);
                 setDistanceToCenter(newDistance);
+
+                localStorage.setItem('distanceToCenterTrue', true);
+                setDistanceToCenterTrue(true);
             } else {
                 setDistanceToCenter(storedDistance || 1);
+                localStorage.setItem('distanceToCenter', storedDistance || 1);
+                localStorage.setItem('checkBox1', false);
+                localStorage.setItem('checkBox2', false);
+                localStorage.setItem('checkBox3', false);
+
+                localStorage.setItem('distanceToCenterTrue', false);
+                setDistanceToCenterTrue(false);
             }
         } else {
             if (checkbox1) {
@@ -292,19 +332,40 @@ export function Hotel() {
         const updatedDistance = parseInt(localStorage.getItem('distanceToCenter'));
         console.log("Systans " + updatedDistance);
         
-        
-
-        
-
             if(localTrue){
                 console.log("Ratting: " + ratingToFiltr)
                 console.log((parseInt(ratingToFiltr) === parseInt(localStorage.getItem('resultRating'))))
 
-                if(parseInt(ratingToFiltr) === parseInt(localStorage.getItem('resultRating'))){
-                    setRatingToFiltr(ratingToFiltr);
+                console.log(localStorage.getItem('ratingCheckBoxTrue1'))
+                console.log(localStorage.getItem('ratingCheckBoxTrue2'))
+                console.log(localStorage.getItem('ratingCheckBoxTrue3'))
+
+                if(ratingCheckbox1){
+                    setRatingToFiltr(5)
+                    localStorage.setItem('resultRating', 5)
+                    localStorage.setItem('ratingCheckBoxTrue1', true)
+                    localStorage.setItem('ratingCheckBoxTrue2', false)
+                    localStorage.setItem('ratingCheckBoxTrue3', false)
+                    setRatingTrue(true)
+                }else if(ratingCheckbox2){
+                    setRatingToFiltr(4.5)
+                    localStorage.setItem('resultRating', 4.5)
+                    localStorage.setItem('ratingCheckBoxTrue1', false)
+                    localStorage.setItem('ratingCheckBoxTrue2', true)
+                    localStorage.setItem('ratingCheckBoxTrue3', false)
+                    setRatingTrue(true)
+                }else if(ratingCheckbox3){
+                    setRatingToFiltr(4)
+                    localStorage.setItem('resultRating', 4)
+                    localStorage.setItem('ratingCheckBoxTrue1', false)
+                    localStorage.setItem('ratingCheckBoxTrue2', false)
+                    localStorage.setItem('ratingCheckBoxTrue3', true)
+                    setRatingTrue(true)
                 }else{
-                    localStorage.setItem('resultRating', ratingToFiltr);
-                    setRatingToFiltr(parseInt(localStorage.getItem('resultRating')));
+                    setRatingTrue(false)
+                    localStorage.setItem('ratingCheckBoxTrue1', false)
+                    localStorage.setItem('ratingCheckBoxTrue2', false)
+                    localStorage.setItem('ratingCheckBoxTrue3', false)
                 }
             }else{
                 if(ratingCheckbox1){
@@ -333,13 +394,15 @@ export function Hotel() {
                 }
             }
 
-
             if(beachCheckbox1){
                 setBeachToFiltr(true)
                 localStorage.setItem('beachCheckbox', true)
             }else if(beachCheckbox2){
                 setBeachToFiltr(false)
                 localStorage.setItem('beachCheckbox', false)
+            }else{
+                setBeachToFiltr(null)
+                localStorage.setItem('beachCheckbox', null)
             }
     }
 
@@ -569,7 +632,7 @@ export function Hotel() {
                             (!ratingTrue || index.rating === ratingToFiltr) &&
                             (!beachToFiltr || index.isBeachfront === true))
                         const filterIf2 = (index.country === place &&index.maxPeople >= people && index.pricePerNight * people <= RealvalueOfPrice &&(!distanceToCenterTrue || index.distanceToCenter === distanceToCenter) && (!ratingTrue || index.rating === ratingToFiltr) && (!beachToFiltr || index.isBeachfront === true))                       
-                    if(index.country === place){
+                    if(filterIf){
                         if(filterIf){
                             return(
                                 <div key={index.id} className='Cart'>
@@ -609,7 +672,7 @@ export function Hotel() {
     
                                                 <div className='Cart-right-bottom'>
                                                         <div>
-                                                            <p className='Price'>{people <= 0 ? index.pricePerNight * people * DayOfTrip  : (!localTrue ? index.pricePerNight * people * DayOfTrip : index.pricePerNight * localPrice  )}
+                                                            <p className='Price'>{people <= 0 ? index.pricePerNight  * DayOfTrip  : (!localTrue ? index.pricePerNight * people * DayOfTrip : index.pricePerNight * localPrice)}
                                                             zł</p>
                                                             <p className='bills'>Zawiera opłaty i podatki</p>
                                                             <Link to={`/hotel/${index.id}`}>
@@ -628,21 +691,9 @@ export function Hotel() {
                                     
                                 </div>
                             ) 
-                        }else if(!index.country){
-                            return(
-                                <div className='info2'>
-                                    <p>Brak ofert...</p>
-                                </div>
-                            )
-                        };
-                    }else if(search){
-                       return(
-                        <div className='info'>
-                            <p className='pl'>!</p>
-                            <p>Coś poszło nie tak</p>
-                        </div>
-                       );
-                    }else if(!search || filterIf){
+                        }
+                    }
+                    else if(!search){
                         return(
                             <div key={index.id} className='Cart'>
                                 <div className='Cart-items'>
@@ -697,7 +748,13 @@ export function Hotel() {
                                 
                             </div>
                         ) 
-                    }
+                    }else if(countCarts == 0){
+                        return(
+                            <div className='info2'>
+                                <p>Brak ofert...</p>
+                            </div>
+                        )
+                    };
                 })}
                 </div>
                 </div>

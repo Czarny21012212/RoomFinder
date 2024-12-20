@@ -4,12 +4,14 @@ body{
 .Cart{
     align-items: center;
     color: rgb(14, 14, 14);
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.185);
     border: 0.1px solid rgb(187, 187, 187);
     text-decoration: none;
     border-radius: 15px;
     margin: 20px;
     padding: 10px;
 }
+
 .Cart-items{
     display: flex;
     justify-content: space-between;
@@ -21,9 +23,10 @@ header{
     align-items: center;
     margin: 0;
     padding: 0;
-    background-color: rgb(24, 66, 204);
+    background-color: #1A2C42;
 }
-.header-top {
+
+.header-top {  
     display: flex;
     justify-content: space-around;
     text-align: center;
@@ -53,6 +56,20 @@ header{
     display: flex;
     gap: 4px;
 }
+@media only screen and (max-width: 600px) {
+    header{
+        display: flex;
+        justify-content: center;
+    }
+
+    .header-center ul {
+        display: flex;
+        flex-direction: column;
+    }
+    .header-center ul li{
+        text-align: center;
+    }
+  }
 .header-center ul a {
     margin: 5px;
     padding: 8px;
@@ -63,16 +80,15 @@ header{
     margin: 10px;
     padding: 100px;
     gap: 4px;
-    background-color: rgb(50, 86, 204);
+    background-color: #2195f354;
     border-radius: 50px;
     cursor: pointer;
-    border: 1px solid rgb(167, 167, 167);
 }
 .header-center ul a:hover{
     margin: 5px;
     padding: 8px;
     gap: 4px;
-    background-color: rgb(46, 90, 236);
+    background-color: #2195f3d3;
     border-radius: 50px;
     cursor: pointer;
 }
@@ -104,7 +120,7 @@ header{
     padding: 5px;
     border: none;
     border-radius: 5px;
-    background-color: rgb(31, 71, 201);
+    background-color: #2196F3;
     color: white;
     padding: 15px 20px;
     cursor: pointer;
@@ -169,14 +185,14 @@ header{
     padding: 10px 20px;
     border: none;
     color: white;
-    background-color: rgb(45, 81, 199);
+    background-color: #2196F3;
     border-radius: 10px;
     cursor: pointer;
     transition: all 200ms ease-in-out;
     margin: 10px;
 }
 .submitFilter:hover{
-    background-color: rgb(73, 103, 201);
+    background-color: #2196F3;
 }
 .FilterSubmit{
     text-align: center;   
@@ -220,8 +236,8 @@ input[type='checkbox']:checked{
     padding: 10px 15px;
     border: none;
     color: rgb(44, 44, 44);
-    box-shadow: 0px 0px 10px  rgba(0, 0, 0, 0.281);
-    border: 1px solid rgb(139, 139, 139);
+    box-shadow: 0px 0px 5px  rgba(0, 0, 0, 0.212);
+    border: 1px solid rgba(0, 0, 0, 0.425);
     background-color: white;
     font-weight: 500;
     font-size: 0.9rem;
@@ -265,7 +281,7 @@ input[type='checkbox']:checked{
     margin-top: -5px;
 }
 .Cart-right-top-first-right{
-    background-color: rgb(0, 89, 255);
+    background-color: #2196F3;
     font-size: 0.5rem;
     color: aliceblue;
     padding: 10px;
@@ -290,7 +306,7 @@ input[type='checkbox']:checked{
     font-size: 0.9rem;
     font-weight: bold;
     color: aliceblue;
-    background-color: rgb(0, 89, 255);
+    background-color: #2196F3;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -336,7 +352,7 @@ input[type='checkbox']:checked{
     top: 60%;
     left: 60%;
     transform: translate(-50%, -50%);
-    background-color: rgb(0, 110, 255);
+    background-color: #42A5F5;
     border-radius: 10px;
     color: white;
     padding: 10px;
@@ -353,4 +369,27 @@ font-size: 2rem;
     font-weight: 200;
     color: rgb(49, 49, 49);
 }
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none; 
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    border-radius: 16px;
+  }
 
+  input[type="range"]::-moz-range-track {
+    height: 15px;
+    background:#1a2c424b;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.288);
+  }
+  input[type="range"]::-moz-range-thumb {
+    height: 15px;
+    width: 15px;
+    background-color: #ffffff;
+    border-radius: 100%;
+    border: 2px solid rgb(255, 255, 255);
+    box-shadow: -407px 0 0 400px #1a2c42d0;
+  }
