@@ -125,3 +125,53 @@ body{
     justify-content: center;
     margin: 50px;
 }
+
+/*Opinions*/
+
+.opinions-box{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.opinions{
+    padding: 20px;
+    border: solid 1px rgba(0, 0, 0, 0.267);
+    width: 1200px;
+    border-radius: 10px;
+}
+
+.opinions-contents{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+
+}
+
+/*Cart*/
+.opinions-content{
+    width: 300px;
+}
+
+.opinions-content-top{
+    display: flex;
+    justify-content:space-between;
+}
+.opinions-content-bottom{
+    display: flex;
+}
+
+.opinions-content-bottom-percent{
+    height: 10px;
+    width: 300px;
+    background-color: rgb(235, 235, 235);
+    border-radius: 200px;
+}
+
+.opinions-content-bottom-percent2{
+    position: absolute;
+    height: 10px;
+    background-color: #2195f3d3;
+    border-radius: 200px;
+    background-color: #f34b21d3;
+}

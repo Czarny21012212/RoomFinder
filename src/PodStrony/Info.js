@@ -21,6 +21,22 @@ function Info() {
   if (!hotel) {
     return <p>Hotel nie został znaleziony.</p>;
   }
+
+  const opinion = (x) => {
+    return x * 30
+  }
+
+  const personel = opinion(hotel.Personel)
+  const amenities = opinion(hotel.Amenities)
+  const cleanLiness = opinion(hotel.Cleanliness)
+  const comfort = opinion(hotel.Comfort)
+  const valueForMoney = opinion(hotel['Value for money'])
+  const location = opinion(hotel.Location)
+  const freeWiFi = opinion(hotel['Free WiFi'])
+
+ 
+  
+
   return (
     <div className="hotel-details">
      <header>
@@ -148,6 +164,150 @@ function Info() {
                             <p>Darmowe WI-FI</p>
                         </div>
                     )}
+                </div>
+            </div>
+        </div>
+        <div className='opinions-box'>
+            <div className='opinions'>
+                <div className='opinios-h1'>
+                    <h1>Opinie klientów: </h1>
+                </div>
+                <div className='opinions-contents'>
+                    <div className='opinions-content'>
+                        <div className='opinions-content-top'>
+                            <p>Personel</p>
+                            <p>{hotel.Personel}</p>
+                        </div>
+                        <div className='opinions-content-bottom'>
+                            <div className='opinions-content-bottom-percent'></div>
+                            <div 
+                            className='opinions-content-bottom-percent2' 
+                            style={{ 
+                                width: personel + 'px',
+                                position: 'absolute',
+                                height: '10px',
+                                backgroundColor: personel < 200 ? '#f34b21d3' : personel > 280 ? 'green' : '#2195f3d3',
+                                borderRadius: '200px'
+                            }}
+                            ></div>
+                        </div>
+                        
+                    </div>
+                    <div className='opinions-content'>
+                        <div className='opinions-content-top'>
+                            <p>Udogodnienia</p>
+                            <p>{hotel.Amenities}</p>
+                        </div>
+                        <div className='opinions-content-bottom'>
+                            <div className='opinions-content-bottom-percent'></div>
+                            <div 
+                                className='opinions-content-bottom-percent2' 
+                                style={{ 
+                                    width: amenities + 'px', 
+                                    position: 'absolute', 
+                                    height: '10px', 
+                                    backgroundColor: amenities < 200 ? '#f34b21d3' : amenities > 280 ? 'green' : '#2195f3d3',
+                                    borderRadius: '200px'
+                                }} 
+                            ></div>
+                        </div>
+                    </div>
+                    <div className='opinions-content'>
+                        <div className='opinions-content-top'>
+                            <p>Czystość</p>
+                            <p>{hotel.Cleanliness}</p>
+                        </div>
+                        <div className='opinions-content-bottom'>
+                            <div className='opinions-content-bottom-percent'></div>
+                            <div 
+                            className='opinions-content-bottom-percent2' 
+                            style={{ 
+                                width: cleanLiness + 'px',
+                                position: 'absolute',
+                                height: '10px',
+                                backgroundColor: cleanLiness < 200 ? '#f34b21d3' : cleanLiness > 280 ? 'green' : '#2195f3d3',
+                                borderRadius: '200px'
+                            }}
+                            ></div>
+                        </div>
+                    </div>
+                    <div className='opinions-content'>
+                        <div className='opinions-content-top'>
+                            <p>Komfort</p>
+                            <p>{hotel.Comfort}</p>
+                        </div>
+                        <div className='opinions-content-bottom'>
+                            <div className='opinions-content-bottom-percent'></div>
+                            <div 
+                            className='opinions-content-bottom-percent2' 
+                            style={{ 
+                                width: comfort + 'px',
+                                position: 'absolute',
+                                height: '10px',
+                                backgroundColor: comfort < 200 ? '#f34b21d3' : comfort > 280 ? 'green' : '#2195f3d3',
+                                borderRadius: '200px'
+                            }}
+                            ></div>
+                        </div>
+                    </div>
+                    <div className='opinions-content'>
+                        <div className='opinions-content-top'>
+                            <p>Stosunek jakości do ceny</p>
+                            <p>{hotel['Value for money']}</p>
+                        </div>
+                        <div className='opinions-content-bottom'>
+                            <div className='opinions-content-bottom-percent'></div>
+                            <div 
+                            className='opinions-content-bottom-percent2' 
+                            style={{ 
+                                width: valueForMoney + 'px',
+                                position: 'absolute',
+                                height: '10px',
+                                backgroundColor: valueForMoney < 200 ? '#f34b21d3' : valueForMoney > 280 ? 'green' : '#2195f3d3',
+                                borderRadius: '200px'
+                            }}
+                            ></div>
+                        </div>
+                    </div>
+                    <div className='opinions-content'>
+                        <div className='opinions-content-top'>
+                            <p>Lokalizacja</p>
+                            <p>{hotel.Location}</p>
+                        </div>
+                        <div className='opinions-content-bottom'>
+                            <div className='opinions-content-bottom-percent'></div>
+                            <div 
+                            className='opinions-content-bottom-percent2' 
+                            style={{ 
+                                width: location + 'px',
+                                position: 'absolute',
+                                height: '10px',
+                                backgroundColor: location < 200 ? '#f34b21d3' : location > 280 ? 'green' : '#2195f3d3',
+                                borderRadius: '200px'
+                            }}
+                            ></div>
+                        </div>
+                    </div>
+                    <div className='opinions-content'>
+                        <div className='opinions-content-top'>
+                            <p>Bezpłatne WiFi</p>
+                            <p>{hotel['Free WiFi']}</p>
+                        </div>
+                        <div className='opinions-content-bottom'>
+                            <div className='opinions-content-bottom-percent'></div>
+                            <div 
+                            className='opinions-content-bottom-percent2' 
+                            style={{ 
+                                width: freeWiFi + 'px',
+                                position: 'absolute',
+                                height: '10px',
+                                backgroundColor: freeWiFi < 200 ? '#f34b21d3' : freeWiFi > 280 ? 'green' : '#2195f3d3',
+                                borderRadius: '200px'
+                            }}
+                            ></div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>

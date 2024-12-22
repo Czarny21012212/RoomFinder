@@ -32,7 +32,14 @@
     "family" : true,
     "freeSmoke": false,
     "parking" : true,
-    "wifi": true
+    "wifi": true,
+    "Personel": 7.3,
+    "Amenities": 7.2,
+    "Cleanliness": 7.5,
+    "Comfort": 4.0,
+    "Value for money": 7.4,
+    "Location": 6.4,
+    "Free WiFi": 5.2
   },
   {
     "id": 2,
@@ -67,7 +74,14 @@
     "family" : true,
     "freeSmoke": true,
     "parking" : true,
-    "wifi": false
+    "wifi": false,
+    "Personel": 8.0,
+    "Amenities": 7.2,
+    "Cleanliness": 6.5,
+    "Comfort": 9.0,
+    "Value for money": 9.4,
+    "Location": 6,
+    "Free WiFi": 5.2
   },
   {
     "id": 3,
@@ -102,7 +116,14 @@
     "family" : false,
     "freeSmoke": true,
     "parking" : false,
-    "wifi": true
+    "wifi": true,
+    "Personel": 8.0,
+    "Amenities": 7.2,
+    "Cleanliness": 6.5,
+    "Comfort": 9.0,
+    "Value for money": 9.4,
+    "Location": 6,
+    "Free WiFi": 5.2
   },
   {
     "id": 4,
@@ -137,7 +158,14 @@
     "family" : true,
     "freeSmoke": false,
     "parking" : true,
-    "wifi": false
+    "wifi": false,
+    "Personel": 9.4,
+    "Amenities": 9.2,
+    "Cleanliness": 9.5,
+    "Comfort": 9.7,
+    "Value for money": 9.7,
+    "Location": 9.7,
+    "Free WiFi": 8.7
   },
   {
     "id": 5,
@@ -172,7 +200,14 @@
     "family" : true,
     "freeSmoke": false,
     "parking" : false,
-    "wifi": false
+    "wifi": false,
+    "Personel": 5.2,
+    "Amenities": 3.2,
+    "Cleanliness": 5.5,
+    "Comfort": 4.0,
+    "Value for money": 2.4,
+    "Location": 6,
+    "Free WiFi": 8.2
   },
   {
     "id": 6,
@@ -207,7 +242,13 @@
     "family" : false,
     "freeSmoke": false,
     "parking" : true,
-    "wifi": false
-
+    "wifi": false,
+    "Personel": 8.0,
+    "Amenities": 7.2,
+    "Cleanliness": 6.5,
+    "Comfort": 9.0,
+    "Value for money": 9.4,
+    "Location": 6,
+    "Free WiFi": 5.2
   }
 ]

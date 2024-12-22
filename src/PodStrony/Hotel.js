@@ -129,7 +129,7 @@ export function Hotel() {
         setPeople(localStorage.getItem('People'))
         setStart(localStorage.getItem('Start'))
         setEnd(localStorage.getItem('End'))
-        setRealValueOfPrice(localStorage.getItem('FiltrPrice'))
+        setRealValueOfPrice(localStorage.getItem('PricePerNight'))
 
         if (checkBoxTrue1 === 'true') {
 
@@ -148,7 +148,6 @@ export function Hotel() {
             const newDistance = distanceToCenter > 2 ? distanceToCenter : 3;
             localStorage.setItem("distanceToCenter", newDistance);
             setDistanceToCenter(newDistance);
-            console.log("Setting distanceToCenter to", newDistance);
             setDistanceToCenterTrue(true);
 
         }
@@ -178,7 +177,6 @@ export function Hotel() {
         }
 
         const beachCheckboxTrue = localStorage.getItem('beachCheckbox')
-        console.log("Tutaj: " + beachCheckboxTrue);
 
         if(beachCheckboxTrue == 'true'){
             setBeachToFiltr(true)
@@ -194,11 +192,7 @@ export function Hotel() {
             index.country === place &&
             index.maxPeople >= people &&
             search &&
-            (
-                filtrStart
-                    ? index.pricePerNight * people * DayOfTrip <= Number(localStorage.getItem('PricePerNight'))
-                    : index.pricePerNight > 0
-            ) &&
+            index.pricePerNight * people * DayOfTrip <= Number(localStorage.getItem('PricePerNight')) &&
             (!distanceToCenterTrue || index.distanceToCenter === Number(distanceToCenter)) &&
             (!ratingTrue || index.rating === ratingToFiltr) &&
             (!beachToFiltr || index.isBeachfront === true)
@@ -227,15 +221,19 @@ export function Hotel() {
     const[filtrStart, setFiltrStart] = useState(false)
     const[localDistanceToCenterTrue, setLoaclDistanceToCenterTrue] = useState(false)
 
+
+   
     const FiltrStart = () => {
             setFiltrStart(true)
 
            if(localTrue){
                 if(valueOfPrice === localStorage.getItem('PricePerNight')){
                     setRealValueOfPrice(localStorage.getItem('PricePerNight'));
+                    console.log(localStorage.getItem('PricePerNight'))
                 }else{
                     localStorage.setItem('PricePerNight', valueOfPrice)
                     setRealValueOfPrice(localStorage.getItem('PricePerNight'))
+                    console.log(localStorage.getItem('PricePerNight'))
                 }
            }else{
                 setRealValueOfPrice(valueOfPrice)
@@ -330,15 +328,8 @@ export function Hotel() {
         }
         
         const updatedDistance = parseInt(localStorage.getItem('distanceToCenter'));
-        console.log("Systans " + updatedDistance);
-        
-            if(localTrue){
-                console.log("Ratting: " + ratingToFiltr)
-                console.log((parseInt(ratingToFiltr) === parseInt(localStorage.getItem('resultRating'))))
 
-                console.log(localStorage.getItem('ratingCheckBoxTrue1'))
-                console.log(localStorage.getItem('ratingCheckBoxTrue2'))
-                console.log(localStorage.getItem('ratingCheckBoxTrue3'))
+            if(localTrue){
 
                 if(ratingCheckbox1){
                     setRatingToFiltr(5)
@@ -453,7 +444,6 @@ export function Hotel() {
         );   
     }
 
-    console.log(localStorage.getItem('ratingCheckBoxTrue1'))
 
   return (
    <div className='all'>
@@ -625,9 +615,7 @@ export function Hotel() {
                         const filterIf = (index.country === place &&
                             index.maxPeople >= people &&
                             search &&
-                            (filtrStart
-                                ? index.pricePerNight * people * DayOfTrip <= Number(localStorage.getItem('PricePerNight'))
-                                : index.pricePerNight > 0) &&
+                            index.pricePerNight * people * DayOfTrip <= Number(localStorage.getItem('PricePerNight')) &&
                             (!distanceToCenterTrue || index.distanceToCenter === Number(distanceToCenter)) &&
                             (!ratingTrue || index.rating === ratingToFiltr) &&
                             (!beachToFiltr || index.isBeachfront === true))
