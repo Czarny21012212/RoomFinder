@@ -1,6 +1,7 @@
 body{
     overflow-x: hidden;
     font-family: Arial, Helvetica, sans-serif;
+    
 }
 .infoHotel{
     display: flex;
@@ -136,15 +137,16 @@ body{
 
 .opinions{
     padding: 20px;
-    border: solid 1px rgba(0, 0, 0, 0.267);
+    border: solid 1px rgba(0, 0, 0, 0.11);
     width: 1200px;
     border-radius: 10px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.082);
 }
 
 .opinions-contents{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: minmax(100px, auto);
+    grid-auto-rows: minmax(80px, auto);
 
 }
 
@@ -156,6 +158,8 @@ body{
 .opinions-content-top{
     display: flex;
     justify-content:space-between;
+    font-size: 0.9rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .opinions-content-bottom{
     display: flex;
@@ -174,4 +178,61 @@ body{
     background-color: #2195f3d3;
     border-radius: 200px;
     background-color: #f34b21d3;
+}
+
+
+
+.opinios-h1 div{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.opinios-h1-div-special{
+    color: rgb(255, 255, 255);
+    background-color: #2195f3d3;
+    padding: 10px 8px;
+    border-radius: 10px 10px 10px 0px
+}
+
+
+.statute-box{
+    display: flex;
+    justify-content: center;
+    margin: 80px;
+}
+.statute{
+    width: 1200px;
+    border: solid 1px rgba(0, 0, 0, 0.11);
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.13);
+    border-radius: 10px;
+    padding: 20px;
+}
+.statute-cart-left{
+    width: 300px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: rgb(63, 63, 63);
+}
+.statute-cart{
+    display: flex;
+    gap: 20px;
+}
+.statute-cart-left img{
+    width: 35px;
+    height: 35px;
+}
+.statute-cart-right{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 600px;
+    color: rgb(63, 63, 63);
+    font-weight: lighter;
+    font-size: 1.1rem;
+}
+.statute-cart-right img{
+    width: 80px;
+    height: 3cqh;
+    margin-top: 25px;
 }

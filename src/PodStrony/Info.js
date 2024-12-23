@@ -14,6 +14,19 @@ import freeSmoke from './Image/freeSmoke.png'
 import parking from './Image/parking.png'
 import wifi from './Image/wifi.png'
 
+import info from './Image/info.png'
+import night from './Image/night.png'
+import smoking from './Image/smoke.png'
+import party from './Image/party.png'
+import payMetods from './Image/payMetod.png'
+import login from './Image/enter.png'
+import logout from './Image/logout.png'
+import family2 from './Image/family2.png'
+import visa from './Image/visa.png'
+import blik from './Image/blik.jpg'
+import pet from './Image/pet.png'
+
+
 function Info() {
   const { id } = useParams(); // Pobierz parametr 'id' z URL
   const hotel = HotelData.find(hotel => hotel.id === parseInt(id)); 
@@ -40,6 +53,7 @@ function Info() {
   return (
     <div className="hotel-details">
      <header>
+     
             <div className='header-items'>
                 <div className='header-top'>
                     <h1>RoomFinder.com</h1>
@@ -170,7 +184,12 @@ function Info() {
         <div className='opinions-box'>
             <div className='opinions'>
                 <div className='opinios-h1'>
-                    <h1>Opinie klientów: </h1>
+                    <h1>Opinie Gości </h1>
+                    <div>
+                        <p className='opinios-h1-div-special'>{hotel.guestRating}</p>
+                        <p>{hotel.verbalRating} -</p> 
+                        <p style={{color: 'rgb(99, 99, 99)'}}>{hotel.reviewsCount} opinii</p>
+                    </div>
                 </div>
                 <div className='opinions-contents'>
                     <div className='opinions-content'>
@@ -311,8 +330,124 @@ function Info() {
                 </div>
             </div>
         </div>
+        <div className='statute-box'>
+            <div className='statute'>
+                <h1>Zasady pobytu</h1>
+                <div className='statute-tabel'>
+                    <div className='statute-cart'>
+                        <div className='statute-cart-left'>
+                            <img src={login}></img>
+                            <p>Zameldowanie</p>
+                        </div>
+                        <div className='statute-cart-right'>
+                            <p>{hotel.checkIn}</p>
+                        </div>
+                    </div>
 
+                    <hr></hr>
+
+                    <div className='statute-cart'>
+                        <div className='statute-cart-left'>
+                            <img src={logout}></img>
+                            <p>Wymeldowanie</p>
+                        </div>
+                        <div className='statute-cart-right'>
+                            <p>{hotel.checkOut}</p>
+                        </div>
+                    </div>
+
+                    <hr></hr>
+
+                    <div className='statute-cart'>
+                        <div className='statute-cart-left'>
+                            <img src={info}></img>
+                            <p>Odwołanie rezerwacji/ przedpłata</p>
+                        </div>
+                        <div className='statute-cart-right'>
+                            <p>{hotel.Cancellation}</p>
+                        </div>
+                    </div>
+
+                    <hr></hr>
+
+                    <div className='statute-cart'>
+                        <div className='statute-cart-left'>
+                            <img src={family2}></img>
+                            <p>Zakwaterowanie dzieci</p>
+                        </div>
+                        <div className='statute-cart-right'>
+                            <h3>Zasady dotyczące pobytu dzieci</h3>
+                            <p>{hotel.ChildrenAccommodation1}</p>
+                            <h3>Zasady dotyczące łóżeczek dziecięcych i dodatkowych łóżek</h3>
+                            <p>{hotel.ChildrenAccommodation2}</p>
+                        </div>
+                    </div>
+
+                    <hr></hr>
+
+                    <div className='statute-cart'>
+                        <div className='statute-cart-left'>
+                            <img src={payMetods}></img>
+                            <p>Karty akceptowane w tym obiekcie</p>
+                        </div>
+                        <div className='statute-cart-right' style={{display: 'flex', gap: '20px'}}>
+                            <img src={visa}></img>
+                        </div>
+                    </div>
+
+                    <hr></hr>
+
+                    <div className='statute-cart'>
+                        <div className='statute-cart-left'>
+                            <img src={smoking}></img>
+                            <p>Palenie tytoniu</p>
+                        </div>
+                        <div className='statute-cart-right' >
+                            <p>{(hotel.Smoking) ? 'Palenie jest dozwolone' : 'Palenie jest zabronione'}</p>
+                        </div>
+                    </div>
+
+                    <hr></hr>
+                    <div className='statute-cart'>
+                        <div className='statute-cart-left'>
+                            <img src={party}></img>
+                            <p>Imprezy</p>
+                        </div>
+                        <div className='statute-cart-right' >
+                        <p>{(hotel.Party) ? 'Organizacja imprez i przyjęć jest dozwolona' : 'Organizacja imprez i przyjęć jest zabroniona'}</p>
+                        </div>
+                    </div>
+
+                    <hr></hr>
+
+                    <div className='statute-cart'>
+                        <div className='statute-cart-left'>
+                            <img src={night}></img>
+                            <p>Cisza nocna</p>
+                        </div>
+                        <div className='statute-cart-right' >
+                        <p>Goście muszą zachować cisze w godzinach {hotel['Silence at night']}</p>
+                        </div>
+                    </div>
+
+                    <hr></hr>
+
+                    <div className='statute-cart'>
+                        <div className='statute-cart-left'>
+                            <img src={pet}></img>
+                            <p>Zwierzęta</p>
+                        </div>
+                        <div className='statute-cart-right'>
+                            <p>{(hotel.Pet) ? 'Zwierzęta są akceptowane' : 'Zwierzęta nie są akceptowane'}</p>
+                        </div>
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
+    
   );
 }
 
