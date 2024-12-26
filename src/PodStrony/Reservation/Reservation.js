@@ -6,6 +6,7 @@ import Car from '../Image/Car.png';
 import Atrakcje from '../Image/Atrakcje.png';
 import './Reservation.css'
 import { useEffect, useState } from 'react';
+import { setDay } from 'date-fns';
 
 
 function Reservation() {
@@ -62,31 +63,46 @@ const renderPeople = () => {
     return elements
 }
 
+const[dataCheck, setDataCheck] = useState(false)
+const[dateMessage, setDateMessage] = useState("")
+
 const[checkIn , setCheckIn] = useState(null)
+localStorage.setItem('checkIn-Reservation', checkIn)
 const[checkOut , setCheckOut] = useState(null)
+localStorage.setItem('checkOut-Reservation', checkOut)
 
 const[price, setPirce] = useState(null)
 const[days, setDays] = useState(null)
 
 useEffect(() =>{
+    const now = new Date()
     const date1 = new Date(checkIn)
     const date2 = new Date(checkOut)
-    setDays((date2 - date1) / (1000 * 60 * 60 * 24));
+    if(now < date1 && date1 < date2){
+        setDays((date2 - date1) / (1000 * 60 * 60 * 24));
+        setDataCheck(true)
+        setDateMessage(null)
+    }else{
+        setDateMessage("źle podana data")
+        setDay("Błąd")
+        setDataCheck(false)
+    }
 }, checkOut)
 
 useEffect(() => {
     setPirce(days * hotel.pricePerNight * people)
 }, people)
 
-const[checkTest, SetCheckTest] = useState(false)
+const[checkInput, SetCheckInput] = useState(false)
 
 const Check1 = () => {
     for(let x = 0; x < people; x++){
         if((data[x].pesel).length === 11 && !isNaN(data[x].pesel) && isNaN(data[x].name) && isNaN(data[x].surName)){
-            SetCheckTest(true)
+            SetCheckInput(true)
+            setMessage(null)
         }else{
             setMessage("Bląd podczas wpisywania danych " + (x + 1) + " osoby ")
-            SetCheckTest(false)
+            SetCheckInput(false)
             break;
         }
     }
@@ -94,7 +110,7 @@ const Check1 = () => {
 
 
 useEffect(() => {
-    if(checkTest){
+    if(checkInput && dataCheck){
         setMessage("Dalej")
     }else{
         console.log("Nara")
@@ -135,6 +151,7 @@ useEffect(() => {
                 type='date'
                 onChange={(event) => setCheckOut(event.target.value)}>
                 </input>
+                <p style={{color: 'red'}}>{dateMessage}</p>
                 <p>Ilość osób</p>
                 <input
                 type='number'
@@ -146,7 +163,7 @@ useEffect(() => {
                     
                     
                 </div>
-                <p>{message}</p>
+                <p style={{color: 'red'}}>{message}</p>
 
                 <h3>Cena: {price}zł</h3>
 
