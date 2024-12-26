@@ -1,30 +1,31 @@
 import './Info.css';
 import { Link, useParams } from 'react-router-dom';
-import HotelData from './Json/Hotel.json'; // Załaduj dane hotelu
-import Home from './Image/Home.png';
-import Hotel2 from './Image/Hotel.png';
-import Lot from './Image/Loty.png';
-import Car from './Image/Car.png';
-import Atrakcje from './Image/Atrakcje.png';
+import HotelData from '../Json/Hotel.json'; 
+import Home from '../Image/Home.png';
+import Hotel2 from '../Image/Hotel.png';
+import Lot from '../Image/Loty.png';
+import Car from '../Image/Car.png';
+import Atrakcje from '../Image/Atrakcje.png';
 
-import family from './Image/family.png'
-import pool from './Image/pool.png'
-import restaurant from './Image/restaurant.png'
-import freeSmoke from './Image/freeSmoke.png'
-import parking from './Image/parking.png'
-import wifi from './Image/wifi.png'
+import family from '../Image/family.png'
+import pool from '../Image/pool.png'
+import restaurant from '../Image/restaurant.png'
+import freeSmoke from '../Image/freeSmoke.png'
+import parking from '../Image/parking.png'
+import wifi from '../Image/wifi.png'
 
-import info from './Image/info.png'
-import night from './Image/night.png'
-import smoking from './Image/smoke.png'
-import party from './Image/party.png'
-import payMetods from './Image/payMetod.png'
-import login from './Image/enter.png'
-import logout from './Image/logout.png'
-import family2 from './Image/family2.png'
-import visa from './Image/visa.png'
-import blik from './Image/blik.jpg'
-import pet from './Image/pet.png'
+import info from '../Image/info.png'
+import night from '../Image/night.png'
+import smoking from '../Image/smoke.png'
+import party from '../Image/party.png'
+import payMetods from '../Image/payMetod.png'
+import login from '../Image/enter.png'
+import logout from '../Image/logout.png'
+import family2 from '../Image/family2.png'
+import visa from '../Image/visa.png'
+import blik from '../Image/blik.jpg'
+import pet from '../Image/pet.png';
+
 
 
 function Info() {
@@ -46,6 +47,8 @@ function Info() {
   const valueForMoney = opinion(hotel['Value for money'])
   const location = opinion(hotel.Location)
   const freeWiFi = opinion(hotel['Free WiFi'])
+
+  localStorage.setItem('Hotel', hotel.id)
 
  
   
@@ -119,11 +122,13 @@ function Info() {
                             <h1>{localStorage.getItem('Price') ? (hotel.pricePerNight * localStorage.getItem('Price')) + " zł"  : "Brak informacji"}</h1>
                         </div>    
                         <div className='infoHotel-bottom-right-bottom-bottom'>
+                           <Link to='/rezerwacja'>
                             <input
-                            type='submit'
-                            value="Zarezerwuj Teraz"
-                            >
-                            </input>
+                                type='submit'
+                                value="Zarezerwuj Teraz"
+                                >
+                                </input>
+                           </Link>
                         </div>                          
                     </div>
                     

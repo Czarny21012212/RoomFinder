@@ -2,14 +2,14 @@ import './Hotel.css';
 import { useEffect, useState } from 'react';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import HotelData from './Json/Hotel.json';
-import Favourite from './Favorite.js'
+import HotelData from '../Json/Hotel.json';
+import Favourite from '../Favorite/Favorite.js'
 
-import Home from './Image/Home.png';
-import Hotel2 from './Image/Hotel.png';
-import Lot from './Image/Loty.png';
-import Car from './Image/Car.png';
-import Atrakcje from './Image/Atrakcje.png';
+import Home from '../Image/Home.png';
+import Hotel2 from '../Image/Hotel.png';
+import Lot from '../Image/Loty.png';
+import Car from '../Image/Car.png';
+import Atrakcje from '../Image/Atrakcje.png';
 
 export function Hotel() {
 

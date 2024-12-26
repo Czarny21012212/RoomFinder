@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Hotel from './PodStrony/Hotel.js';
-import Info from './PodStrony/Info.js';
-import Favorite from './PodStrony/Favorite.js';
+import Hotel from './PodStrony/Search-Hotels/Hotel.js';
+import Info from './PodStrony/Information/Info.js';
+import Favorite from './PodStrony/Favorite/Favorite.js';
+import Reservation from './PodStrony/Reservation/Reservation.js';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Route path="/" element={<Hotel />} />
         <Route path="/hotel/:id" element={<Info />} />
         <Route path='/ulubione' element={<Favorite />}></Route>
+        <Route path='/rezerwacja' element={<Reservation />}></Route>
       </Routes>
     </Router>
   );

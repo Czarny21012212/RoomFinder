@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import HotelData from './Json/Hotel.json';
+import HotelData from '../Json/Hotel.json';
 
 function Favourite() {
     const [favouriteHotel, setFavouriteHotel] = useState(() => {
