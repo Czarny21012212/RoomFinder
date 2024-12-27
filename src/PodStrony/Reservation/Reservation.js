@@ -38,7 +38,6 @@ function addPerson(index, column, value) {
         newPeople[index][column] = value;
         localStorage.setItem('People', JSON.stringify(peopleData));
         setData(JSON.parse(localStorage.getItem('People')))
-    
 }
 
 const renderPeople = () => {
@@ -84,6 +83,7 @@ useEffect(() =>{
     const date2 = new Date(checkOut)
     if(now < date1 && date1 < date2){
         setDays((date2 - date1) / (1000 * 60 * 60 * 24));
+        localStorage.setItem('days', (date2 - date1) / (1000 * 60 * 60 * 24))
         setDataCheck(true)
         setDateMessage(null)
     }else{

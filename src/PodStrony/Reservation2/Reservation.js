@@ -9,6 +9,10 @@ import './Reservation.css'
 function Reservation() {
 
     const check1 = localStorage.getItem('check1')
+    console.log(localStorage.getItem('days'))
+
+    const people = JSON.parse(localStorage.getItem('People'))
+    console.log(people)
 
     function html() {
     if(check1 === 'true'){
@@ -19,11 +23,33 @@ function Reservation() {
                     <div className='status1' style={{backgroundColor: 'rgb(172, 172, 172)'}}>
                         
                     </div>
-                    <div className='status2'style={{backgroundColor: 'aqua'}}>
-                        
+                    <div className='status2'style={{backgroundColor: 'aqua'}}>  
                     </div>
+                    
                 </div>
-                <h1>Siema</h1>
+                <div className='informationAboutTrip'>
+                <h3>Rezerwacja rozpoczna się</h3>
+                        <div className='date'>
+                            <p>od: {localStorage.getItem('checkIn-Reservation')}</p>
+                            <p>do: {localStorage.getItem('checkOut-Reservation')} </p>
+                            <p>({localStorage.getItem('days')} dni)</p>
+                        </div>
+                        <div className='check2-peopleCarts'>
+                        <h3>Członkowie rezerwacji</h3>
+                        <p>(Pominięcie którejkolwiek z osób może skutkować zerwaniem umowy)</p>
+                            <div className='peopleCart'>
+                                    {people.map((person, index) =>{
+                                        return(
+                                            <div id={index} className='peopleCart-box'>
+                                                <p>Imie: {person.name}</p>
+                                                <p>Nazwisko: {person.surName}</p>
+                                                <p>Pesel: {person.pesel}</p>
+                                            </div>
+                                        );
+                                    })}
+                            </div>
+                        </div>
+                </div>
             </div>  
         </div>
        );
