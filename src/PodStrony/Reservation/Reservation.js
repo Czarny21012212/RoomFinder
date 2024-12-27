@@ -94,6 +94,7 @@ useEffect(() =>{
 
 useEffect(() => {
     setPrice(days * hotel.pricePerNight * people)
+    localStorage.setItem('price', (days * hotel.pricePerNight * people))
 }, [people, days])
 
 const[checkInput, SetCheckInput] = useState(false)
