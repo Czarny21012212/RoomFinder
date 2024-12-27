@@ -64,7 +64,7 @@ const renderPeople = () => {
 }
 
 const[dataCheck, setDataCheck] = useState(false)
-const[dateMessage, setDateMessage] = useState("")
+const[dateMessage, setDateMessage] = useState(null)
 
 const[checkIn , setCheckIn] = useState(null)
 localStorage.setItem('checkIn-Reservation', checkIn)
@@ -83,15 +83,14 @@ useEffect(() =>{
         setDataCheck(true)
         setDateMessage(null)
     }else{
-        setDateMessage("źle podana data")
         setDay("Błąd")
         setDataCheck(false)
     }
-}, checkOut)
+}, [people])
 
 useEffect(() => {
     setPirce(days * hotel.pricePerNight * people)
-}, people)
+}, [people, days])
 
 const[checkInput, SetCheckInput] = useState(false)
 
@@ -105,6 +104,9 @@ const Check1 = () => {
             SetCheckInput(false)
             break;
         }
+    }
+    if(!dataCheck){
+        setDateMessage("źle podana data")
     }
 }
 
@@ -151,7 +153,6 @@ useEffect(() => {
                 type='date'
                 onChange={(event) => setCheckOut(event.target.value)}>
                 </input>
-                <p style={{color: 'red'}}>{dateMessage}</p>
                 <p>Ilość osób</p>
                 <input
                 type='number'
@@ -160,11 +161,10 @@ useEffect(() => {
                 </input>
                 <div style={{display: 'flex'}}>
                     {renderPeople()}
-                    
-                    
+                 
                 </div>
                 <p style={{color: 'red'}}>{message}</p>
-
+                <p style={{color: 'red'}}>{dateMessage}</p>
                 <h3>Cena: {price}zł</h3>
 
                 <input
