@@ -8,7 +8,6 @@ import './Reservation.css'
 import { useEffect, useState } from 'react';
 import { setDay } from 'date-fns';
 
-
 function Reservation() {
 
 //Search the Hotel in Json
@@ -20,10 +19,13 @@ const [people, setPeople] = useState(null);
 const[peopleData, setPeopleData] = useState([])
 
 useEffect(() => {
+   if(people > 10){
+   }else{
     const newPeopleData = Array.from({ length: people }, (_, index) => {
         return peopleData[index] || { name: '', surName: '', pesel: '' };
     });
     setPeopleData(newPeopleData);
+   }
 },[people])
 
 const[errorCheck, setErrorCheck] = useState(false)
@@ -41,26 +43,28 @@ function addPerson(index, column, value) {
 
 const renderPeople = () => {
     const elements = []
-    for (let x = 0; x < people; x++) {
-        elements.push(
-            <div key={x} style={{backgroundColor: 'black', color: 'white', width: '200px',margin: '10px', padding: '20px', borderRadius: '10px' }}>
-                <h3>Osoba {x + 1}</h3>
-                <p>Podaj imie</p>
-                <input type='text'
-                onChange={(event) => addPerson(x, 'name', (event.target.value))}
-                ></input>
-                <p>Podaj Nazwisko</p>
-                <input type='text'
-                onChange={(event) => addPerson(x, 'surName', (event.target.value))}
-                ></input>
-                <p>Podaj pesel</p>
-                <input type='text'
-                onChange={(event) => addPerson(x, 'pesel', event.target.value)}
-                ></input>
-            </div>
-        )
+    if(people < 5){
+        for (let x = 0; x < people; x++) {
+            elements.push(
+                <div key={x} style={{backgroundColor: 'black', color: 'white', width: '200px',margin: '10px', padding: '20px', borderRadius: '10px' }}>
+                    <h3>Osoba {x + 1}</h3>
+                    <p>Podaj imie</p>
+                    <input type='text'
+                    onChange={(event) => addPerson(x, 'name', (event.target.value))}
+                    ></input>
+                    <p>Podaj Nazwisko</p>
+                    <input type='text'
+                    onChange={(event) => addPerson(x, 'surName', (event.target.value))}
+                    ></input>
+                    <p>Podaj pesel</p>
+                    <input type='text'
+                    onChange={(event) => addPerson(x, 'pesel', event.target.value)}
+                    ></input>
+                </div>
+            )
+        }
+        return elements
     }
-    return elements
 }
 
 const[dataCheck, setDataCheck] = useState(false)
@@ -71,7 +75,7 @@ localStorage.setItem('checkIn-Reservation', checkIn)
 const[checkOut , setCheckOut] = useState(null)
 localStorage.setItem('checkOut-Reservation', checkOut)
 
-const[price, setPirce] = useState(null)
+const[price, setPrice] = useState(null)
 const[days, setDays] = useState(null)
 
 useEffect(() =>{
@@ -89,10 +93,11 @@ useEffect(() =>{
 }, [people])
 
 useEffect(() => {
-    setPirce(days * hotel.pricePerNight * people)
+    setPrice(days * hotel.pricePerNight * people)
 }, [people, days])
 
 const[checkInput, SetCheckInput] = useState(false)
+localStorage.setItem('check1', false)
 
 const Check1 = () => {
     for(let x = 0; x < people; x++){
@@ -113,9 +118,10 @@ const Check1 = () => {
 
 useEffect(() => {
     if(checkInput && dataCheck){
-        setMessage("Dalej")
+        localStorage.setItem('check1', true)
+        window.location.href = 'http://localhost:3000/rezerwacja-check-2';
     }else{
-        console.log("Nara")
+        localStorage.setItem('check1', false)
     }
 }, [Check1])
   return (
@@ -138,6 +144,14 @@ useEffect(() => {
         </header>
         <div className='reservation-box'>
             <div className='reserwation'>
+                <div className='status'>
+                    <div className='status1'>
+
+                    </div>
+                    <div className='status2'>
+
+                    </div>
+                </div>
                 <h1>Rezerwacja hotelu <u>{hotel.name}</u></h1>
                 <p>(dane które wprowadzisz zostaną zapisane oraz przeanalizowane)</p>
                 <p>(W żadnym przypadku nie podawaj fałszywych danych)</p>
@@ -156,6 +170,7 @@ useEffect(() => {
                 <p>Ilość osób</p>
                 <input
                 type='number'
+                
                 onChange={(event) =>  setPeople(event.target.value)}
                 >
                 </input>

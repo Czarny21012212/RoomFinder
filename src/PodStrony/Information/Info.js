@@ -122,7 +122,7 @@ function Info() {
                             <h1>{localStorage.getItem('Price') ? (hotel.pricePerNight * localStorage.getItem('Price')) + " zł"  : "Brak informacji"}</h1>
                         </div>    
                         <div className='infoHotel-bottom-right-bottom-bottom'>
-                           <Link to='/rezerwacja'>
+                           <Link to='/rezerwacja-check-1'>
                             <input
                                 type='submit'
                                 value="Zarezerwuj Teraz"

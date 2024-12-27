@@ -1,0 +1,26 @@
+.boxCheck2{
+    display: flex;
+    justify-content: center;
+
+}
+.check2{
+    margin: 20px;
+    border: 1px solid;
+    width: 1000px;
+}
+.status{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px;
+}
+.status1{
+    width: 200px;
+    height: 20px;
+    background-color: aqua;
+}
+.status2{
+    width: 200px;
+    height: 20px;
+    background-color: rgb(172, 172, 172);
+}
