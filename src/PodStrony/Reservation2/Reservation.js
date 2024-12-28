@@ -18,19 +18,35 @@ function Reservation() {
     const id = localStorage.getItem('Hotel')
     const hotel = HotelData.find(hotel => hotel.id === parseInt(id));
 
-    const[numerOfCart, setNumberOfCart] = useState()
-    console.log(parseInt(numerOfCart).length)
+    const [numberOfCart, setNumberOfCart] = useState('');
+    const [expirationDateOfCard, setExpirationDateOfCard] = useState('');
+    const [cv, setCv] = useState('');
+    const [payCheck, setPayCheck] = useState(false);
 
-    useEffect(() => {
-        if(parseInt(numerOfCart).length === "Si"){ 
-            console.log("Siema")
-        }else{
-            console.log("NIe wiem")
-        }
-    }, [numerOfCart])
+const Pay = () => {
+    const cartDate = new Date(expirationDateOfCard.trim());
+    const now = new Date();
+
+    if (numberOfCart.trim().length === 16 && !isNaN(cartDate) && cartDate > now && cv.trim().length === 3) {
+
+        setTimeout(() => {
+            window.location.href = 'http://localhost:3000';
+            setPayCheck(true);
+            localStorage.setItem('payCheck', true);
+            console.log("Wszytko poszło zgodznie z planem")
+        }, 300)
+
+        alert('Płatność przebiegła pomyślnie')
+
+    } else {
+        setPayCheck(false);
+        localStorage.setItem('payCheck', false);
+        console.log("Wszytko poszło żle")
+    }
+};
 
     function html() {
-    if(check1 === 'true'){
+    if(check1 === 'true' && !localStorage.getItem('payCheck') ){
        return(
         <div className='boxCheck2'>
             <div className='check2'>
@@ -81,7 +97,6 @@ function Reservation() {
                                 placeholder="1111 1111 1111 1111"
                                 style={{width: '125px'}}
                                 onChange={(event) => setNumberOfCart(event.target.value)}
-                                value={numerOfCart}
                                 ></input>
 
                                 <br></br>
@@ -89,6 +104,7 @@ function Reservation() {
                                 <label>Data Ważności</label>
                                 <input
                                 type='date'
+                                onChange={(event) => setExpirationDateOfCard(event.target.value)}
                                 ></input>
 
                                 <br></br>
@@ -98,6 +114,7 @@ function Reservation() {
                                 type='text'
                                 maxLength="3"
                                 placeholder="111"
+                                onChange={(event) => setCv(event.target.value)}
                                 style={{width: '20px'}}
                                 ></input>
 
@@ -106,6 +123,7 @@ function Reservation() {
                                 <input
                                 value="Zapłać"
                                 type='submit'
+                                onClick={Pay}
                                 ></input>
                             </div>
                         </div>
@@ -114,6 +132,7 @@ function Reservation() {
         </div>
        );
     }else{
+        console.log(localStorage.getItem('payCheck') === false)
         return(
             <div>
                 <h1>A ty Cwaniaku nie tym razem</h1>
