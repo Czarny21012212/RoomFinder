@@ -451,20 +451,24 @@ export function Hotel() {
    <div className='all'>
         <header>
             <div className='header-items'>
+            <div className='header'>
                 <div className='header-top'>
                     <h1>RoomFinder.com</h1>
+                    
+                </div>
+                <div className='header-center'>
+                    <ul className="nav-list">
+                        <li><a href="#"><img src={Home} alt="Home"/>Strona Główna</a></li>
+                        <li><a href="#" className='Now'><img src={Hotel2} alt="Hotel"/>Hotele</a></li>
+                        <li><Link to={'/TwojeRezerwacja'} className="reservation-link"><img src={Hotel2} alt="Reservation"/>Twoja Rezerwacja</Link></li>
+                        <li><a href="#"><img src={Hotel2} alt="Info"/>Informacje</a></li>
+                    </ul>
                     <Link to={`/ulubione`} className='favouriteLink'>
                         <p className='favouriteLinkP'>❤️</p>
                     </Link>
                 </div>
-                <div className='header-center'>
-                <ul className="header-center">
-                    <li><a><img src={Home} alt="Home"/>Strona Główna</a></li>
-                    <li><a className='Now'><img src={Hotel2} alt="Hotel"/>Hotele</a></li>
-                    <li><Link to={'/TwojeRezerwacja'} className="reservation-link"><img src={Hotel2} alt="Reservation"/>Twoja Rezerwacja</Link></li>
-                    <li><a><img src={Hotel2} alt="Info"/>Informacje</a></li>
-                </ul>
-                </div>
+            
+            </div>
                 <div className='header-bottom'>
                     <div className='header-bottom-items'>
                         <input type='input' placeholder='Dokąd się wybierasz?'  defaultValue={localCountry} onChange={(event) => setPlace(event.target.value)}></input>
@@ -576,39 +580,41 @@ export function Hotel() {
                     </div>
                 </div>
                 <div className='hotelSearch-center-right'>
-                    <div className='sortBox1'>
-                        <p>{city} Znaleziono {countCarts} obiektów</p>
-                    </div>
-                
-                    <div className='sortBox2'>
-                        <input
-                        type='submit'
-                        onClick={sort}
-                        className='sortButton'
-                        value="Sortuje według"
-                        ></input>
-                        {sortTrue && 
-                        <div className='sortOptions'>
-                            <div className='sortOptions-1' onClick={SortOption1}>
-                                <p>Cena (od najniższej)</p>
-                            </div>
-
-                            <div className='sortOptions-2' onClick={SortOption2}>
-                                <p>Cena (od najwyższej)</p>
-                            </div>
-
-                            <div className='sortOptions-3' onClick={SortOption3}>
-                                <p>Najlepiej oceniane</p>
-                            </div>
-
-                            <div className='sortOptions-4' onClick={SortOption4}>
-                                <p>Najbliżej centrum</p>
-                            </div>
-
-
+                    <div className='hotelSearch-center-right-top'>
+                        <div className='sortBox1'>
+                            <p>{city} Znaleziono {countCarts} obiektów spełniających kryteria</p>
                         </div>
-                        }
-                        
+                    
+                        <div className='sortBox2'>
+                            <input
+                            type='submit'
+                            onClick={sort}
+                            className='sortButton'
+                            value="Sortuje według"
+                            ></input>
+                            {sortTrue && 
+                            <div className='sortOptions'>
+                                <div className='sortOptions-1' onClick={SortOption1}>
+                                    <p>Cena (od najniższej)</p>
+                                </div>
+
+                                <div className='sortOptions-2' onClick={SortOption2}>
+                                    <p>Cena (od najwyższej)</p>
+                                </div>
+
+                                <div className='sortOptions-3' onClick={SortOption3}>
+                                    <p>Najlepiej oceniane</p>
+                                </div>
+
+                                <div className='sortOptions-4' onClick={SortOption4}>
+                                    <p>Najbliżej centrum</p>
+                                </div>
+
+
+                            </div>
+                            }
+                            
+                        </div>
                     </div>
                      {hotelSort.map(index => {
 
