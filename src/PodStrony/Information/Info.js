@@ -62,13 +62,12 @@ function Info() {
                     <h1>RoomFinder.com</h1>
                 </div>
                 <div className='header-center'>
-                    <ul>
-                        <a><li><img src={Home}></img>Strona Główna</li></a>
-                        <a className='Now'><li><img src={Hotel2} ></img>Hotele</li></a>
-                        <a><li><img src={Lot}></img>Loty</li></a>
-                        <a><li><img src={Car}></img>Wynajem samochodów</li></a>
-                        <a><li><img src={Atrakcje}></img>Atrakcje</li></a>
-                    </ul>
+                <ul className="header-center">
+                    <li><a><img src={Home} alt="Home"/>Strona Główna</a></li>
+                    <li><a className='Now'><img src={Hotel2} alt="Hotel"/>Hotele</a></li>
+                    <li><Link to={'/TwojeRezerwacja'} className="reservation-link"><img src={Hotel2} alt="Reservation"/>Twoja Rezerwacja</Link></li>
+                    <li><a><img src={Hotel2} alt="Info"/>Informacje</a></li>
+                </ul>
                 </div>
             </div>
         </header>

@@ -49,15 +49,26 @@ header{
 }
 .header-center ul {
     display: flex;
+    justify-content: center;
     gap: 30px;
-    list-style-type: none;
+    margin-left: -30px;
 }
 .header-center ul li {
     display: flex;
+    color: white;
+    align-items: center;
+}
+
+.header-center ul li a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
     gap: 4px;
 }
+
 @media only screen and (max-width: 600px) {
-    header{
+    header {
         display: flex;
         justify-content: center;
     }
@@ -66,17 +77,17 @@ header{
         display: flex;
         flex-direction: column;
     }
-    .header-center ul li{
+    .header-center ul li {
         text-align: center;
     }
-  }
-.header-center ul a {
+}
+.header-center ul li a {
     margin: 5px;
     padding: 8px;
     gap: 4px;
     transition: all 200ms ease-in-out;
 }
-.Now{
+.Now {
     margin: 10px;
     padding: 100px;
     gap: 4px;
@@ -84,7 +95,12 @@ header{
     border-radius: 50px;
     cursor: pointer;
 }
-.header-center ul a:hover{
+.reservation-link {
+    color: white;
+    list-style-type: none;
+    text-decoration: none;
+}
+.header-center ul a:hover {
     margin: 5px;
     padding: 8px;
     gap: 4px;
@@ -92,7 +108,7 @@ header{
     border-radius: 50px;
     cursor: pointer;
 }
-.header-center ul li img{
+.header-center ul li img {
     width: 20px;
 }
 .header-bottom{

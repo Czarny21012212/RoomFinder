@@ -29,7 +29,7 @@ export function Hotel() {
     const[DayOfTrip, setDayOfTrip] = useState()
     const[city, setCity] = useState()
     const[localCountry, setLocalCountry] = useState(localStorage.getItem('Country'))
-    const[localPeople, setLocalPeople] = useState(localStorage.getItem('People'))
+    const[localPeople, setLocalPeople] = useState(localStorage.getItem('People2'))
     const[localStart, setLocalStart] = useState(localStorage.getItem('Start'))
     const[localEnd, setLocalEnd] = useState(localStorage.getItem('End'))
     const[localPrice, setLocalPrice] = useState(localStorage.getItem('Price'));
@@ -63,13 +63,15 @@ export function Hotel() {
     useEffect(() => {
         if (localTrue) {
             setPlace(localStorage.getItem('Country'));
-            setPeople(localStorage.getItem('People'));
+            setPeople(localStorage.getItem('People2'));
             setStart(localStorage.getItem('Start'));
             setEnd(localStorage.getItem('End'));
             setLocalPrice(parseInt(localStorage.getItem('Price')));
             setValueOfPrice(localStorage.getItem('PricePerNight'))
         }
     }, [localTrue]);
+
+    console.log(localStorage.getItem('People2'))
 
     
     useEffect(() =>{
@@ -80,9 +82,9 @@ export function Hotel() {
                 }
         }
         if(people){
-            localStorage.setItem('People', people)
+            localStorage.setItem('People2', people)
                 if(localTrue){
-                    setPeople(localStorage.getItem('People'))
+                    setPeople(localStorage.getItem('People2'))
                 }
         }
         if(start){
@@ -126,7 +128,7 @@ export function Hotel() {
     useEffect(() => {
         
         setPlace(localStorage.getItem('Country'))
-        setPeople(localStorage.getItem('People'))
+        setPeople(localStorage.getItem('People2'))
         setStart(localStorage.getItem('Start'))
         setEnd(localStorage.getItem('End'))
         setRealValueOfPrice(localStorage.getItem('PricePerNight'))
@@ -192,14 +194,14 @@ export function Hotel() {
             index.country === place &&
             index.maxPeople >= people &&
             search &&
-            index.pricePerNight * people * DayOfTrip <= Number(localStorage.getItem('PricePerNight')) &&
+            index.pricePerNight * people * DayOfTrip <= (localStorage.getItem('PricePerNight') ? Number(localStorage.getItem('PricePerNight')) : 10000) &&
             (!distanceToCenterTrue || index.distanceToCenter === Number(distanceToCenter)) &&
             (!ratingTrue || index.rating === ratingToFiltr) &&
             (!beachToFiltr || index.isBeachfront === true)
         );
-        
     };
 
+    console.log(localStorage.getItem('PricePerNight'))
    
 
     const[RealvalueOfPrice, setRealValueOfPrice] = useState(1000);
@@ -456,14 +458,12 @@ export function Hotel() {
                     </Link>
                 </div>
                 <div className='header-center'>
-                    <ul>
-                        <a><li><img src={Home}></img>Strona Główna</li></a>
-                        <a className='Now'><li><img src={Hotel2} ></img>Hotele</li></a>
-                        <a><li><img src={Lot}></img>Loty</li></a>
-                        <a><li><img src={Car}></img>Wynajem samochodów</li></a>
-                        <a><li><img src={Atrakcje}></img>Atrakcje</li></a>
-                        
-                    </ul>
+                <ul className="header-center">
+                    <li><a><img src={Home} alt="Home"/>Strona Główna</a></li>
+                    <li><a className='Now'><img src={Hotel2} alt="Hotel"/>Hotele</a></li>
+                    <li><Link to={'/TwojeRezerwacja'} className="reservation-link"><img src={Hotel2} alt="Reservation"/>Twoja Rezerwacja</Link></li>
+                    <li><a><img src={Hotel2} alt="Info"/>Informacje</a></li>
+                </ul>
                 </div>
                 <div className='header-bottom'>
                     <div className='header-bottom-items'>
@@ -615,10 +615,10 @@ export function Hotel() {
                         const filterIf = (index.country === place &&
                             index.maxPeople >= people &&
                             search &&
-                            index.pricePerNight * people * DayOfTrip <= Number(localStorage.getItem('PricePerNight')) &&
+                            index.pricePerNight * people * DayOfTrip <= (localStorage.getItem('PricePerNight') ? Number(localStorage.getItem('PricePerNight')) : 10000) &&
                             (!distanceToCenterTrue || index.distanceToCenter === Number(distanceToCenter)) &&
                             (!ratingTrue || index.rating === ratingToFiltr) &&
-                            (!beachToFiltr || index.isBeachfront === true))
+                            (!beachToFiltr || index.isBeachfront === true));
                         const filterIf2 = (index.country === place &&index.maxPeople >= people && index.pricePerNight * people <= RealvalueOfPrice &&(!distanceToCenterTrue || index.distanceToCenter === distanceToCenter) && (!ratingTrue || index.rating === ratingToFiltr) && (!beachToFiltr || index.isBeachfront === true))                       
                     if(filterIf){
                         if(filterIf){
