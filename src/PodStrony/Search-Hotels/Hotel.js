@@ -3,13 +3,12 @@ import { useEffect, useState } from 'react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import HotelData from '../Json/Hotel.json';
-import Favourite from '../Favorite/Favorite.js'
+
 
 import Home from '../Image/Home.png';
 import Hotel2 from '../Image/Hotel.png';
-import Lot from '../Image/Loty.png';
-import Car from '../Image/Car.png';
-import Atrakcje from '../Image/Atrakcje.png';
+import YourReservation  from '../Image/yourReservation.png';
+import Information  from '../Image/information.png';
 
 export function Hotel() {
 
@@ -460,8 +459,8 @@ export function Hotel() {
                     <ul className="nav-list">
                         <li><a href="#"><img src={Home} alt="Home"/>Strona Główna</a></li>
                         <li><a href="#" className='Now'><img src={Hotel2} alt="Hotel"/>Hotele</a></li>
-                        <li><Link to={'/TwojeRezerwacja'} className="reservation-link"><img src={Hotel2} alt="Reservation"/>Twoja Rezerwacja</Link></li>
-                        <li><a href="#"><img src={Hotel2} alt="Info"/>Informacje</a></li>
+                        <li><Link to={'/TwojeRezerwacja'} className="reservation-link"><img src={YourReservation} alt="Reservation"/>Twoja Rezerwacja</Link></li>
+                        <li><a href="#"><img src={Information} alt="Info"/>Zasady umowy</a></li>
                     </ul>
                     <Link to={`/ulubione`} className='favouriteLink'>
                         <p className='favouriteLinkP'>❤️</p>

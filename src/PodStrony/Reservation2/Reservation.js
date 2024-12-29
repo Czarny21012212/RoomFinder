@@ -15,6 +15,7 @@ function Reservation() {
 
     const id = localStorage.getItem('Hotel')
     const hotel = HotelData.find(hotel => hotel.id === parseInt(id));
+    localStorage.setItem('Reservaion-hotelName', hotel.name);
 
     const [numberOfCart, setNumberOfCart] = useState('');
     const [expirationDateOfCard, setExpirationDateOfCard] = useState('');
@@ -28,7 +29,7 @@ const Pay = () => {
     if (numberOfCart.trim().length === 16 && !isNaN(cartDate) && cartDate > now && cv.trim().length === 3) {
 
         setTimeout(() => {
-            window.location.href = 'http://localhost:3000';
+            window.location.href = 'http://localhost:3000/TwojeRezerwacja';
             setPayCheck(true);
             localStorage.setItem('payCheck', true);
             console.log("Wszytko poszło zgodznie z planem")
@@ -39,6 +40,7 @@ const Pay = () => {
     } else {
         setPayCheck(false);
         localStorage.setItem('payCheck', false);
+        localStorage.setItem('Reservaion-hotelName', false);
         console.log("Wszytko poszło żle")
     }
 };

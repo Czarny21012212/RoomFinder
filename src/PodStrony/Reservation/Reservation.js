@@ -75,20 +75,32 @@ localStorage.setItem('checkOut-Reservation', checkOut)
 const[price, setPrice] = useState(null)
 const[days, setDays] = useState(null)
 
-useEffect(() =>{
-    const now = new Date()
-    const date1 = new Date(checkIn)
-    const date2 = new Date(checkOut)
-    if(now < date1 && date1 < date2){
+function formatDate(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}.${month}.${day}`;
+}
+
+useEffect(() => {
+    const now = new Date();
+    const date1 = new Date(checkIn);
+    const date2 = new Date(checkOut);
+
+    localStorage.setItem('date-Reservation', formatDate(date1));
+
+    if (now < date1 && date1 < date2) {
         setDays((date2 - date1) / (1000 * 60 * 60 * 24));
-        localStorage.setItem('days', (date2 - date1) / (1000 * 60 * 60 * 24))
-        setDataCheck(true)
-        setDateMessage(null)
-    }else{
-        setDay("Błąd")
-        setDataCheck(false)
+        localStorage.setItem('days', (date2 - date1) / (1000 * 60 * 60 * 24));
+        setDataCheck(true);
+        setDateMessage(null);
+    } else {
+        setDays("Błąd");
+        setDataCheck(false);
     }
-}, [people])
+}, [checkIn, checkOut]);
+
+// ...existing code...
 
 useEffect(() => {
     setPrice(days * hotel.pricePerNight * people)
