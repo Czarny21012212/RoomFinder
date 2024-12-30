@@ -156,7 +156,7 @@ useEffect(() => {
             <div className='reserwation'>
                 <div className='status'>
                     <div className='status1'>
-
+                        <p>Siema</p>
                     </div>
                     <div className='status2'>
 
@@ -224,8 +224,10 @@ useEffect(() => {
                     
                     </div>
                 </div>
-                <p style={{color: 'red'}}>{message}</p>
-                <p style={{color: 'red'}}>{dateMessage}</p>
+                <div className='Error-box'>
+                {message ? <p className='Error'> * {message}</p> : ''}
+                {dateMessage ? <p className='Error'> * {dateMessage}</p> : ''}
+                </div>
                 
 
                 <div className='button-box'>
