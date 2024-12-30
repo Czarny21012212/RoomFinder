@@ -162,10 +162,22 @@ useEffect(() => {
 
                     </div>
                 </div>
-                <h1>Rezerwacja hotelu <u>{hotel.name}</u></h1>
-                <p>(dane które wprowadzisz zostaną zapisane oraz przeanalizowane)</p>
-                <p>(W żadnym przypadku nie podawaj fałszywych danych)</p>
-                <hr></hr>
+                <div className='hotel-top'>
+                    <div className='hotel-left'>
+                        <h4>{hotel.name}</h4>
+                        <p className='hotel-location'>{hotel.location}</p>
+                        <div className='hotel-left-opinion'>
+                            <p className='hotel-guestRating'>{hotel.guestRating}</p>
+                            <p>{hotel.verbalRating}</p>
+                            <p className='hotel-opinion'>{hotel.reviewsCount} opini</p>
+                        </div>
+                        
+                    </div>
+                    <div className='hotel-right'>
+                        <h4>Polityka anulowania</h4>
+                        <p>Jeśli anulujesz rezerwację, zwrócimy Ci tylko 80% całkowitej kwoty.</p>
+                    </div>
+                </div>
                 <div className='date-box'>
                     <div className='date-inputs'>
                         <p>Data zameldowania</p>
@@ -214,14 +226,17 @@ useEffect(() => {
                 </div>
                 <p style={{color: 'red'}}>{message}</p>
                 <p style={{color: 'red'}}>{dateMessage}</p>
-                <h3>Cena: {price}zł</h3>
+                
 
-                <input
-                    className='submit-button'
-                    type='submit'
-                    value='Nat'
-                    onClick={Check1}
-                ></input>
+                <div className='button-box'>
+                <h3>{price ? `Cena: ${price}zł` : ''} </h3>
+                    <input
+                        className='submit-button'
+                        type='submit'
+                        value='Następny krok'
+                        onClick={Check1}
+                    ></input>
+                </div>
                 
             </div>
         </div>

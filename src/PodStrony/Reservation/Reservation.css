@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 body{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Open Sans", serif;
 }
 .reserwation{
     width: 850px;
@@ -22,7 +23,7 @@ body{
 }
 .date-inputs{
     text-align: center;
-    width: 380px;
+    width: 500px;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid rgba(0, 0, 0, 0.089);
@@ -31,7 +32,6 @@ body{
 }
 
 .date-inputs p {
-
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 0px 10px 5px rgb(255, 255, 255);
     font-weight: bold;
@@ -93,18 +93,19 @@ body{
     text-align: center;
 }
 .person p {
+    font-size: 0.9rem;
     color: rgb(218, 218, 218);
     font-weight: bold;position: absolute;
 }
 .person input{
-    margin-top: 45px;
+    margin-top: 40px;
 }
 .person{
     color: #ffffff;
     background-color: #1A2C42;
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.171);
-    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.11);
+    box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.13);
     width: 330px;
     margin-top: 20px;
     padding: 20px;
@@ -118,16 +119,71 @@ body{
 }
 
 /* Button */
+
 .submit-button {
     font-weight: bold;
     cursor: pointer;
     font-size: 0.9rem; 
-    padding: 15px 25px; 
+    padding: 20px 30px; 
     border: none;
     background-color: #1A2C42;
     color: #ffffff;
     border-radius: 5px;
+    width: 400px;
   
+}
+.button-box{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+
+}
+
+/* Top-element */
+/* left */
+.hotel-top{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.hotel-left{
+    width: 400px;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.096);
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.068);
+}
+.hotel-right{
+    width: 400px;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.096);
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.068);
+}
+.hotel-left-opinion{
+    display: flex;
+    gap: 10px;
+    font-size: 0.8rem;
+    align-items: center;
+    margin-top:-20px
+}
+.hotel-location{
+    font-size: 0.9rem;
+    margin-top: -10px;
+}
+.hotel-guestRating{
+    background-color: #068bf7a9;
+    padding: 5px;
+    border-radius: 5px;
+    color: #ffffff;
+}
+.hotel-opinion{
+    color: #535353;
+}
+/* right */
+
+.hotel-right p {
+    font-size: 0.9rem;
+
 }
 
 
