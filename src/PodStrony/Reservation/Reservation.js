@@ -43,8 +43,8 @@ const renderPeople = () => {
     if(people < 5){
         for (let x = 0; x < people; x++) {
             elements.push(
-                <div key={x} style={{backgroundColor: 'black', color: 'white', width: '200px',margin: '10px', padding: '20px', borderRadius: '10px' }}>
-                    <h3>Osoba {x + 1}</h3>
+                <div key={x} className='person'>
+                    <h2>Osoba {x + 1}</h2>
                     <p>Podaj imie</p>
                     <input type='text'
                     onChange={(event) => addPerson(x, 'name', (event.target.value))}
@@ -166,36 +166,61 @@ useEffect(() => {
                 <p>(dane które wprowadzisz zostaną zapisane oraz przeanalizowane)</p>
                 <p>(W żadnym przypadku nie podawaj fałszywych danych)</p>
                 <hr></hr>
-                <p>Data zameldowania</p>
-                <input
-                type='date'
-                onChange={(event) => setCheckIn(event.target.value)}>
-                </input>
-                <br></br>
-                <p>Data Wymeldowania</p>
-                <input
-                type='date'
-                onChange={(event) => setCheckOut(event.target.value)}>
-                </input>
-                <p>Ilość osób</p>
-                <input
-                type='number'
-                
-                onChange={(event) =>  setPeople(event.target.value)}
-                >
-                </input>
-                <div style={{display: 'flex'}}>
-                    {renderPeople()}
-                 
+                <div className='date-box'>
+                    <div className='date-inputs'>
+                        <p>Data zameldowania</p>
+                        <input
+                        type='date'
+                        onChange={(event) => setCheckIn(event.target.value)}>
+                        </input>
+                    </div>
+
+                    <div className='date-inputs'>
+                        <p>Data Wymeldowania</p>
+                        <input
+                        type='date'
+                        onChange={(event) => setCheckOut(event.target.value)}>
+                        </input>
+                    </div>
+                </div>
+
+                <div className='reservation-details'>
+                    <h2>Wpisz dane osób</h2>
+                    <div className='inputs-Group'>
+                    <div className='input-box'>
+                        <p>Email</p>
+                        <input
+                        type='email'
+                        placeholder='@przykład.com'
+                        >
+                        </input>
+                    </div>
+                    <div className='input-box'>
+                        <p>Ilość osób</p>
+                        <input
+                        type='number'
+
+                        onChange={(event) =>  setPeople(event.target.value)}
+                        >
+                        </input>
+                    </div>
+                    </div>
+                    
+
+                    <div className='Cart-people'>
+                        {renderPeople()}
+                    
+                    </div>
                 </div>
                 <p style={{color: 'red'}}>{message}</p>
                 <p style={{color: 'red'}}>{dateMessage}</p>
                 <h3>Cena: {price}zł</h3>
 
                 <input
-                type='submit'
-                value='Dalej'
-                onClick={Check1}
+                    className='submit-button'
+                    type='submit'
+                    value='Nat'
+                    onClick={Check1}
                 ></input>
                 
             </div>

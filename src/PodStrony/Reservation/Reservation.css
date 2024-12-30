@@ -1,3 +1,133 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.reserwation{
+    width: 850px;
+}
 .reservation-box{
     margin: 20px;
 }
+
+/* Date */
+
+.date-box{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    color: rgb(68, 68, 68);
+    font-weight: bold;
+}
+.date-box div{
+    text-align: center;
+}
+.date-inputs{
+    text-align: center;
+    width: 380px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid rgba(0, 0, 0, 0.089);
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.075);
+    border-radius: 5px;
+}
+
+.date-inputs p {
+
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px 5px rgb(255, 255, 255);
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+
+/* Input */
+
+.date-box input{
+    width: 300px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #2e2e2e;
+    border-radius: 5px;
+}
+.reservation-details input{
+    width: 300px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #2e2e2e;
+    border-radius: 5px;
+}
+.input-box input{
+    width: 300px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #2e2e2e;
+    border-radius: 5px;
+}
+.input-box{
+    margin-top: 40px;
+}
+
+.input-box p {
+    position: absolute;
+    margin-top: -15px;
+    font-weight: bold;
+    color: rgb(68, 68, 68);
+}
+
+/*reservationData*/
+
+.reservation-details{
+    border: 1px solid rgba(0, 0, 0, 0.075);
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.075);
+    border-radius: 15px;
+    padding: 20px;
+}
+.inputs-Group{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/*Person*/
+.person h2{
+    color: #c8d1fd;
+    font-weight: bold;
+    text-align: center;
+}
+.person p {
+    color: rgb(218, 218, 218);
+    font-weight: bold;position: absolute;
+}
+.person input{
+    margin-top: 45px;
+}
+.person{
+    color: #ffffff;
+    background-color: #1A2C42;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.171);
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.11);
+    width: 330px;
+    margin-top: 20px;
+    padding: 20px;
+}
+.Cart-people{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 850px; 
+    margin: 0 auto;
+}
+
+/* Button */
+.submit-button {
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.9rem; 
+    padding: 15px 25px; 
+    border: none;
+    background-color: #1A2C42;
+    color: #ffffff;
+    border-radius: 5px;
+  
+}
+
+
