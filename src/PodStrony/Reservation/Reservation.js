@@ -74,6 +74,15 @@ localStorage.setItem('checkOut-Reservation', checkOut)
 
 const[price, setPrice] = useState(null)
 const[days, setDays] = useState(null)
+const[email, setEmail] = useState(null)
+const[specialWishes, setSpecialWishes] = useState(null)
+useEffect(() => {
+    localStorage.setItem('specialWishes', specialWishes)
+}, [email])
+
+useEffect(() => {
+    localStorage.setItem('specialWishes', specialWishes)
+}, [specialWishes])
 
 function formatDate(date) {
     const year = date.getFullYear();
@@ -99,8 +108,6 @@ useEffect(() => {
         setDataCheck(false);
     }
 }, [checkIn, checkOut]);
-
-// ...existing code...
 
 useEffect(() => {
     setPrice(days * hotel.pricePerNight * people)
@@ -224,6 +231,20 @@ useEffect(() => {
                     
                     </div>
                 </div>
+
+                <div className='special-wishes'>
+                    <h2>Życzneia specialne</h2>
+                    <p>Realizacja życzeń specjalnych nie jest gwarantowana, ale obiekt postara się spełnić Twoją prośbę. Zawsze możesz dodać życzenie specjalne po sfinalizowaniu rezerwacji! </p>
+
+                    <div className='special-wishes-box'>
+                        <p>Wpisz swoje życzenia (język angielski lub hiszpański).</p>
+                        <textarea
+                        className='special-wishes-textarea'
+                        maxLength={500}
+                        ></textarea>
+                    </div>
+                </div>
+
                 <div className='Error-box'>
                 {message ? <p className='Error'> * {message}</p> : ''}
                 {dateMessage ? <p className='Error'> * {dateMessage}</p> : ''}
@@ -231,7 +252,7 @@ useEffect(() => {
                 
 
                 <div className='button-box'>
-                <h3>{price ? `Cena: ${price}zł` : ''} </h3>
+                <h3>{price ? `Cena rezerwacji: ${price}zł` : ''} </h3>
                     <input
                         className='submit-button'
                         type='submit'
@@ -239,6 +260,7 @@ useEffect(() => {
                         onClick={Check1}
                     ></input>
                 </div>
+
                 
             </div>
         </div>
