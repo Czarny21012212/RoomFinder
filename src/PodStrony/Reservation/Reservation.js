@@ -46,15 +46,15 @@ const renderPeople = () => {
                 <div key={x} className='person'>
                     <h2>Osoba {x + 1}</h2>
                     <p>Podaj imie</p>
-                    <input type='text'
+                    <input type='text' placeholder='Imie'
                     onChange={(event) => addPerson(x, 'name', (event.target.value))}
                     ></input>
                     <p>Podaj Nazwisko</p>
-                    <input type='text'
+                    <input type='text' placeholder='Nazwisko'
                     onChange={(event) => addPerson(x, 'surName', (event.target.value))}
                     ></input>
                     <p>Podaj pesel</p>
-                    <input type='text'
+                    <input type='text' placeholder='Pesel'
                     onChange={(event) => addPerson(x, 'pesel', event.target.value)}
                     ></input>
                 </div>
@@ -162,12 +162,25 @@ useEffect(() => {
         <div className='reservation-box'>
             <div className='reserwation'>
                 <div className='status'>
-                    <div className='status1'>
-                        <p>Siema</p>
-                    </div>
-                    <div className='status2'>
+                <div className='status'>
+                    <div className='status-box'>
+                        <div className='status-box-left'>
+                            <p>1</p>
+                            <span>Twój wybór</span>
+                        </div>
+                            <div className='line-first'></div>
+                        <div className='status-box-center'>
+                            <p>2</p>
+                            <span>Twoje Dane</span>
+                        </div>
+                            <div className='line-second'></div>
+                        <div className='status-box-right'>
+                            <p>3</p>
+                            <span>Finalizacja Rezerwacji</span>
+                        </div>
 
                     </div>
+                </div>
                 </div>
                 <div className='hotel-top'>
                     <div className='hotel-left'>
