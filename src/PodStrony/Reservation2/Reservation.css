@@ -1,34 +1,17 @@
 .boxCheck2{
     display: flex;
     justify-content: center;
-
 }
 .check2{
     padding: 20px;
     margin: 20px;
-    border: 1px solid;
-    width: 1000px;
+    width: 800px;
 }
 .status{
     display: flex;
     justify-content: center;
     gap: 10px;
 
-}
-.status1{
-    width: 200px;
-    height: 20px;
-    background-color: aqua;
-}
-.status2{
-    width: 200px;
-    height: 20px;
-    background-color: rgb(172, 172, 172);
-}
-.date{
-    display: flex;
-    gap: 20px;
-    text-align: center;
 }
 .peopleCart{
     display: flex;
@@ -39,4 +22,100 @@
     color: aliceblue;
     padding: 20px;
     border-radius: 10px;
+}
+
+/* status */
+
+.status-box-check2{
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    align-items: center;
+}
+.status-box-left-check2 , 
+.status-box-center-check2, 
+.status-box-right-check2{
+    display: flex;
+    align-items: center;
+}
+.status-box-left-check2 p, 
+.status-box-center-check2 p,
+.status-box-right-check2 p{
+    margin: 10px;
+    background-color: #1a2c42;
+    color: #ffffff;
+    padding: 10px 17px;
+    border-radius: 50px;
+    border: none;
+}
+.status-box-left-check2 span, 
+.status-box-center-check2 span{
+    font-size: 0.8rem;
+    font-weight: 500;
+    width: 80px;
+
+}
+.status-box-right-check2 span{
+    font-size: 0.8rem;
+    font-weight: 500;
+    width: 140px;
+}
+.line-first-check2{
+    width: 180px;
+    height: 2px;
+    background-color: #020202;
+}
+.line-second-check2{
+    width: 180px;
+    height: 2px;
+    background-color: #020202; 
+}
+
+/* section 1 */
+.reservationDate-box{
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.075);
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.075);
+}
+.section-1{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.reservationDate-date{
+    display: flex;
+    gap: 20px;
+}
+.reservationDate{
+    display: flex;
+    gap: 20px;
+}
+.reservationDate-line{
+    width: 1px;
+    height: 100px;
+    background-color: #c9c9c9;
+    margin-top: 20px;
+}
+.reservationDate-box p {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.contact-box{
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.075);
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.075);
+}
+.contact-box ul{
+    font-size: 0.9rem;
+    color: #3a53a5;
+}
+.contact-box li{
+    font-size: 0.9rem;
+    margin: 10px;
+}
+.contact-box p{
+    text-align: center;
+}
+.contact-box h3{
+    text-align: center;
 }

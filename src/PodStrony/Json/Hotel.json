@@ -166,8 +166,8 @@
     "Value for money": 9.7,
     "Location": 9.7,
     "Free WiFi": 8.7,
-    "checkIn": "Od 16:00 do 21:00",
-    "checkOut": "Do 12:00",
+    "checkIn": "16:00",
+    "checkOut": "12:00",
     "Cancellation": "Zasady dotyczące przedpłaty i odwoływania rezerwacji różnią się w zależności od rodzaju zakwaterowania.",
     "ChildrenAccommodation1" : "Dzieci w każdym wieku są mile widziane.",
     "ChildrenAccommodation2" : "Łóżeczka dziecięce i dodatkowe łóżka nie są dostępne w tym obiekcie.",
@@ -259,6 +259,8 @@
     "Comfort": 9.0,
     "Value for money": 9.4,
     "Location": 6,
-    "Free WiFi": 5.2
+    "Free WiFi": 5.2,
+    "checkIn": "16:00",
+    "checkOut": "12:00"
   }
 ]

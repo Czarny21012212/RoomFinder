@@ -50,25 +50,58 @@ const Pay = () => {
        return(
         <div className='boxCheck2'>
             <div className='check2'>
-                <div className='status'> 
-                    <div className='status1' style={{backgroundColor: 'rgb(172, 172, 172)'}}>
-                        
+                <div className='status-check2'>
+                        <div className='status-box-check2'>
+                            <div className='status-box-left-check2'>
+                                <p>1</p>
+                                <span>Twój wybór</span>
+                            </div>
+                                <div className='line-first-check2'></div>
+                            <div className='status-box-center-check2'>
+                                <p>2</p>
+                                <span>Twoje Dane</span>
+                            </div>
+                                <div className='line-second-check2'></div>
+                            <div className='status-box-right-check2'>
+                                <p>3</p>
+                                <span>Finalizacja Rezerwacji</span>
+                            </div>
+
+                        </div>
                     </div>
-                    <div className='status2'style={{backgroundColor: 'aqua'}}>  
-                    </div>
-                    
-                </div>
                 <div className='informationAboutTrip'>
-                <h3>Rezerwacja rozpoczna się</h3>
-                        <div className='date'>
-                            <p>od: {localStorage.getItem('checkIn-Reservation')}</p>
-                            <p>do: {localStorage.getItem('checkOut-Reservation')} </p>
-                            <p>({localStorage.getItem('days')} dni)</p>
+                        <div className='section-1'>
+                            <div className='reservationDate-box'>
+                                <h3>Termin Twojej rezerwacji</h3>
+                               <div className='reservationDate'>
+                                    <div className='reservationDate-left'>
+                                        <p>Zameldowanie</p>
+                                        <p style={{fontWeight: 'bold'}}>{localStorage.getItem('checkIn-Reservation')}</p>
+                                        <p style={{color: '#8f8f8f'}}>Od {hotel.checkIn}</p>
+                                    </div>
+                                    <div className='reservationDate-line'>
+
+                                    </div>
+                                    <div className='reservationDate-right'>
+                                        <p>Wymeldowanie</p>
+                                        <p style={{fontWeight: 'bold'}}>{localStorage.getItem('checkOut-Reservation')}</p>
+                                        <p style={{color: '#8f8f8f'}}>Od {hotel.checkOut}</p>
+                                    </div>
+                               </div>
+                                <p>Całokita długość pobytu: {localStorage.getItem('days')} dni</p>
+                            </div>
+                            <div className='contact-box'>
+                                <h3>Dane kontaktowe</h3>
+                                <p>Email: {localStorage.getItem('email')}</p>
+                                <ul>
+                                    <li>Odpowiadamy na wiadomości e-mail w ciągu 24 godzin.</li>
+                                    <li>Preferujemy kontakt e-mailowy w celu zachowania pisemnej dokumentacji.</li>
+                                    <li>W nagłych przypadkach prosimy o kontakt telefoniczny.</li>
+                                    <li>Prosimy o podanie numeru rezerwacji w każdej korespondencji.</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div className='contact-box'>
-                            <h3>Dane kontaktowe</h3>
-                            <p>Email: {localStorage.getItem('email')}</p>
-                        </div>
+                        
                         <div className='specialWishes-box'>
                             <h3>Specjalne Życzenia</h3>
                             <p>Treść: {localStorage.getItem('specialWishes')}</p>
