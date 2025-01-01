@@ -65,6 +65,15 @@ const Pay = () => {
                             <p>do: {localStorage.getItem('checkOut-Reservation')} </p>
                             <p>({localStorage.getItem('days')} dni)</p>
                         </div>
+                        <div className='contact-box'>
+                            <h3>Dane kontaktowe</h3>
+                            <p>Email: {localStorage.getItem('email')}</p>
+                        </div>
+                        <div className='specialWishes-box'>
+                            <h3>Specjalne Życzenia</h3>
+                            <p>Treść: {localStorage.getItem('specialWishes')}</p>
+                        </div>
+
                         <div className='check2-peopleCarts'>
                             <h3>Członkowie rezerwacji</h3>
                             <p>(Pominięcie którejkolwiek z osób może skutkować zerwaniem umowy)</p>

@@ -1,10 +1,13 @@
 import HotelData from '../Json/Hotel.json'; 
 import Home from '../Image/Home.png';
 import Hotel2 from '../Image/Hotel.png';
+import YourReservation  from '../Image/yourReservation.png';
+import Information  from '../Image/information.png';
 import './Reservation.css'
 import { useEffect, useState } from 'react';
 import { setDay } from 'date-fns';
 import { Link } from 'react-router-dom';
+
 
 function Reservation() {
 
@@ -74,10 +77,12 @@ localStorage.setItem('checkOut-Reservation', checkOut)
 
 const[price, setPrice] = useState(null)
 const[days, setDays] = useState(null)
+
 const[email, setEmail] = useState(null)
 const[specialWishes, setSpecialWishes] = useState(null)
+
 useEffect(() => {
-    localStorage.setItem('specialWishes', specialWishes)
+    localStorage.setItem('email', email)
 }, [email])
 
 useEffect(() => {
@@ -130,6 +135,14 @@ const Check1 = () => {
     }
     if(!dataCheck){
         setDateMessage("źle podana data")
+    }else if(!email){
+        SetCheckInput(false)
+        setMessage("Podaj email")
+    }else if(email.indexOf('@') === -1){
+        SetCheckInput(false)
+        setMessage("Podaj poprawny email")
+    }else{
+        setMessage("")
     }
 }
 
@@ -153,12 +166,14 @@ useEffect(() => {
                 <ul className="header-center">
                     <li><a><img src={Home} alt="Home"/>Strona Główna</a></li>
                     <li><a className='Now'><img src={Hotel2} alt="Hotel"/>Hotele</a></li>
-                    <li><Link to={'/TwojeRezerwacja'} className="reservation-link"><img src={Hotel2} alt="Reservation"/>Twoja Rezerwacja</Link></li>
-                    <li><a><img src={Hotel2} alt="Info"/>Informacje</a></li>
+                    <li><Link to={'/TwojeRezerwacja'} className="reservation-link"><img src={YourReservation} alt="Reservation"/>Twoja Rezerwacja</Link></li>
+                    <li><a><img src={Information} alt="Info"/>Informacje</a></li>
                 </ul>
                 </div>
             </div>
         </header>
+
+
         <div className='reservation-box'>
             <div className='reserwation'>
                 <div className='status'>
@@ -224,6 +239,7 @@ useEffect(() => {
                         <input
                         type='email'
                         placeholder='@przykład.com'
+                        onChange={e => setEmail(e.target.value)}
                         >
                         </input>
                     </div>
@@ -254,6 +270,7 @@ useEffect(() => {
                         <textarea
                         className='special-wishes-textarea'
                         maxLength={500}
+                        onChange={ e => setSpecialWishes(e.target.value)}
                         ></textarea>
                     </div>
                 </div>
