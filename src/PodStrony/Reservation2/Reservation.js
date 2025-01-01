@@ -44,7 +44,14 @@ const Pay = () => {
         console.log("Wszytko poszło żle")
     }
 };
-
+    const specialWishes = () => {
+        return(
+            <div className='specialWishes'>
+                <h3>Specjalne Życzenia</h3>
+                <p>{localStorage.getItem('specialWishes')}</p>
+            </div>
+        );
+    }
     function html() {
     if(check1 === 'true' && !localStorage.getItem('payCheck') ){
        return(
@@ -88,7 +95,7 @@ const Pay = () => {
                                         <p style={{color: '#8f8f8f'}}>Od {hotel.checkOut}</p>
                                     </div>
                                </div>
-                                <p>Całokita długość pobytu: {localStorage.getItem('days')} dni</p>
+                                <p>Całkowita długość pobytu: {localStorage.getItem('days')} dni</p>
                             </div>
                             <div className='contact-box'>
                                 <h3>Dane kontaktowe</h3>
@@ -101,73 +108,65 @@ const Pay = () => {
                                 </ul>
                             </div>
                         </div>
-                        
-                        <div className='specialWishes-box'>
-                            <h3>Specjalne Życzenia</h3>
-                            <p>Treść: {localStorage.getItem('specialWishes')}</p>
+                        <div className='section-2'>
+                            <div className='specialWishes-box'>
+                            {localStorage.getItem('specialWishes') ? specialWishes() : null}
+                            </div>
                         </div>
-
-                        <div className='check2-peopleCarts'>
+                        <div className='section-3'>
+                        <div className='peopleData'>
                             <h3>Członkowie rezerwacji</h3>
                             <p>(Pominięcie którejkolwiek z osób może skutkować zerwaniem umowy)</p>
-                                <div className='peopleCart'>
-                                        {people.map((person, index) =>{
-                                            return(
-                                                <div id={index} className='peopleCart-box'>
-                                                    <p>Imie: {person.name}</p>
-                                                    <p>Nazwisko: {person.surName}</p>
-                                                    <p>Pesel: {person.pesel}</p>
-                                                </div>
-                                            );
-                                        })}
-                                </div>
-                            <div>
-                                <h3>Cena: {localStorage.getItem('price')}zł</h3>
+                            <div className='peopleCart'>
+                                {people.map((person, index) => {
+                                    return (
+                                        <div key={index} className='peopleCart-box'>
+                                            <p><strong>Imię:</strong> {person.name}</p>
+                                            <p><strong>Nazwisko:</strong> {person.surName}</p>
+                                            <p><strong>Pesel:</strong> {person.pesel}</p>
+                                        </div>
+                                    );
+                                })}
                             </div>
-
-                            <hr></hr>
-
+                        </div>
+                        </div>
+                        <div className='section-4'>
                             <h3>Płatność</h3>
                             <p>(Płatność możliwa wyłącznie kartą Visa)</p>
-                            <div style={{border: '1px solid black', padding: '20px'}}>
-                                <p>Rezerwacja Hotelu {hotel.name}</p>
-                                <h3>Kwota: {localStorage.getItem('price')}zł</h3>
-                                <label>Numer Karty</label>
-                                <input
-                                type='number'
-                                maxLength="16"
-                                placeholder="1111 1111 1111 1111"
-                                style={{width: '125px'}}
-                                onChange={(event) => setNumberOfCart(event.target.value)}
-                                ></input>
-
-                                <br></br>
-
-                                <label>Data Ważności</label>
-                                <input
-                                type='date'
-                                onChange={(event) => setExpirationDateOfCard(event.target.value)}
-                                ></input>
-
-                                <br></br>
-
-                                <label>CVV2/CVC2</label>
-                                <input
-                                type='text'
-                                maxLength="3"
-                                placeholder="111"
-                                onChange={(event) => setCv(event.target.value)}
-                                style={{width: '20px'}}
-                                ></input>
-
-                                <br></br>
-
-                                <input
-                                value="Zapłać"
-                                type='submit'
-                                onClick={Pay}
-                                ></input>
-                            </div>
+                           <div className='pay-box'>
+                            <div className='payment-box'>
+                                    <p>Rezerwacja Hotelu {hotel.name}</p>
+                                    <h3>Kwota: {localStorage.getItem('price')}zł</h3>
+                                    <label>Numer Karty</label>
+                                    <input
+                                        type='number'
+                                        maxLength="16"
+                                        className='payment-box-input'
+                                        placeholder="1111 1111 1111 1111"
+                                        onChange={(event) => setNumberOfCart(event.target.value)}
+                                    />
+                                    <label>Data Ważności</label>
+                                    <input
+                                        type='date'
+                                        className='payment-box-input'
+                                        onChange={(event) => setExpirationDateOfCard(event.target.value)}
+                                    />
+                                    <label>CVV2/CVC2</label>
+                                    <input
+                                        type='text'
+                                        maxLength="3"
+                                        placeholder="111"
+                                        className='payment-box-input'
+                                        onChange={(event) => setCv(event.target.value)}
+                                    />
+                                    <input
+                                        value="Zapłać"
+                                        type='submit'
+                                        className='submit-button-pay'
+                                        onClick={Pay}
+                                    />
+                                </div>
+                           </div>
                         </div>
                 </div>
             </div>  
