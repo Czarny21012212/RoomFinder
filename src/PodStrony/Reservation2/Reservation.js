@@ -16,6 +16,7 @@ function Reservation() {
 
     const id = localStorage.getItem('Hotel')
     const hotel = HotelData.find(hotel => hotel.id === parseInt(id));
+    localStorage.setItem('hotel-id-check2', hotel.id);
     localStorage.setItem('Reservaion-hotelName', hotel.name);
     localStorage.setItem('Reservaion-hotelName-check2', hotel.name)
 
@@ -23,7 +24,7 @@ function Reservation() {
     const [expirationDateOfCard, setExpirationDateOfCard] = useState('');
     const [cv, setCv] = useState('');
     const [payCheck, setPayCheck] = useState(false);
-
+    localStorage.setItem('email-check-2', localStorage.getItem('email'));
     localStorage.setItem('checkIn-Reservation-check2', localStorage.getItem('checkIn-Reservation')); 
     localStorage.setItem('checkOut-Reservation-check2', localStorage.getItem('checkOut-Reservation')); 
     localStorage.setItem('days-check2', localStorage.getItem('days')); 

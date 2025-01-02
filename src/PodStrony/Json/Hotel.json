@@ -39,7 +39,10 @@
     "Comfort": 4.0,
     "Value for money": 7.4,
     "Location": 6.4,
-    "Free WiFi": 5.2
+    "Free WiFi": 5.2,
+    "checkIn": "16:00",
+    "checkOut": "12:00"
+
   },
   {
     "id": 2,
@@ -81,7 +84,9 @@
     "Comfort": 9.0,
     "Value for money": 9.4,
     "Location": 6,
-    "Free WiFi": 5.2
+    "Free WiFi": 5.2,
+    "checkIn": "16:00",
+    "checkOut": "12:00"
   },
   {
     "id": 3,
@@ -123,7 +128,9 @@
     "Comfort": 9.0,
     "Value for money": 9.4,
     "Location": 6,
-    "Free WiFi": 5.2
+    "Free WiFi": 5.2,
+    "checkIn": "16:00",
+    "checkOut": "12:00"
   },
   {
     "id": 4,
@@ -217,7 +224,9 @@
     "Comfort": 4.0,
     "Value for money": 2.4,
     "Location": 6,
-    "Free WiFi": 8.2
+    "Free WiFi": 8.2,
+    "checkIn": "16:00",
+    "checkOut": "12:00"
   },
   {
     "id": 6,
