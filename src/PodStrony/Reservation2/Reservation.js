@@ -24,11 +24,21 @@ function Reservation() {
     const [expirationDateOfCard, setExpirationDateOfCard] = useState('');
     const [cv, setCv] = useState('');
     const [payCheck, setPayCheck] = useState(false);
+
+    localStorage.setItem('SpecialWishes-check2', localStorage.getItem('specialWishes'));
     localStorage.setItem('email-check-2', localStorage.getItem('email'));
     localStorage.setItem('checkIn-Reservation-check2', localStorage.getItem('checkIn-Reservation')); 
     localStorage.setItem('checkOut-Reservation-check2', localStorage.getItem('checkOut-Reservation')); 
     localStorage.setItem('days-check2', localStorage.getItem('days')); 
     localStorage.setItem('price-check2', localStorage.getItem('price')); 
+    
+    function comunication(){
+        return(
+            <div>
+                <h1>Siema</h1>
+            </div>
+        );
+    }
     
 const Pay = () => {
     const cartDate = new Date(expirationDateOfCard.trim());
@@ -40,6 +50,9 @@ const Pay = () => {
         const day = String(date.getDate()).padStart(2, '0');
         return `${year}.${month}.${day}`;
     }
+   
+   
+   
     
     const date1 = new Date(localStorage.getItem('checkIn-Reservation'));
     localStorage.setItem('date-Reservation-check2', formatDate(date1));
@@ -55,8 +68,7 @@ const Pay = () => {
             console.log("Wszytko poszło zgodznie z planem")
         }, 300)
 
-        alert('Płatność przebiegła pomyślnie')
-
+        comunication();
     } else {
         setPayCheck(false);
         localStorage.setItem('payCheck', false);
@@ -67,9 +79,9 @@ const Pay = () => {
     const specialWishes = () => {
         return(
             <div className='specialWishes'>
-                <h3>Specjalne Życzenia</h3>
                 <p>{localStorage.getItem('specialWishes')}</p>
             </div>
+
         );
     }
     function html() {
@@ -130,7 +142,9 @@ const Pay = () => {
                         </div>
                         <div className='section-2'>
                             <div className='specialWishes-box'>
-                            {localStorage.getItem('specialWishes') ? specialWishes() : null}
+                            <h3>Specjalne Życzenia</h3>
+                            {localStorage.getItem('specialWishes') == '' ? specialWishes() : 'Brak'}
+                            {comunication}
                             </div>
                         </div>
                         <div className='section-3'>

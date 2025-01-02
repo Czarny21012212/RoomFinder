@@ -35,6 +35,14 @@ function Reservation() {
 
                 window.location.href = 'http://localhost:3000/TwojeRezerwacja';
             }
+            const specialWishes = () => {
+                return(
+                    <div className='specialWishes'>
+                        <p>{localStorage.getItem('specialWishes')}</p>
+                    </div>
+        
+                );
+            }
             const CancelReservation = () => {
                 if(CancelReservationTrue){
                     return(
@@ -70,7 +78,7 @@ function Reservation() {
                             <p></p>
                         </div>
                         <div className='yourReservation-aboutHotel'>
-                        <div className='hotel-left'>
+                        <div className='hotel-left-yourReservation'>
                                <div className='hotel-left-left'>
                                     <h4>{hotel.name}</h4>
                                         <p className='hotel-location'>{hotel.location}</p>
@@ -132,10 +140,16 @@ function Reservation() {
                                 })}
                             </div>
                         </div>
+                        <div className='section-2'>
+                            <div className='specialWishes-box'>
+                            <h3>Specjalne Życzenia</h3>
+                            {localStorage.getItem('SpecialWishes-check2') == '' ? specialWishes() : 'Brak'}
+                            </div>
+                        </div>
                         <div className='yourReservation-section2'>
-                            <div className='yourReservation-section2-left'>
+                            <div className='yourReservation-section2-left' >
                                 <h3>Kwota za hotel</h3>
-                                <p>{localStorage.getItem('price')}zł</p>
+                                <p style={{fontWeight: '600', color: 'green', fontSize: '1.1rem'}}>{localStorage.getItem('price')}zł</p>
                                 <p>Płatność: Karta Visa</p>
                             </div>
                             <div className='yourReservation-section2-right'>

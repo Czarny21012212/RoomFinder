@@ -29,7 +29,7 @@ import pet from '../Image/pet.png';
 
 
 function Info() {
-  const { id } = useParams(); // Pobierz parametr 'id' z URL
+  const { id } = useParams(); 
   const hotel = HotelData.find(hotel => hotel.id === parseInt(id)); 
 
   if (!hotel) {
