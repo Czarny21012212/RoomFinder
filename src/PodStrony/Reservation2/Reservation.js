@@ -12,23 +12,42 @@ function Reservation() {
 
     const people = JSON.parse(localStorage.getItem('People'))
     console.log(people)
+    localStorage.setItem('People-check2', localStorage.getItem('People'))
 
     const id = localStorage.getItem('Hotel')
     const hotel = HotelData.find(hotel => hotel.id === parseInt(id));
     localStorage.setItem('Reservaion-hotelName', hotel.name);
+    localStorage.setItem('Reservaion-hotelName-check2', hotel.name)
 
     const [numberOfCart, setNumberOfCart] = useState('');
     const [expirationDateOfCard, setExpirationDateOfCard] = useState('');
     const [cv, setCv] = useState('');
     const [payCheck, setPayCheck] = useState(false);
 
+    localStorage.setItem('checkIn-Reservation-check2', localStorage.getItem('checkIn-Reservation')); 
+    localStorage.setItem('checkOut-Reservation-check2', localStorage.getItem('checkOut-Reservation')); 
+    localStorage.setItem('days-check2', localStorage.getItem('days')); 
+    localStorage.setItem('price-check2', localStorage.getItem('price')); 
+    
 const Pay = () => {
     const cartDate = new Date(expirationDateOfCard.trim());
     const now = new Date();
 
+    function formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}.${month}.${day}`;
+    }
+    
+    const date1 = new Date(localStorage.getItem('checkIn-Reservation'));
+    localStorage.setItem('date-Reservation-check2', formatDate(date1));
+
     if (numberOfCart.trim().length === 16 && !isNaN(cartDate) && cartDate > now && cv.trim().length === 3) {
 
         setTimeout(() => {
+            
+
             window.location.href = 'http://localhost:3000/TwojeRezerwacja';
             setPayCheck(true);
             localStorage.setItem('payCheck', true);

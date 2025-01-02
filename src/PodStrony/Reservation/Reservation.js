@@ -177,7 +177,6 @@ useEffect(() => {
         <div className='reservation-box'>
             <div className='reserwation'>
                 <div className='status'>
-                <div className='status'>
                     <div className='status-box'>
                         <div className='status-box-left'>
                             <p>1</p>
@@ -195,7 +194,6 @@ useEffect(() => {
                         </div>
 
                     </div>
-                </div>
                 </div>
                 <div className='hotel-top'>
                     <div className='hotel-left'>

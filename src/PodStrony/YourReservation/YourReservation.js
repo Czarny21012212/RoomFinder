@@ -14,7 +14,7 @@ function Reservation() {
    function html(){
         if(localStorage.getItem('payCheck')){
 
-            const people = JSON.parse(localStorage.getItem('People'))
+            const people = JSON.parse(localStorage.getItem('People-check2'))
            
 
             const CancelReservationTrueClick = () => {
@@ -59,10 +59,11 @@ function Reservation() {
             return(
                 <div className='reservation-box'>
                     <div className='reservation'>
-                        <h1>Twoja rezerwacja</h1>
-                        <h4> data rezerwacji: {localStorage.getItem('date-Reservation')}</h4>
+                        <div className='reservation-section1'>
+                            <h2>Twoja rezerwacja</h2>
+                        </div>
                         <h3>Nazwa hotelu</h3>
-                        <p>{localStorage.getItem('Reservaion-hotelName')}</p>
+                        <p>{localStorage.getItem('Reservaion-hotelName-check2')}</p>
                         <h3>Członkowie wycieczki</h3>
                         {people.map((person, index) => {
                             return(
@@ -73,9 +74,9 @@ function Reservation() {
                         })}
                         <h3>Rezerwacja rozpoczna się</h3>
                         <div className='date'>
-                            <p>od: {localStorage.getItem('checkIn-Reservation')}</p>
-                            <p>do: {localStorage.getItem('checkOut-Reservation')} </p>
-                            <p>({localStorage.getItem('days')} dni)</p>
+                            <p>od: {localStorage.getItem('checkIn-Reservation-check2')}</p>
+                            <p>do: {localStorage.getItem('checkOut-Reservation-check2')} </p>
+                            <p>({localStorage.getItem('days-check2')} dni)</p>
                         </div>
                         <h3>Kwota za hotel</h3>
                         <p>{localStorage.getItem('price')}zł</p>
