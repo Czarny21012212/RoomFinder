@@ -4,7 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import HotelData from '../Json/Hotel.json';
 
-
+import { Footer } from '../Footer/footer'
 import Home from '../Image/Home.png';
 import Hotel2 from '../Image/Hotel.png';
 import YourReservation  from '../Image/yourReservation.png';
@@ -461,6 +461,7 @@ export function Hotel() {
                         <li><a href="#" className='Now'><img src={Hotel2} alt="Hotel"/>Hotele</a></li>
                         <li><Link to={'/TwojeRezerwacja'} className="reservation-link"><img src={YourReservation} alt="Reservation"/>Twoja Rezerwacja</Link></li>
                         <li><a href="#"><img src={Information} alt="Info"/>Zasady umowy</a></li>
+                        
                     </ul>
                     <Link to={`/ulubione`} className='favouriteLink'>
                         <p className='favouriteLinkP'>❤️</p>
@@ -701,6 +702,7 @@ export function Hotel() {
                                         <div className='Cart-center'>
                                             <div>
                                                 <h1>{index.name}</h1>   
+                                                <Footer></Footer>
                                             </div>
                                             <div>
                                                 <p>{index.description}</p>
@@ -712,6 +714,7 @@ export function Hotel() {
                                                     <div className='Cart-right-top-first-left'>
                                                         <h2>{index.verbalRating}</h2>
                                                         <p>{index.reviewsCount} opinii</p>
+                                                        
                                                     </div>
                                                     <div className='Cart-right-top-first-right'>
                                                         <h2>{index.guestRating}</h2>
@@ -721,7 +724,7 @@ export function Hotel() {
                                                     <p>Komfort {index.comfort}</p>
                                                 </div>
                                             </div>
-
+                                            
                                             <div className='Cart-right-bottom'>
                                                     <div>
                                                         <p className='Price'>{localTrue ? parseInt(localPrice) * index.pricePerNight : index.pricePerNight}  zł</p>
@@ -752,8 +755,11 @@ export function Hotel() {
                 </div>
                 </div>
             </div>
-        </div>      
+            
+        </div>    
+        <Footer></Footer>
    </div>
+   
   );
 }
 
