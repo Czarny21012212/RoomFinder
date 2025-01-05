@@ -157,18 +157,24 @@ useEffect(() => {
 }, [Check1])
   return (
     <div className='all'>
-        <header>
+                 <header>
             <div className='header-items'>
-                <div className='header-top'>
-                    <h1>RoomFinder.com</h1>
-                </div>
-                <div className='header-center'>
-                <ul className="header-center">
-                    <li><a><img src={Home} alt="Home"/>Strona Główna</a></li>
-                    <li><a className='Now'><img src={Hotel2} alt="Hotel"/>Hotele</a></li>
-                    <li><Link to={'/TwojeRezerwacja'} className="reservation-link"><img src={YourReservation} alt="Reservation"/>Twoja Rezerwacja</Link></li>
-                    <li><a><img src={Information} alt="Info"/>Informacje</a></li>
-                </ul>
+                <div className='header'>
+                    <div className='header-top'>
+                        <h1>RoomFinder.com</h1>
+                        
+                    </div>
+                    <div className='header-center'>
+                        <ul className="nav-list">
+                            <li><a href="#"><img src={Home} alt="Home"/>Strona Główna</a></li>
+                            <li><Link to={'/'}><img src={Hotel2} alt="Hotel"/>Hotele</Link></li>
+                            <li><Link to={'/TwojeRezerwacja'}><img src={YourReservation} alt="Reservation"/>Twoja Rezerwacja</Link></li>
+                            <li><a href="#"><img src={Information} alt="Info"/>Zasady umowy</a></li>
+                        </ul>
+                        <Link to={`/ulubione`} className='favouriteLink'>
+                            <p className='favouriteLinkP'>❤️</p>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </header>

@@ -308,31 +308,24 @@ input[type='checkbox']:checked::after {
     border-radius: 10px;
 }
 .sortButton{
-    padding: 10px 15px;
+    font-family: "Open Sans", serif;
+    padding: 15px 20px;
     border: none;
     color: rgb(255, 255, 255);
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.041);
-    border: 1px solid rgba(0, 0, 0, 0.425);
-    background-color: #233a55;
-    font-weight: 500;
+    background-color: #2196F3;
+    font-weight: 600;
     font-size: 0.9rem;
     border-radius: 10px;
     cursor: pointer;
 }
 .sortButton:hover{
-    padding: 10px 15px;
-    border: none;
-    color: rgb(255, 255, 255);
-    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.041);
-    border: 1px solid rgba(0, 0, 0, 0.425);
-    background-color: #233a55;
-    font-weight: 500;
-    font-size: 0.9rem;
-    border-radius: 10px;
-    cursor: pointer;
+    background-color: #5babec;
 }
 .Cart-center{
+    margin-left: 10px;
     padding: 10px;
+
 }
 .Cart-center div h1{
     font-size: 1.2rem;
@@ -340,6 +333,7 @@ input[type='checkbox']:checked::after {
 }
 .Cart-right{
     padding: 10px;
+    width: 230px;
 }
 .Cart-right-top{
     display: flex;
@@ -423,11 +417,11 @@ input[type='checkbox']:checked::after {
     padding: 2px 4px
 }
 .line-Cart{
-    margin-top: 30px;
-    margin-left: 10px;
+    position: absolute;
+    transform: translate(550px, 15%);
     height: 200px;
     width: 2px;
-    background-color: #00000023;
+    background-color: #00000017;
 }
 .Cart-left input{
     position: absolute;

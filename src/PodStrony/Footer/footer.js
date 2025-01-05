@@ -14,7 +14,7 @@ export function Footer() {
                     <div className="footer-top">
                         <div className="footer-top-section">
                             <ul>
-                                <li className='footer-top-section-special'>FindRooms.com</li>
+                                <li className='footer-top-section-special'>RoomFinder.com</li>
                                 <li>Pomoc i kontakt</li>
                                 <li>Jak rezerwować</li>
                                 <li>O firmie</li>
@@ -44,8 +44,8 @@ export function Footer() {
                         <ul>
                                 <li className='footer-top-section-special'>Kontakt</li>
                                 <li>FindRooms.com S.A.</li>
-                                <li>al. Grunwaldzka 413</li>
-                                <li>80-309 Gdańsk</li>
+                                <li>ul. Wojtka Chmiela 432</li>
+                                <li>80-309 Orliska</li>
                                 <li>telefon: +48 58 770 60 05</li>
                                 <li>fax: +48 58 325 29 01</li>
                             </ul>

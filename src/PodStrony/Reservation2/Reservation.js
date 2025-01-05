@@ -4,6 +4,8 @@ import Hotel2 from '../Image/Hotel.png';
 import './Reservation.css'
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import YourReservation  from '../Image/yourReservation.png';
+import Information  from '../Image/information.png';
 
 function Reservation() {
 
@@ -217,18 +219,24 @@ const Pay = () => {
 
   return (
     <div className='all'>
-        <header>
+         <header>
             <div className='header-items'>
-                <div className='header-top'>
-                    <h1>RoomFinder.com</h1>
-                </div>
-                <div className='header-center'>
-                <ul className="header-center">
-                    <li><a><img src={Home} alt="Home"/>Strona Główna</a></li>
-                    <li><a className='Now'><img src={Hotel2} alt="Hotel"/>Hotele</a></li>
-                    <li><Link to={'/TwojeRezerwacja'} className="reservation-link"><img src={Hotel2} alt="Reservation"/>Twoja Rezerwacja</Link></li>
-                    <li><a><img src={Hotel2} alt="Info"/>Informacje</a></li>
-                </ul>
+                <div className='header'>
+                    <div className='header-top'>
+                        <h1>RoomFinder.com</h1>
+                        
+                    </div>
+                    <div className='header-center'>
+                        <ul className="nav-list">
+                            <li><a href="#"><img src={Home} alt="Home"/>Strona Główna</a></li>
+                            <li><Link to={'/'}><img src={Hotel2} alt="Hotel"/>Hotele</Link></li>
+                            <li><Link to={'/TwojeRezerwacja'} className='Now'><img src={YourReservation} alt="Reservation"/>Twoja Rezerwacja</Link></li>
+                            <li><a href="#"><img src={Information} alt="Info"/>Zasady umowy</a></li>
+                        </ul>
+                        <Link to={`/ulubione`} className='favouriteLink'>
+                            <p className='favouriteLinkP'>❤️</p>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </header>

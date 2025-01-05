@@ -12,62 +12,58 @@ import location from '../Image/location.png';
 function Favourite() {
 
     
-    const [favouriteHotel, setFavouriteHotel] = useState(() => {
-        const storedHotels = localStorage.getItem('Hotel');
-        const parsedHotels = storedHotels ? JSON.parse(storedHotels) : [];
-        return Array.isArray(parsedHotels) ? parsedHotels : [];
-    });
+    const ListOfFavourite = JSON.parse(localStorage.getItem('ListOfFavourite')) || []
+    console.log(ListOfFavourite)
 
-    useEffect(() => {
-        const favouriteId = localStorage.getItem('FavouritID');
-        console.log(favouriteId)
-        if (favouriteId) {
-            const selectedHotel = HotelData.find(hotel => hotel.id === parseInt(favouriteId));
-            if (selectedHotel) {
-                if (!favouriteHotel.some(hotel => hotel.id === selectedHotel.id)) {
-                    const updatedHotels = [...favouriteHotel, selectedHotel];
-                    setFavouriteHotel(updatedHotels);
-                    localStorage.setItem('Hotel', JSON.stringify(updatedHotels)); 
-                }
-            }
-        }
-    }, []); 
+    const dropFavourite = (index) => {
+            const updateList = ListOfFavourite.filter(id => id !== index)
+            localStorage.setItem('ListOfFavourite', JSON.stringify(updateList));
+            ListOfFavourite = updateList
+        
+    }
 
-    const showFavourite = (id) => {
-        return(
-            <div className='favourite-cart-box'>
-                <div className='favourite-cart'>
-                    <div className='favourite-cart-image'>
-                        <img src={id.photo} alt={id.name} />
-                    </div>
-                    <div className='favourite-cart-info'>
-                        <div className='favourite-cart-info-top'>
-                            <div className='favourite-cart-info-top-name'>
-                                <h4>{id.name}</h4>
+    const showFavourite = () => {
+        return HotelData.filter((hotel) => ListOfFavourite.includes(hotel.id))
+            .map((id) => {
+                return (
+                    <div className='favourite-cart-box' key={id.id}>
+                        <div className='favourite-cart'>
+                            <div className='favourite-cart-image'>
+                                <img src={id.photo} alt={id.name} />
                             </div>
-                            <div className='hotel-left-left'>
+                            <input
+                            type="submit"
+                            onClick={() => dropFavourite(id.id)}
+                            value="Usuń"
+                            ></input>
+                            <div className='favourite-cart-info'>
+                                <div className='favourite-cart-info-top'>
+                                    <div className='favourite-cart-info-top-name'>
+                                        <h4>{id.name}</h4>
+                                    </div>
+                                    <div className='hotel-left-left'>
                                         <div className='hotel-left-opinion'>
                                             <p className='hotel-guestRating'>{id.guestRating}</p>
                                             <p>{id.verbalRating}</p>
                                             <p className='hotel-opinion'>{id.reviewsCount} opini</p>
                                         </div>
-                               </div>
-                            <div className='favourite-cart-info-top-location'>
-                                <div>
-                                    <img src={location}></img>
-                                    <p>{id.location}</p>
+                                    </div>
+                                    <div className='favourite-cart-info-top-location'>
+                                        <div>
+                                            <img src={location} alt="location icon" />
+                                            <p>{id.location}</p>
+                                        </div>
+                                    </div>
                                 </div>
+                                <div className='favourite-cart-info-bottom'></div>
                             </div>
                         </div>
-                        <div className='favourite-cart-info-bottom'>
-
-                        </div>
                     </div>
-                </div>
-            </div>
-        );
+                );
+            });
+    };
 
-    }
+    
     const noFavourite = () => {
         return(
             <div>
@@ -85,6 +81,7 @@ function Favourite() {
                     <h1>RoomFinder.com</h1>
                 </div>
                 <div className='header-center'>
+                    
                     <ul className="header-center">
                         <li><a href="#"><img src={Home} alt="Home" />Strona Główna</a></li>
                         <li><Link to={'/'} className="reservation-link"><img src={Hotel2} alt="Reservation" />Hotel</Link></li>
@@ -103,8 +100,9 @@ function Favourite() {
                 <h2>Ulubione:</h2>
             </div>
             <div className='favourite-hotels'>
-                {favouriteHotel.length > 0 ? favouriteHotel.map(hotel => showFavourite(hotel)) : noFavourite()}    
+                {ListOfFavourite ? showFavourite() : noFavourite()}
             </div>
+            
         </div>
     </div>
     );

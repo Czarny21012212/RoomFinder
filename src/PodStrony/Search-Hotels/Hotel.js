@@ -71,7 +71,6 @@ export function Hotel() {
         }
     }, [localTrue]);
 
-    console.log(localStorage.getItem('People2'))
 
     
     useEffect(() =>{
@@ -201,7 +200,6 @@ export function Hotel() {
         );
     };
 
-    console.log(localStorage.getItem('PricePerNight'))
    
 
     const[RealvalueOfPrice, setRealValueOfPrice] = useState(1000);
@@ -446,6 +444,25 @@ export function Hotel() {
         );   
     }
 
+    const [listFavourite, setListFavourite] = useState(() => {
+        const savedFavourites = localStorage.getItem('ListOfFavourite');
+        return savedFavourites ? JSON.parse(savedFavourites): []
+    })
+    
+    function sendFavourite(index){
+        setListFavourite((prevList) => {
+            if(!prevList.includes(index.id)){
+                return [...prevList, index.id];
+            }
+            return prevList;
+            
+        })
+    }
+
+    useEffect(() => {
+        localStorage.setItem('ListOfFavourite', JSON.stringify(listFavourite));
+    }, [listFavourite]);
+
 
   return (
    <div className='all'>
@@ -634,7 +651,7 @@ export function Hotel() {
                             
                         </div>
                     </div>
-                     {hotelSort.map(index => {
+                     {hotelSort.map((index, idx) => {
 
                         const filterIf = (index.country === place &&
                             index.maxPeople >= people &&
@@ -647,7 +664,7 @@ export function Hotel() {
                     if(filterIf){
                         if(filterIf){
                             return(
-                                <div key={index.id} className='Cart'>
+                                <div key={idx} className='Cart'>
                                     
                                     <div className='Cart-items'>
                                     <div className='Cart-left'>
@@ -655,7 +672,7 @@ export function Hotel() {
                                                 <input
                                                     type='submit'
                                                     value="❤️"
-                                                    onClick={() => sendToFavourite(index.id)}
+                                                    onClick={() => sendFavourite(index)}
                                                 ></input>
                                             </div>
                                             <div className='Cart-center'>
@@ -716,13 +733,13 @@ export function Hotel() {
                                             <input
                                                         type='submit'
                                                         value="❤️"
-                                                        onClick={() => sendToFavourite(index.id)}
+                                                        onClick={() => sendFavourite(index)}
                                                     ></input>
                                         </div>
                                         <div className='Cart-center'>
                                             <div>
                                                 <h1>{index.name}</h1>   
-                                                <Footer></Footer>
+                                                
                                             </div>
                                             <div>
                                                 <p>{index.description}</p>
