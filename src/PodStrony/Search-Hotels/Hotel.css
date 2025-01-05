@@ -1,16 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 body{
     color: black;
+    font-family: "Open Sans", serif;
 }
 .Cart{
+    font-family: "Open Sans", serif;
     align-items: center;
     color: rgb(14, 14, 14);
-    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.185);
-    border: 0.1px solid rgb(187, 187, 187);
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.13);
     text-decoration: none;
-    border-radius: 15px;
+    border-radius: 6px;
     margin: 20px;
-    padding: 10px;
+    height: 260px;
+
 }
+
 
 .Cart-items{
     display: flex;
@@ -139,7 +143,7 @@ header{
     padding: 15px 10px;
     border: none;
     border-radius: 8px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Open Sans", serif;
     text-align: center;
 }
 
@@ -173,17 +177,15 @@ header{
 }
 .hotelSearch-center-left{
     width: 300px;
-    padding: 10px;
-    border-radius: 5px;
-
+    padding: 20px;
 }
 .sortBox1 p{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Open Sans", serif;
     margin: 6px;
     padding: 10px;
-    font-weight:lighter;
+    font-weight:500;
     font-size: 0.95rem;
-    color: #5a5a5a;
+    color: #313131;
 }
 .sortBox2{
     margin: 6px;
@@ -200,8 +202,7 @@ header{
     width: 800px;
     margin: 10px;
     padding: 10px;
-    border-radius: 5px;
-    border: 1px solid rgb(219, 219, 219) ;
+    border-radius: 5px;;
 }
 .Filter-checkbox{
     display: flex;
@@ -211,17 +212,23 @@ header{
     margin-top: 1px;
 }
 .Filter{
-    font-family:Arial, Helvetica, sans-serif;
-    color: rgb(31, 31, 31);
-    border: 1px solid rgba(0, 0, 0, 0.13);
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    font-family: "Open Sans", serif;
+    color: rgb(44, 44, 44);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.171);
+    font-size: 0.9rem;
+    padding-bottom: 20px;
 }
 .Filter h2{
     color: rgba(34, 34, 34, 0.911);
     font-size: 1rem;
 }
+.Filter label{
+    margin-top: 10px;
+}
 .submitFilter{
-    padding: 10px 20px;
+    padding: 15px 90px;
     border: none;
     color: white;
     background-color: #2196F3;
@@ -236,16 +243,45 @@ header{
 .FilterSubmit{
     text-align: center;   
 }
+.hotelSearch-center-left
+.Filter-items{
+    display: flex;
+    flex-direction: column;
+}
+.Filter div label{
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+.Filter-items div label{
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 5px;
+}
 input[type='checkbox']{
-    border: 2px solid #000;
+    appearance: none;
     width: 20px;
-    height: 15px;
+    height: 20px;
+    border: 1px solid #00000079;
+    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 input[type='checkbox']:checked{
-    font-size: 0.2rem;
+    background-color: #2196F3;
+    border: 2px solid #2196F3;
+    position: relative;
+}
+
+input[type='checkbox']:checked::after {
+    content: '✔';
+    color: white;
+    font-size: 14px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .Filter h1{
     font-size: 1.2rem;
@@ -274,21 +310,36 @@ input[type='checkbox']:checked{
 .sortButton{
     padding: 10px 15px;
     border: none;
-    color: rgb(44, 44, 44);
-    box-shadow: 0px 0px 5px  rgba(0, 0, 0, 0.212);
+    color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.041);
     border: 1px solid rgba(0, 0, 0, 0.425);
-    background-color: white;
+    background-color: #233a55;
     font-weight: 500;
     font-size: 0.9rem;
-    border-radius: 20px;
+    border-radius: 10px;
     cursor: pointer;
 }
 .sortButton:hover{
-    background-color: rgb(240, 240, 240);
+    padding: 10px 15px;
+    border: none;
+    color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.041);
+    border: 1px solid rgba(0, 0, 0, 0.425);
+    background-color: #233a55;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.Cart-center{
+    padding: 10px;
 }
 .Cart-center div h1{
     font-size: 1.2rem;
     color: #000;
+}
+.Cart-right{
+    padding: 10px;
 }
 .Cart-right-top{
     display: flex;
@@ -335,6 +386,7 @@ input[type='checkbox']:checked{
     font-size: 1.2rem;
     font-weight: bolder;
     margin-bottom: -10px;
+    color: #313131;
 }
 .bills{
     font-size: 0.7rem;
@@ -370,6 +422,13 @@ input[type='checkbox']:checked{
     background-color: #000000;
     padding: 2px 4px
 }
+.line-Cart{
+    margin-top: 30px;
+    margin-left: 10px;
+    height: 200px;
+    width: 2px;
+    background-color: #00000023;
+}
 .Cart-left input{
     position: absolute;
     margin: 10px;
@@ -401,8 +460,14 @@ input[type='checkbox']:checked{
 .pl{
 font-size: 2rem;
 }
-.info2{
+.info2 p{
+    padding: 15px 10px;
+    transform: translate(300%, 10%);
     position: absolute;
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: 200;
+    background-color: #1A2C42;
 }
 .sortBox1Day{
     font-weight: 200;
@@ -417,7 +482,11 @@ input[type="range"] {
     overflow: hidden;
     border-radius: 16px;
   }
-
+.Price span {
+    font-weight: lighter;
+    font-size: 0.9rem;
+    color: #707070;
+}
   input[type="range"]::-moz-range-track {
     height: 15px;
     background:#1a2c424b;
@@ -430,5 +499,5 @@ input[type="range"] {
     background-color: #ffffff;
     border-radius: 100%;
     border: 2px solid rgb(255, 255, 255);
-    box-shadow: -407px 0 0 400px #1a2c42d0;
+    box-shadow: -407px 0 0 400px #2196F3;
   }

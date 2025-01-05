@@ -9,6 +9,7 @@ import Home from '../Image/Home.png';
 import Hotel2 from '../Image/Hotel.png';
 import YourReservation  from '../Image/yourReservation.png';
 import Information  from '../Image/information.png';
+import Star from '../Image/star.png'
 
 export function Hotel() {
 
@@ -508,70 +509,87 @@ export function Hotel() {
                         <div className='Filter'>
                             <h2>Odległość od centrum</h2>
                             <div className='Filter-items'>
+                                <div>
+                                    <input 
+                                    type='checkbox' 
+                                    defaultChecked={localStorage.getItem('checkBox1') === 'true'} 
+                                    onChange={(event) => setCheckbox1(event.target.checked)} 
+                                    value={true}
+                                    />
+                                    <label>1km</label>
+                                </div>
                             
+                               <div>
                                 <input 
-                                type='checkbox' 
-                                defaultChecked={localStorage.getItem('checkBox1') === 'true'} 
-                                onChange={(event) => setCheckbox1(event.target.checked)} 
-                                value={true}
-                                />
-                                <label>1km</label><br></br>
-                            
-                                <input 
-                                type='checkbox'
-                                defaultChecked={localStorage.getItem('checkBox2') === 'true'} 
-                                onChange={(event) => setCheckbox2(event.target.checked)} 
-                                />
-                                <label>2km</label><br></br>
+                                    type='checkbox'
+                                    defaultChecked={localStorage.getItem('checkBox2') === 'true'} 
+                                    onChange={(event) => setCheckbox2(event.target.checked)} 
+                                    />
+                                    <label>2km</label>
+                               </div>
 
-                                <input 
-                                type='checkbox' 
-                                defaultChecked={localStorage.getItem('checkBox3') === 'true'}
-                                onChange={(event) => setCheckbox3(event.target.checked)} 
-                                />
-                                <label>Dalej</label>
+                                <div>
+                                    <input 
+                                    type='checkbox' 
+                                    defaultChecked={localStorage.getItem('checkBox3') === 'true'}
+                                    onChange={(event) => setCheckbox3(event.target.checked)} 
+                                    />
+                                    <label>Dalej</label>
+                                </div>
                             </div>
                         </div>
 
                         <div className='Filter'>
-
                             <h2>Ocena ogólna</h2>
 
-                            <input 
-                            type='checkbox' 
-                            defaultChecked={localStorage.getItem('ratingCheckBoxTrue1') === 'true'} 
-                            onChange={(event) => setRatingCheckbox1(event.target.checked)} 
-                            ></input>
-                            <label>5.0⭐</label><br></br>
+                            <div>
+                                <input 
+                                type='checkbox' 
+                                defaultChecked={localStorage.getItem('ratingCheckBoxTrue1') === 'true'} 
+                                onChange={(event) => setRatingCheckbox1(event.target.checked)} 
+                                ></input>
+                                <label>5.0 gwiazdki</label>
+                            </div>
 
-                            <input 
-                            type='checkbox' 
-                            defaultChecked={localStorage.getItem('ratingCheckBoxTrue2') === 'true'}  
-                            onChange={(event) => setRatingCheckbox2(event.target.checked)} 
-                            ></input>
-                            <label>4.5⭐</label><br></br>
+                            
 
-                            <input 
-                            type='checkbox' 
-                            defaultChecked={localStorage.getItem('ratingCheckBoxTrue3') === 'true'} 
-                            onChange={(event) => setRatingCheckbox3(event.target.checked)} 
-                            ></input>
-                            <label>4.0⭐</label><br></br>
+                            <div>
+                                <input 
+                                type='checkbox' 
+                                defaultChecked={localStorage.getItem('ratingCheckBoxTrue2') === 'true'}  
+                                onChange={(event) => setRatingCheckbox2(event.target.checked)} 
+                                ></input>
+                                <label>4.5 gwiazdki</label>
+                            </div>
+
+
+                            <div>
+                                <input 
+                                type='checkbox' 
+                                defaultChecked={localStorage.getItem('ratingCheckBoxTrue3') === 'true'} 
+                                onChange={(event) => setRatingCheckbox3(event.target.checked)} 
+                                ></input>
+                                <label>4.0 gwiazdki</label>
+                            </div>
                         </div>
 
                         <div className='Filter'>
                             <h2>Blisko plarzy</h2>
-                            <input
-                            type='checkbox'
-                            defaultChecked={localStorage.getItem('beachCheckbox') === 'true'}
-                            onChange={(event) => setbeachCheckbox1(event.target.checked)}
-                            ></input><label>Tak</label><br></br>
+                            <div>
+                                <input
+                                type='checkbox'
+                                defaultChecked={localStorage.getItem('beachCheckbox') === 'true'}
+                                onChange={(event) => setbeachCheckbox1(event.target.checked)}
+                                ></input><label>Tak</label><br></br>
 
-                            <input
-                            type='checkbox'
-                            defaultChecked={localStorage.getItem('beachCheckbox') === 'false'}
-                            onChange={(event) => setbeachCheckbox2(event.target.checked)}
-                            ></input><label>Nie</label><br></br>
+                            </div>
+                            <div>
+                                <input
+                                type='checkbox'
+                                defaultChecked={localStorage.getItem('beachCheckbox') === 'false'}
+                                onChange={(event) => setbeachCheckbox2(event.target.checked)}
+                                ></input><label>Nie</label><br></br>
+                            </div>
                         </div>
 
                         <div className='FilterSubmit'>
@@ -633,7 +651,7 @@ export function Hotel() {
                                     
                                     <div className='Cart-items'>
                                     <div className='Cart-left'>
-                                                <img src={index.photo} style={{width: '250px',height: '250px', borderRadius: '10px', objectFit: 'cover' }}></img>
+                                                <img src={index.photo} style={{width: '250px',height: '260px', borderRadius: '6px 0px 0px 6px',objectFit: 'cover' }}></img>
                                                 <input
                                                     type='submit'
                                                     value="❤️"
@@ -647,6 +665,9 @@ export function Hotel() {
                                                 <div>
                                                     <p>{index.description}</p>
                                                 </div>
+                                            </div>
+                                            <div className='line-Cart'>
+
                                             </div>
                                             <div className='Cart-right'>
                                                 <div className='Cart-right-top'>
@@ -666,8 +687,7 @@ export function Hotel() {
     
                                                 <div className='Cart-right-bottom'>
                                                         <div>
-                                                            <p className='Price'>{people <= 0 ? index.pricePerNight  * DayOfTrip  : (!localTrue ? index.pricePerNight * people * DayOfTrip : index.pricePerNight * localPrice)}
-                                                            zł</p>
+                                                            <p className='Price'><span>od</span> {people <= 0 ? index.pricePerNight  * DayOfTrip  : (!localTrue ? index.pricePerNight * people * DayOfTrip : index.pricePerNight * localPrice)} zł</p>
                                                             <p className='bills'>Zawiera opłaty i podatki</p>
                                                             <Link to={`/hotel/${index.id}`}>
                                                                     <input
@@ -755,7 +775,6 @@ export function Hotel() {
                 </div>
                 </div>
             </div>
-            
         </div>    
         <Footer></Footer>
    </div>
