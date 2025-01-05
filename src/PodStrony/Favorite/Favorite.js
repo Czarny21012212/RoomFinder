@@ -12,14 +12,14 @@ import location from '../Image/location.png';
 function Favourite() {
 
     
-    const ListOfFavourite = JSON.parse(localStorage.getItem('ListOfFavourite')) || []
+    const [ListOfFavourite, setListOfFavourite] = JSON.parse(localStorage.getItem('ListOfFavourite')) || [];
+
     console.log(ListOfFavourite)
 
     const dropFavourite = (index) => {
             const updateList = ListOfFavourite.filter(id => id !== index)
             localStorage.setItem('ListOfFavourite', JSON.stringify(updateList));
-            ListOfFavourite = updateList
-        
+            setListOfFavourite(updateList)
     }
 
     const showFavourite = () => {
