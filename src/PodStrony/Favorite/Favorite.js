@@ -7,14 +7,21 @@ import Information  from '../Image/information.png';
 import { useEffect, useState } from 'react';
 import './Favorite.css';
 import location from '../Image/location.png';
+import Delete from '../Image/delete.png'
 
 
 function Favourite() {
 
     
-    const [ListOfFavourite, setListOfFavourite] = JSON.parse(localStorage.getItem('ListOfFavourite')) || [];
+    const [ListOfFavourite, setListOfFavourite] = useState([])
+
+   useEffect(() => {
+    setListOfFavourite(JSON.parse(localStorage.getItem('ListOfFavourite')) || [])
+   }, [])
 
     console.log(ListOfFavourite)
+
+    const ListOfFavouriteLenght = ListOfFavourite.length
 
     const dropFavourite = (index) => {
             const updateList = ListOfFavourite.filter(id => id !== index)
@@ -28,14 +35,13 @@ function Favourite() {
                 return (
                     <div className='favourite-cart-box' key={id.id}>
                         <div className='favourite-cart'>
-                            <div className='favourite-cart-image'>
+                            <div className='favourite-cart-image' >
                                 <img src={id.photo} alt={id.name} />
                             </div>
-                            <input
-                            type="submit"
-                            onClick={() => dropFavourite(id.id)}
-                            value="Usuń"
-                            ></input>
+                            <div onClick={() => dropFavourite(id.id)} className='Delete'>
+                                <img src={Delete}></img>
+                            </div>
+
                             <div className='favourite-cart-info'>
                                 <div className='favourite-cart-info-top'>
                                     <div className='favourite-cart-info-top-name'>
@@ -66,7 +72,7 @@ function Favourite() {
     
     const noFavourite = () => {
         return(
-            <div>
+            <div className='noFavourite'>
                 <h1>Nie masz ulubionych hoteli</h1>
             </div>
         );
@@ -96,11 +102,21 @@ function Favourite() {
         </header>
         
         <div className='favourite-hotels-box'>
-            <div>
-                <h2>Ulubione:</h2>
+            <div className='favourite-hotels-box-top'>
+                <div>
+                    <h2>Mój kolejny Wyjazd</h2>
+                    <p>  ❤️ Liczba ulubionych obiektów: {ListOfFavouriteLenght}  </p>
+                </div>
+                <div className='anotherTrip-box'>
+                    <h3>Zaplanuj z nami swoją własną podróż</h3>
+                    <p>Odkryj najlepsze miejsca na wakacje i zarezerwuj swój pobyt już dziś!</p>
+                </div>
+            </div>
+            <div className='favourite-hotels-box-line'>
+
             </div>
             <div className='favourite-hotels'>
-                {ListOfFavourite ? showFavourite() : noFavourite()}
+                {ListOfFavouriteLenght != 0  ? showFavourite() : noFavourite()}
             </div>
             
         </div>
