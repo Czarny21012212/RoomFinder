@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import './Favorite.css';
 import location from '../Image/location.png';
 import Delete from '../Image/delete.png'
+import Heart from '../Image/Heart.png'
 
 
 function Favourite() {
@@ -95,7 +96,7 @@ function Favourite() {
                         <li><a href="#"><img src={Information} alt="Info" />Zasady umowy</a></li>
                     </ul>
                     <Link to={`/ulubione`} className='favouriteLink'>
-                            <p className='favouriteLinkP'>❤️</p>
+                            <p className='favouriteLinkP'><img className='heart' src={Heart}></img></p>
                         </Link>
                 </div>
             </div>
@@ -105,7 +106,7 @@ function Favourite() {
             <div className='favourite-hotels-box-top'>
                 <div>
                     <h2>Mój kolejny Wyjazd</h2>
-                    <p>  ❤️ Liczba ulubionych obiektów: {ListOfFavouriteLenght}  </p>
+                    <p>Liczba ulubionych obiektów: {ListOfFavouriteLenght}  </p>
                 </div>
                 <div className='anotherTrip-box'>
                     <h3>Zaplanuj z nami swoją własną podróż</h3>

@@ -5,13 +5,13 @@ import YourReservation  from '../Image/yourReservation.png';
 import Information  from '../Image/information.png';
 import './Reservation.css'
 import { useEffect, useState } from 'react';
-import { setDay } from 'date-fns';
+import Heart from '../Image/Heart.png'
 import { Link } from 'react-router-dom';
 
 
 function Reservation() {
 
-//Search the Hotel in Json
+
 const id = localStorage.getItem('Hotel')
 const hotel = HotelData.find(hotel => hotel.id === parseInt(id));
 
@@ -172,7 +172,7 @@ useEffect(() => {
                             <li><a href="#"><img src={Information} alt="Info"/>Zasady umowy</a></li>
                         </ul>
                         <Link to={`/ulubione`} className='favouriteLink'>
-                            <p className='favouriteLinkP'>❤️</p>
+                            <p className='favouriteLinkP'><img className='heart' src={Heart}></img></p>
                         </Link>
                     </div>
                 </div>

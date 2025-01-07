@@ -95,6 +95,9 @@
 .Delete:hover{
     transform: scale(1.05);
 }
+.heart{
+    width: 40px;
+}
 .Delete img{
     width: 30px;
     background-color: rgb(255, 0, 0);

@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import YourReservation  from '../Image/yourReservation.png';
 import Information  from '../Image/information.png';
+import Heart from '../Image/Heart.png'
 
 function Reservation() {
 
@@ -234,7 +235,7 @@ const Pay = () => {
                             <li><a href="#"><img src={Information} alt="Info"/>Zasady umowy</a></li>
                         </ul>
                         <Link to={`/ulubione`} className='favouriteLink'>
-                            <p className='favouriteLinkP'>❤️</p>
+                            <p className='favouriteLinkP'><img className='heart' src={Heart}></img></p>
                         </Link>
                     </div>
                 </div>

@@ -9,7 +9,7 @@ import Home from '../Image/Home.png';
 import Hotel2 from '../Image/Hotel.png';
 import YourReservation  from '../Image/yourReservation.png';
 import Information  from '../Image/information.png';
-import Star from '../Image/star.png'
+import Heart from '../Image/Heart.png'
 
 export function Hotel() {
 
@@ -38,7 +38,6 @@ export function Hotel() {
 
     const Search = () => {
         setSearch(true)
-   
     }
 
     useEffect(() => {
@@ -190,13 +189,12 @@ export function Hotel() {
     
     const filterHotels = () => {
         return HotelData.filter(index =>
-            index.country === place &&
+            (index.country === place &&
             index.maxPeople >= people &&
-            search &&
             index.pricePerNight * people * DayOfTrip <= (localStorage.getItem('PricePerNight') ? Number(localStorage.getItem('PricePerNight')) : 10000) &&
             (!distanceToCenterTrue || index.distanceToCenter === Number(distanceToCenter)) &&
             (!ratingTrue || index.rating === ratingToFiltr) &&
-            (!beachToFiltr || index.isBeachfront === true)
+            (!beachToFiltr || index.isBeachfront === true)) && search
         );
     };
 
@@ -458,7 +456,6 @@ export function Hotel() {
             
         })
     }
-
     useEffect(() => {
         localStorage.setItem('ListOfFavourite', JSON.stringify(listFavourite));
     }, [listFavourite]);
@@ -482,7 +479,7 @@ export function Hotel() {
                         
                     </ul>
                     <Link to={`/ulubione`} className='favouriteLink'>
-                        <p className='favouriteLinkP'>❤️</p>
+                        <p className='favouriteLinkP'><img className='heart' src={Heart}></img></p>
                     </Link>
                 </div>
             
