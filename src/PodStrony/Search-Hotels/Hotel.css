@@ -14,6 +14,16 @@ body{
     height: 260px;
 
 }
+.header-bottom-items-img {
+    width: 40px;
+    position: absolute;
+    margin-top: 12px;
+    margin-left: -210px;
+    filter: contrast(30%);
+}
+.header-bottom-items-img:hover{
+    filter: contrast(50%);
+}
 
 
 .Cart-items{
@@ -32,7 +42,7 @@ header{
 
 .header-top {  
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     text-align: center;
     align-items: center;
     align-content: center;
@@ -58,8 +68,8 @@ header{
 }
 .header-center{
     display: flex;
+    justify-content: center;
     gap: 50px;
-    margin-left: 10px;
 }
 .favouriteLink{
     display: flex;
@@ -86,7 +96,7 @@ header{
     align-items: center;
     color: white;
     text-decoration: none;
-    border-radius: 10px;
+    border-radius: 6px;
     gap: 4px;
 }
 
@@ -131,49 +141,61 @@ header{
     padding: 8px;
     gap: 4px;
     background-color: #068bf72d;
-    border-radius: 10px;
+    border-radius: 6px;
     cursor: pointer;
 }
 .header-center ul li img {
     width: 20px;
 }
-.header-bottom{
+.header-bottom {
     display: flex;
     justify-content: center;
     margin: 50px;
-}
-.header-bottom-items{
-    padding: 2px;
-    border-radius: 5px;
-    background-color: rgb(231, 200, 22);
-    box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.219);
-}
-.header-bottom-items input{
-    margin: 3px;
-    padding: 15px 10px;
-    border: none;
-    border-radius: 8px;
-    font-family: "Open Sans", serif;
-    text-align: center;
+    background-color: #313131;
+    border-radius: 10px;
 }
 
-.header-bottom-items input[type="submit"]{
+.header-bottom-items {
+    padding: 1px;
+    border-radius: 6px;
+    background-color: #cca72d;
+    box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.082);
+}
+
+.header-bottom-items input {
+    font-weight: 500;
+    margin: 3px;
+    padding: 20px 25px;
+    border: none;
+    border-radius: 3px;
+    font-family: "Open Sans", serif;
+    text-align: center;
+    background-color: #FFFFFF;
+    color: #1A2C42;
+    
+}
+
+.header-bottom-items input[type="submit"] {
+    font-weight: 600;
     margin: 2px;
-    padding: 5px;
+    padding: 20px 25px;
     border: none;
     border-radius: 5px;
-    background-color: #068bf7;
-    color: white;
-    padding: 15px 20px;
+    background-color: #1f455f;
+    color: rgb(255, 255, 255);
     cursor: pointer;
+    transition: all 300ms ease-in-out;
 }
-.header-bottom-items input[type="submit"]:hover{
-    background-color: #068bf7cb;
+
+.header-bottom-items input[type="submit"]:hover {
+    background-color: #25506d;
 }
-.hotelSearch{
+
+.hotelSearch {
     display: flex;
     justify-content: center;
 }
+
 .hotelSearch-center{
     display: flex;
     justify-content: space-between;

@@ -10,6 +10,9 @@ import Hotel2 from '../Image/Hotel.png';
 import YourReservation  from '../Image/yourReservation.png';
 import Information  from '../Image/information.png';
 import Heart from '../Image/Heart.png'
+import Bed from '../Image/bed.png'
+import Group from '../Image/group.png'
+import Calendar from '../Image/calendar.png'
 
 export function Hotel() {
 
@@ -472,7 +475,7 @@ export function Hotel() {
                 </div>
                 <div className='header-center'>
                     <ul className="nav-list">
-                        <li><a href="#"><img src={Home} alt="Home"/>Strona Główna</a></li>
+                        <li><Link to={'/Home'} href="#"><img src={Home} alt="Home"/>Strona Główna</Link></li>
                         <li><a href="#" className='Now'><img src={Hotel2} alt="Hotel"/>Hotele</a></li>
                         <li><Link to={'/TwojeRezerwacja'} className="reservation-link"><img src={YourReservation} alt="Reservation"/>Twoja Rezerwacja</Link></li>
                         <li><a href="#"><img src={Information} alt="Info"/>Zasady umowy</a></li>
@@ -482,14 +485,15 @@ export function Hotel() {
                         <p className='favouriteLinkP'><img className='heart' src={Heart}></img></p>
                     </Link>
                 </div>
-            
             </div>
                 <div className='header-bottom'>
                     <div className='header-bottom-items'>
-                        <input type='input' placeholder='Dokąd się wybierasz?'  defaultValue={localCountry} onChange={(event) => setPlace(event.target.value)}></input>
-                        <input type='date' placeholder='Od Kiedy?' defaultValue={localTrue ? localStart : ''} onChange={(event) => setStart(event.target.value)}></input>
+                        <input type='input' placeholder='Dokąd?'  defaultValue={localCountry} onChange={(event) => setPlace(event.target.value)}></input>
+                        <img src={Bed} className='header-bottom-items-img'></img>
+                        <input type='date' placeholder='Do kiedy?' defaultValue={localTrue ? localStart : ''} onChange={(event) => setStart(event.target.value)}></input>
                         <input type='date' placeholder='Do kiedy?' defaultValue={localEnd} onChange={(event) => setEnd(event.target.value)}></input>
-                        <input type='Number' placeholder='Ile osób podróżuje?' defaultValue={localPeople} onChange={(event) => setPeople(event.target.value)}></input>
+                        <input type='Number' placeholder='Ile osób?' defaultValue={localPeople} onChange={(event) => setPeople(event.target.value)}></input>
+                        <img src={Group} className='header-bottom-items-img'></img>
                         <input type='submit' value="Szukaj" onClick={Search}></input>
                     </div>
                 </div>
