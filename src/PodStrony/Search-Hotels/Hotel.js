@@ -12,7 +12,8 @@ import Information  from '../Image/information.png';
 import Heart from '../Image/Heart.png'
 import Bed from '../Image/bed.png'
 import Group from '../Image/group.png'
-import Calendar from '../Image/calendar.png'
+import Star from '../Image/star.png'
+
 
 export function Hotel() {
 
@@ -463,7 +464,15 @@ export function Hotel() {
         localStorage.setItem('ListOfFavourite', JSON.stringify(listFavourite));
     }, [listFavourite]);
 
-
+    const countofStar = (count) => {
+        for(let i = 0; i <= 5; i++){
+            return(
+                <div key={i} index={i}>
+                    <img style={{width: '20px'}} src={Star}></img>
+                </div>
+            );
+        }
+    }
   return (
    <div className='all'>
         <header>
@@ -664,6 +673,7 @@ export function Hotel() {
                         const filterIf2 = (index.country === place &&index.maxPeople >= people && index.pricePerNight * people <= RealvalueOfPrice &&(!distanceToCenterTrue || index.distanceToCenter === distanceToCenter) && (!ratingTrue || index.rating === ratingToFiltr) && (!beachToFiltr || index.isBeachfront === true))                       
                     if(filterIf){
                         if(filterIf){
+                            const countStar = index.rating
                             return(
                                 <div key={idx} className='Cart'>
                                     
@@ -683,6 +693,13 @@ export function Hotel() {
                                                 <div>
                                                     <p>{index.description}</p>
                                                 </div>
+                                                <div>
+                                                    <p>{index.location}</p>
+                                                </div>
+                                                <div style={{backgroundColor: "red"}}>
+                                                    {countofStar(index.rating)}
+                                                </div>
+                                                
                                             </div>
                                             <div className='line-Cart'>
 

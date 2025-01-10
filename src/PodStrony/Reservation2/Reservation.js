@@ -27,6 +27,7 @@ function Reservation() {
     const [expirationDateOfCard, setExpirationDateOfCard] = useState('');
     const [cv, setCv] = useState('');
     const [payCheck, setPayCheck] = useState(false);
+    const [payError, setPayError] = useState(null)
 
     localStorage.setItem('SpecialWishes-check2', localStorage.getItem('specialWishes'));
     localStorage.setItem('email-check-2', localStorage.getItem('email'));
@@ -58,7 +59,7 @@ const Pay = () => {
    
     
     const date1 = new Date(localStorage.getItem('checkIn-Reservation'));
-    localStorage.setItem('date-Reservation-check2', formatDate(date1));
+    localStorage.setItem('date-Reservation-check2', formatDate(now));
 
     if (numberOfCart.trim().length === 16 && !isNaN(cartDate) && cartDate > now && cv.trim().length === 3) {
 
@@ -69,14 +70,15 @@ const Pay = () => {
             setPayCheck(true);
             localStorage.setItem('payCheck', true);
             console.log("Wszytko poszło zgodznie z planem")
+            setPayError(null)
         }, 300)
 
         comunication();
     } else {
         setPayCheck(false);
-        localStorage.setItem('payCheck', false);
         localStorage.setItem('Reservaion-hotelName', false);
-        console.log("Wszytko poszło żle")
+        console.log("Wszytko poszło żle") 
+        setPayError("Płatoność się niepowiodła sprawdz poprawnośc danych")
     }
 };
     const specialWishes = () => {
@@ -146,7 +148,7 @@ const Pay = () => {
                         <div className='section-2'>
                             <div className='specialWishes-box'>
                             <h3>Specjalne Życzenia</h3>
-                            {localStorage.getItem('specialWishes') == '' ? specialWishes() : 'Brak'}
+                            {localStorage.getItem('specialWishes') == 'null' ? 'Brak' : localStorage.getItem('specialWishes')}
                             {comunication}
                             </div>
                         </div>
@@ -196,6 +198,9 @@ const Pay = () => {
                                         className='payment-box-input'
                                         onChange={(event) => setCv(event.target.value)}
                                     />
+                                    <div>
+                                        {payError ? (<p style={{color: 'white'}}className='Error'>{payError ? payError : null}</p>) : ''}
+                                    </div>
                                     <input
                                         value="Zapłać"
                                         type='submit'

@@ -10,6 +10,9 @@ import Hotel2 from '../Image/Hotel.png';
 import YourReservation  from '../Image/yourReservation.png';
 import Information  from '../Image/information.png';
 import Heart from '../Image/Heart.png'
+import Bed from '../Image/bed.png'
+import Group from '../Image/group.png'
+
 
 function HomePage() {
 
@@ -92,13 +95,15 @@ function HomePage() {
                     </Link>
                     </div>
                     <div className='header-bottom'>
-                        <div className='header-bottom-items'>
-                            <input type='input' placeholder='Dokąd się wybierasz?'  defaultValue={localCountry} onChange={(event) => setPlace(event.target.value)}></input>
-                            <input type='date' placeholder='Od Kiedy?' defaultValue={localTrue ? localStart : ''} onChange={(event) => setStart(event.target.value)}></input>
-                            <input type='date' placeholder='Do kiedy?' defaultValue={localEnd} onChange={(event) => setEnd(event.target.value)}></input>
-                            <input type='Number' placeholder='Ile osób podróżuje?' defaultValue={localPeople} onChange={(event) => setPeople(event.target.value)}></input>
-                            <input type='submit' value="Szukaj" onClick={Search}></input>
-                        </div>
+                    <div className='header-bottom-items'>
+                        <input type='input' placeholder='Dokąd?'  defaultValue={localCountry} onChange={(event) => setPlace(event.target.value)}></input>
+                        <img src={Bed} className='header-bottom-items-img'></img>
+                        <input type='date' placeholder='Do kiedy?' defaultValue={localTrue ? localStart : ''} onChange={(event) => setStart(event.target.value)}></input>
+                        <input type='date' placeholder='Do kiedy?' defaultValue={localEnd} onChange={(event) => setEnd(event.target.value)}></input>
+                        <input type='Number' placeholder='Ile osób?' defaultValue={localPeople} onChange={(event) => setPeople(event.target.value)}></input>
+                        <img src={Group} className='header-bottom-items-img'></img>
+                        <input type='submit' value="Szukaj" onClick={Search}></input>
+                    </div>
                     </div>
                 </div>
             </div>

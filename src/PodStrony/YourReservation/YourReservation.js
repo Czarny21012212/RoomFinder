@@ -143,7 +143,7 @@ function Reservation() {
                         <div className='section-2'>
                             <div className='specialWishes-box'>
                             <h3>Specjalne Życzenia</h3>
-                            {localStorage.getItem('SpecialWishes-check2') == '' ? specialWishes() : 'Brak'}
+                            {localStorage.getItem('specialWishes') == 'null' ? 'Brak' : localStorage.getItem('specialWishes')}
                             </div>
                         </div>
                         <div className='yourReservation-section2'>
