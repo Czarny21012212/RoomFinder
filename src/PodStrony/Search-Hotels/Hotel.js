@@ -465,13 +465,15 @@ export function Hotel() {
     }, [listFavourite]);
 
     const countofStar = (count) => {
-        for(let i = 0; i <= 5; i++){
-            return(
+        const stars = []
+        for(let i = 1; i <= count; i++){
+            stars.push(
                 <div key={i} index={i}>
                     <img style={{width: '20px'}} src={Star}></img>
                 </div>
             );
         }
+        return stars 
     }
   return (
    <div className='all'>
@@ -696,7 +698,7 @@ export function Hotel() {
                                                 <div>
                                                     <p>{index.location}</p>
                                                 </div>
-                                                <div style={{backgroundColor: "red"}}>
+                                                <div className='star-box'>
                                                     {countofStar(index.rating)}
                                                 </div>
                                                 

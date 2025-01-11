@@ -22,8 +22,8 @@ import login from '../Image/enter.png'
 import logout from '../Image/logout.png'
 import family2 from '../Image/family2.png'
 import visa from '../Image/visa.png'
-import blik from '../Image/blik.jpg'
 import pet from '../Image/pet.png';
+import Heart from '../Image/Heart.png'
 
 
 
@@ -69,7 +69,7 @@ function Info() {
                             <li><a href="#"><img src={Information} alt="Info"/>Zasady umowy</a></li>
                         </ul>
                         <Link to={`/ulubione`} className='favouriteLink'>
-                            <p className='favouriteLinkP'>❤️</p>
+                            <p className='favouriteLinkP'><img className='heart' src={Heart}></img></p>
                         </Link>
                     </div>
                 </div>
