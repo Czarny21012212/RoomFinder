@@ -6,6 +6,8 @@ import EccoHoliday from '../Image/ecco-holiday.jpg'
 import Anex from '../Image/anex.png'
 import Regobis from '../Image/regobis.jpg'
 import Exim from '../Image/exim.jpg'
+
+
 export function Footer() {
     return (
         <div className="all-footer">

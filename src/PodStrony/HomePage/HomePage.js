@@ -12,6 +12,12 @@ import Information  from '../Image/information.png';
 import Heart from '../Image/Heart.png'
 import Bed from '../Image/bed.png'
 import Group from '../Image/group.png'
+import './HomePage.css'
+
+import card from '../Image/money.png'
+import global from '../Image/global.png'
+import card2 from '../Image/card.png'
+import verified from '../Image/verified.png'
 
 
 function HomePage() {
@@ -108,6 +114,112 @@ function HomePage() {
                 </div>
             </div>
         </header>
+        <div className='HomePageSections'>
+            <div className='HomePageSections-box'>
+
+                <div className='HomePageSection1'>
+                    <div className='HomePageSection1-Box'>
+                        <div>
+                            <img src={card}></img>
+                            <p>gwaracja ceny organizatora</p>
+                        </div>
+
+                        <div>
+                            <img src={global}></img>
+                            <p>Oferty od około 100 biur podrózy</p>
+                        </div>
+
+                        <div>
+                            <img src={card2}></img>
+                            <p>odroczone płatności i raty</p>
+                        </div>
+
+                        <div>
+                            <img src={verified}></img>
+                            <p>Darmowa promesa pewne wakacje</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div className='HomePageSection2'>
+                    <div className='HomePageSection2-box'>
+                        <h2>Popularne Kierunki</h2>
+                        <div className='HomePageSection2-context'>
+                            <div className='HomePageSection2-contextItem'>
+                                <p>Kreta</p>
+                                <p className='HomePageSection2-contextItemSpecial'>34 045 opini</p>
+                            </div>
+                            <div className='HomePageSection2-contextLine'></div>
+                            <div className='HomePageSection2-contextItem'>
+                                <p>Grecja</p>
+                                <p className='HomePageSection2-contextItemSpecial'>32 045 opini</p>
+                            </div>
+                            <div className='HomePageSection2-contextLine'></div>
+                            <div className='HomePageSection2-contextItem'> 
+                                <p>Hiszpania</p>
+                                <p className='HomePageSection2-contextItemSpecial'>30 045 opini</p>
+                            </div>
+                            <div className='HomePageSection2-contextLine'></div>
+                            <div className='HomePageSection2-contextItem'>
+                                <p>Wybrzeże Eqejskie</p>
+                                <p className='HomePageSection2-contextItemSpecial'>29 045 opini</p>
+                            </div>
+                            <div className='HomePageSection2-contextLine'></div>
+                            <div className='HomePageSection2-contextItem'>
+                                <p>Rodos</p>
+                                <p className='HomePageSection2-contextItemSpecial'>28 045 opini</p>
+                            </div>
+                            <div className='HomePageSection2-contextLine'></div>
+                            <div className='HomePageSection2-contextItem'>
+                                <p>Turcja</p>
+                                <p className='HomePageSection2-contextItemSpecial'>26 045 opini</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className='HomePageSection3'>
+                    <h2>Pomysły na Urlop</h2>
+                    <div className='HomePageSection3-context'>
+                        <div className='HomePageSection3-contextTop'>
+                            <div>
+                                <img src='https://www.zwiedzaczek.com.pl/wp-content/uploads/syberia.jpg'></img>
+                                <p className='HomePageSection3-contextTopText'>Syberia</p>
+                            </div>
+                            <div>
+                                <img src='https://www.itaka.pl/blog/wp-content/uploads/2019/08/nosy-be-madagaskar-ocean-wypoczynek-rajska-pla%C5%BCa-egzotyczne-wakacje-11.jpg'></img>
+                                <p className='HomePageSection3-contextTopText'>Madagaskar</p>
+                            </div>
+                            <div>
+                                <img src='https://traveltalks.esky.pl/wp-content/uploads/2024/07/Alanya-Turcja-%C2%A9-Shutterstock-1200x680.jpg'></img>
+                                <p className='HomePageSection3-contextTopText'>Turcja</p>
+                            </div>
+                        </div>
+                        <div className='HomePageSection3-contextbottom'>
+                        <div>
+                                <p className='HomePageSection3-contextbottomText'>Grecja</p>
+                                <img src='https://prom-janowiec.pl/_next/image?url=https%3A%2F%2Fprom-janowiec.pl%2Fstorage%2Fmedia%2F91c79b27-e056-4886-b6e4-abcf2dcd17a0%2Fthumbnail%2FLMjNthFOxtTQrIs5Iw5bu22LpjCFpi%2Fbfe1f8669dba7804e9e526f073e653d7.webp&w=1080&q=75'></img>
+                           </div>
+                            <div>
+                                <p className='HomePageSection3-contextbottomText'>Egipt</p>
+                                <img src='https://fly.pl/wp-content/uploads/2023/08/egipt.jpg'></img>
+                           </div>
+                            <div>
+                                <p className='HomePageSection3-contextbottomText'>Hawaje</p>
+                                <img src='https://cdn.podroze.smcloud.net/t/photos/t/143353/na-wyspie-kauai-jest-niemal-80-km-piaszczystych-pl_1118242.jpg'></img>
+                           </div>
+                           <div>
+                                <p className='HomePageSection3-contextbottomText'>Tunezja</p>
+                                <img src='https://fly.pl/wp-content/uploads/2017/03/Tunezja.jpg'></img>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
         
    </div>
   );

@@ -1,5 +1,6 @@
 import './Info.css';
 import { Link, useParams } from 'react-router-dom';
+import { Footer } from '../Footer/footer.js'
 import HotelData from '../Json/Hotel.json'; 
 import Home from '../Image/Home.png';
 import Hotel2 from '../Image/Hotel.png';
@@ -450,10 +451,12 @@ function Info() {
                         </div>
                         
                     </div>
-
                 </div>
+                
             </div>
+           
         </div>
+        <Footer></Footer>
     </div>
     
   );
