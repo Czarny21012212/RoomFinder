@@ -10,6 +10,56 @@
     width: 1100px;
 
 }
+/* Section */
+
+.HomePageSection-Box {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.HomePageSection-Box h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #1358f9; 
+    background-image: linear-gradient(150deg, #009bf5 33%, #15ff00 103%); 
+    background-clip: text; 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+}
+
+
+.HomePageSection-Box p {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.start-adventure-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #e6e6e6;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.start-adventure-button:hover {
+    background-color: #16324F;
+    transform: translateY(-3px);
+}
+
+.start-adventure-button:active {
+    background-color: #0F1E2D;
+    transform: translateY(0);
+}
+
+
 
 /* Section 1 */
 
@@ -28,11 +78,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+    width: 400px;
 }
 .HomePageSection1-Box p {
     font-size: 0.8rem;
-    font-weight: 500;
+    font-weight: 400;
 }
 .HomePageSection1-Box img {
     align-items: center;
@@ -67,7 +117,7 @@
 }
 .HomePageSection2-context div{
     text-align: center;
-    font-weight: 500;
+    font-weight: 600;
 }
 .HomePageSection2-contextItem{
     width: 150px;
@@ -88,24 +138,68 @@
     color: rgb(43, 43, 43);
 }
 .HomePageSection3-contextTop img{
-    width: 350px;
+    width: 355px;
     height: 230px;
-    border-radius: 10px;
+    border-radius: 4px;
     object-fit: cover;
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 60%, rgb(0, 0, 0) 100%);
+    -webkit-mask-image: radial-gradient(circle, rgb(226, 24, 24) 60%, rgb(0, 0, 0) 100%);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: cover;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: cover;
+    filter: brightness(0.6); 
+    transition: all 300ms ease-in-out;
+}
+.HomePageSection3-contextTop img:hover{
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 10%, rgb(0, 0, 0) 10%);
+    -webkit-mask-image: radial-gradient(circle, rgb(226, 24, 24) 10%, rgb(0, 0, 0) 10%);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: cover;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: cover;
+    filter: brightness(0.9); 
 }
 .HomePageSection3-contextTop{
     display: flex;
     justify-content: space-between;
     width: 1100px;
+
 }
-.HomePageSection3-contextbottom img{
-    width: 250px;
+.HomePageSection3-contextbottom img {
+    width: 260px;
     height: 200px;
-    border-radius: 10px;
+    border-radius: 4px;
     object-fit: cover;
-
-
+    transition: all 300ms ease-in-out;
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 60%, rgb(0, 0, 0) 100%);
+    -webkit-mask-image: radial-gradient(circle, rgb(226, 24, 24) 60%, rgb(0, 0, 0) 100%);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: cover;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: cover;
+    filter: brightness(0.6); 
 }
+.HomePageSection3-contextbottom img:hover{
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 10%, rgb(0, 0, 0) 10%);
+    -webkit-mask-image: radial-gradient(circle, rgb(226, 24, 24) 10%, rgb(0, 0, 0) 10%);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: cover;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: cover;
+    filter: brightness(0.9); 
+}
+
+
+
 .HomePageSection3-contextbottom{
     display: flex;
     justify-content: space-between;
@@ -114,20 +208,21 @@
 }
 .HomePageSection3-contextbottomText{
     position: absolute;
-    margin-top: 130px;
+    margin-top: -50px;
     color: rgb(255, 255, 255);
     font-size: 2rem;
     font-weight: 700;
     margin-left: 20px;
+    font-size: 1.6rem;
 }
 .HomePageSection3-contextTopText{
     position: absolute;
-    margin-top: -70px;
+    margin-top: -60px;
     color: rgb(255, 255, 255);
     font-size: 2rem;
     font-weight: 700;
     margin-left: 20px; 
-    text-shadow: 0px 0px 15px   black;
+    font-size: 1.6rem;
 }
 
 

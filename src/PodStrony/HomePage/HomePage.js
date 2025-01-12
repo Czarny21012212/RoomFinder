@@ -116,7 +116,10 @@ function HomePage() {
         </header>
         <div className='HomePageSections'>
             <div className='HomePageSections-box'>
-
+            <div className="HomePageSection-Box">
+                <h1>Zacznij razem z nami swoją Przygodę</h1>
+                <p>Odkryj najlepsze miejsca na wakacje i zarezerwuj swój pobyt już dziś!</p>
+            </div>
                 <div className='HomePageSection1'>
                     <div className='HomePageSection1-Box'>
                         <div>
@@ -198,20 +201,58 @@ function HomePage() {
                         </div>
                         <div className='HomePageSection3-contextbottom'>
                         <div>
-                                <p className='HomePageSection3-contextbottomText'>Grecja</p>
                                 <img src='https://prom-janowiec.pl/_next/image?url=https%3A%2F%2Fprom-janowiec.pl%2Fstorage%2Fmedia%2F91c79b27-e056-4886-b6e4-abcf2dcd17a0%2Fthumbnail%2FLMjNthFOxtTQrIs5Iw5bu22LpjCFpi%2Fbfe1f8669dba7804e9e526f073e653d7.webp&w=1080&q=75'></img>
+                                <p className='HomePageSection3-contextbottomText'>Grecja</p>
                            </div>
                             <div>
-                                <p className='HomePageSection3-contextbottomText'>Egipt</p>
                                 <img src='https://fly.pl/wp-content/uploads/2023/08/egipt.jpg'></img>
+                                <p className='HomePageSection3-contextbottomText'>Egipt</p>
                            </div>
                             <div>
-                                <p className='HomePageSection3-contextbottomText'>Hawaje</p>
+                               
                                 <img src='https://cdn.podroze.smcloud.net/t/photos/t/143353/na-wyspie-kauai-jest-niemal-80-km-piaszczystych-pl_1118242.jpg'></img>
+                                <p className='HomePageSection3-contextbottomText'>Hawaje</p>
                            </div>
                            <div>
-                                <p className='HomePageSection3-contextbottomText'>Tunezja</p>
                                 <img src='https://fly.pl/wp-content/uploads/2017/03/Tunezja.jpg'></img>
+                                <p className='HomePageSection3-contextbottomText'>Tunezja</p>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='HomePageSection3'>
+                    <h2>Polecamy</h2>
+                    <div className='HomePageSection3-context'>
+                        <div className='HomePageSection3-contextTop'>
+                            <div>
+                                <img src='https://www.tanie-loty.com.pl/czytelnia/wp-content/uploads/2018/04/Manarola-Cinque-Terre-W%C5%82ochy-shutterstock_100984339_1920.jpg'></img>
+                                <p className='HomePageSection3-contextTopText'>Włochy</p>
+                            </div>
+                            <div>
+                                <img src='https://fly.pl/cdn/photo/assets/uploads/582/343/2014/06/Francja-Paryz.jpg'></img>
+                                <p className='HomePageSection3-contextTopText'>Francja</p>
+                            </div>
+                            <div>
+                                <img src='https://hispanico.pl/wp-content/uploads/2020/01/hiszpania-wybrzeze-katalonia-plaza-morze-calella-de-palafrugell-zwiedzanie-co-trzeba-wiedziec-przed-wyjazdem-do-hiszpanii-ciekawostki-porady.jpg'></img>
+                                <p className='HomePageSection3-contextTopText'>Hiszpania</p>
+                            </div>
+                        </div>
+                        <div className='HomePageSection3-contextbottom'>
+                        <div>
+                                <img src='https://lachmanski.pl//wp-content/uploads/2016/03/brazylia_iStock_000003492154Medium-1.jpg'></img>
+                                <p className='HomePageSection3-contextbottomText'>Brazylia</p>
+                           </div>
+                            <div>
+                                <img src='https://trybala.com.pl/wp-content/uploads/2019/06/transfagarasan-2544947_1920-1-1200x675.jpg'></img>
+                                <p className='HomePageSection3-contextbottomText'>Rumunia</p>
+                           </div>
+                            <div>
+                                <img src='https://i.wakacje.pl/no-index/kraj/portugalia-1713547982-original.jpg'></img>
+                                <p className='HomePageSection3-contextbottomText'>Portugalia</p>
+                           </div>
+                           <div>
+                                <img src='https://fly.pl/wp-content/uploads/2014/06/Japonia.jpg'></img>
+                                <p className='HomePageSection3-contextbottomText'>Japonia</p>
                            </div>
                         </div>
                     </div>
