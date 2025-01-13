@@ -19,6 +19,10 @@ import global from '../Image/global.png'
 import card2 from '../Image/card.png'
 import verified from '../Image/verified.png'
 
+import Save from '../Image/save.png'
+import Percent from '../Image/procent.png'
+import Explore from '../Image/explore.png'
+
 
 function HomePage() {
 
@@ -121,6 +125,8 @@ function HomePage() {
                 <p>Odkryj najlepsze miejsca na wakacje i zarezerwuj swój pobyt już dziś!</p>
             </div>
                 <div className='HomePageSection1'>
+                    
+
                     <div className='HomePageSection1-Box'>
                         <div>
                             <img src={card}></img>
@@ -255,6 +261,50 @@ function HomePage() {
                                 <p className='HomePageSection3-contextbottomText'>Japonia</p>
                            </div>
                         </div>
+                    </div>
+                </div>
+                <div className='HomePageSection4'>
+                    <h2>RoomFinder to </h2>
+                    <div className='HomePageSection4-box'>
+                        <div className='HomePageSection4-boxContainer'>
+                            <div className='HomePageSection4-boxContainerBox'>
+                                <div>
+                                    <div className='HomePageSection4-boxContainer-top'>
+                                    <img src={Explore}></img>
+                                    </div>
+                                    <div className='HomePageSection4-boxContainer-center'>
+                                        <h2>Wyszukiwarka wakacji</h2>
+                                    </div>
+                                    <div className='HomePageSection4-boxContainer-bottom'>
+                                        <p>Setki tysięcy ofert polskich i zagranicznych biur podróży w jednym miejscu, a w razie pytań – wsparcie naszych doradców. Znajdź swoje wymarzone wakacje i odkrywaj najpiękniejsze zakątki świata.</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div className='HomePageSection4-boxContainerBox'>
+                                <div className='HomePageSection4-boxContainer-top'>
+                                    <img src={Save}></img>
+                                </div>
+                                <div className='HomePageSection4-boxContainer-center'>
+                                    <h2>Bezpieczne wakacje </h2>
+                                </div>
+                                <div className='HomePageSection4-boxContainer-bottom'>
+                                    <p>Twoje pieniądze są u nas w 100% bezpieczne. Jeśli organizator odwoła Twój wyjazd, pomożemy Ci wybrać inny lub zwrócimy pieniądze. Wybieraj, rezerwuj i zacznij przygotowania do podróży.</p>
+                                </div>
+                            </div>
+                            <div className='HomePageSection4-boxContainerBox'>
+                                <div className='HomePageSection4-boxContainer-top'>
+                                    <img src={Percent}></img>
+                                </div>
+                                <div className='HomePageSection4-boxContainer-center'>
+                                    <h2>Biura podróży</h2>
+                                </div>
+                                <div className='HomePageSection4-boxContainer-bottom'>
+                                    <p>Rezerwuj oferty wakacji i wycieczek sprawdzonych biur podróży. Nie trać czasu na porównywanie ofert na stronach innych biur turystycznych. W Wakacje.pl ceny są identyczne, jak u organizatora wycieczki.</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 

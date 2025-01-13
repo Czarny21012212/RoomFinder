@@ -2,6 +2,7 @@
 .HomePageSections{
     display: flex;
     justify-content: center;
+    font-family: "Open Sans", serif;
 
 }
 .HomePageSections-box{
@@ -25,7 +26,7 @@
     margin-bottom: 20px;
     font-size: 2rem;
     color: #1358f9; 
-    background-image: linear-gradient(150deg, #009bf5 33%, #15ff00 103%); 
+    background-image: linear-gradient(150deg, #009bf5 33%, #1f2742 103%); 
     background-clip: text; 
     -webkit-background-clip: text; 
     -webkit-text-fill-color: transparent; 
@@ -98,8 +99,9 @@
     display: flex;
     flex-direction: column;
 }
+
 .HomePageSection2-box h2{
-    color: rgb(43, 43, 43);
+    color: rgba(43, 43, 43, 0.932);
 }
 .HomePageSection2-context{
     display: flex;
@@ -199,7 +201,6 @@
 }
 
 
-
 .HomePageSection3-contextbottom{
     display: flex;
     justify-content: space-between;
@@ -226,3 +227,34 @@
 }
 
 
+/* Section 4 */ 
+.HomePageSection4{
+    margin-top: 60px;
+    font-family: "Open Sans", serif;
+}
+.HomePageSection4-boxContainer{
+    display: flex;
+    justify-content: space-between;
+    column-gap: 20px;
+    margin-top: 20px;
+}
+.HomePageSection4-boxContainer-center{
+    height: 40px;
+}
+.HomePageSection4-boxContainerBox{
+    border: 1px solid rgba(0, 0, 0, 0.089);
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.075);
+    padding: 20px;
+    border-radius: 10px;
+}
+.HomePageSection4-boxContainer-top img{
+    width: 50px;
+}
+.HomePageSection4-boxContainer-center h2{
+    color: #222222;
+}
+.HomePageSection4-boxContainer-bottom p{
+    font-size: 0.9rem;
+    color: #424242;
+    font-weight: 500;
+}
