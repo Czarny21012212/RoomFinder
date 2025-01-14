@@ -7,6 +7,7 @@ import YourReservation  from '../Image/yourReservation.png';
 import Information  from '../Image/information.png';
 import { useEffect, useState } from 'react';
 import Heart from '../Image/Heart.png'
+import travel from '../Image/travelIMG.webp'
 
 function Reservation() {
 
@@ -42,6 +43,9 @@ function Reservation() {
                     </div>
         
                 );
+            }
+            const SentAgreement = () => {
+                window.location.href = 'http://localhost:3000/Zasady-Umowy';
             }
             const CancelReservation = () => {
                 if(CancelReservationTrue){
@@ -157,6 +161,7 @@ function Reservation() {
                                 <input
                                 type='submit'
                                 value="Zasady umowy"
+                                onClick={SentAgreement}
                                 ></input>
                             </div>
                         </div>
@@ -176,8 +181,9 @@ function Reservation() {
         }else{
             return(
                 <div className='reservation-box'>
-                    <div className='reservation'>
+                    <div className='reservation-cancel'>
                         <h1>Zacznij z nami swoją przygodę...</h1>
+                        <img src={travel}></img>
                     </div>
             </div>
             );
@@ -196,10 +202,10 @@ function Reservation() {
                     </div>
                     <div className='header-center'>
                         <ul className="nav-list">
-                            <li><a href="#"><img src={Home} alt="Home"/>Strona Główna</a></li>
-                            <li><Link to={'/'}><img src={Hotel2} alt="Hotel"/>Hotele</Link></li>
+                            <li><Link to={'/Home'}><img src={Home} alt="Home"/>Strona Główna</Link></li>
+                            <li><Link to={'/Hotel-Search'}><img src={Hotel2} alt="Hotel"/>Hotele</Link></li>
                             <li><Link to={'/TwojeRezerwacja'} className='Now'><img src={YourReservation} alt="Reservation"/>Twoja Rezerwacja</Link></li>
-                            <li><a href="#"><img src={Information} alt="Info"/>Zasady umowy</a></li>
+                            <li><Link to={'/Zasady-Umowy'}><img src={Information} alt="Info"/>Zasady umowy</Link></li>
                         </ul>
                         <Link to={`/ulubione`} className='favouriteLink'>
                             <p className='favouriteLinkP'><img className='heart' src={Heart}></img></p>

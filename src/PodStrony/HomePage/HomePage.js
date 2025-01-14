@@ -51,7 +51,7 @@ function HomePage() {
             const days = (date2 - date1) / (1000 * 60 * 60 * 24);
             setDayOfTrip(days);
         }
-    }, [start, end])
+    }, [end])
 
     useEffect(() => {
             if (DayOfTrip && people) {
@@ -69,7 +69,7 @@ function HomePage() {
         localStorage.setItem('End', end);
 
        if(place, people, start, end){
-            window.location.href = 'http://localhost:3000'
+            window.location.href = 'http://localhost:3000/Hotel-Search'
        }
     }
 
@@ -95,9 +95,9 @@ function HomePage() {
                 <div className='header-center'>
                     <ul className="nav-list">
                         <li><a href="#" className='Now'><img src={Home} alt="Home"/>Strona Główna</a></li>
-                        <li><Link to={'/'}><img src={Hotel2} alt="Hotel"/>Hotele</Link></li>
+                        <li><Link to={'/Hotel-Search'}><img src={Hotel2} alt="Hotel"/>Hotele</Link></li>
                         <li><Link to={'/TwojeRezerwacja'} className="reservation-link"><img src={YourReservation} alt="Reservation"/>Twoja Rezerwacja</Link></li>
-                        <li><a href="#"><img src={Information} alt="Info"/>Zasady umowy</a></li>
+                        <li><Link to={'/Zasady-Umowy'} className="reservation-link"><img src={Information} alt="Info"/>Zasady umowy</Link></li>
                         
                     </ul>
                     <Link to={`/ulubione`} className='favouriteLink'>

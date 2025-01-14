@@ -115,6 +115,7 @@ export function Hotel() {
         localStorage.setItem('localTrue', true)
 
     }, [search, save])
+    console.log(localStorage.getItem('Start'))
 
 
     const[checkBoxTrue1, setCheckBoxTrue1] = useState(localStorage.getItem('checkBox1'))
@@ -485,13 +486,12 @@ export function Hotel() {
                     
                 </div>
                 <div className='header-center'>
-                    <ul className="nav-list">
-                        <li><Link to={'/Home'} href="#"><img src={Home} alt="Home"/>Strona Główna</Link></li>
-                        <li><a href="#" className='Now'><img src={Hotel2} alt="Hotel"/>Hotele</a></li>
-                        <li><Link to={'/TwojeRezerwacja'} className="reservation-link"><img src={YourReservation} alt="Reservation"/>Twoja Rezerwacja</Link></li>
-                        <li><a href="#"><img src={Information} alt="Info"/>Zasady umowy</a></li>
-                        
-                    </ul>
+                        <ul className="nav-list">
+                            <li><Link to={'/Home'}><img src={Home} alt="Home"/>Strona Główna</Link></li>
+                            <li><Link to={'/Hotel-Search'} className='Now'><img src={Hotel2} alt="Hotel"/>Hotele</Link></li>
+                            <li><Link to={'/TwojeRezerwacja'}><img src={YourReservation} alt="Reservation"/>Twoja Rezerwacja</Link></li>
+                            <li><Link to={'/Zasady-Umowy'} ><img src={Information} alt="Info"/>Zasady umowy</Link></li>
+                        </ul>
                     <Link to={`/ulubione`} className='favouriteLink'>
                         <p className='favouriteLinkP'><img className='heart' src={Heart}></img></p>
                     </Link>
@@ -501,7 +501,7 @@ export function Hotel() {
                     <div className='header-bottom-items'>
                         <input type='input' placeholder='Dokąd?'  defaultValue={localCountry} onChange={(event) => setPlace(event.target.value)}></input>
                         <img src={Bed} className='header-bottom-items-img'></img>
-                        <input type='date' placeholder='Do kiedy?' defaultValue={localTrue ? localStart : ''} onChange={(event) => setStart(event.target.value)}></input>
+                        <input type='date' placeholder='Do kiedy?' defaultValue={localStart} onChange={(event) => setStart(event.target.value)}></input>
                         <input type='date' placeholder='Do kiedy?' defaultValue={localEnd} onChange={(event) => setEnd(event.target.value)}></input>
                         <input type='Number' placeholder='Ile osób?' defaultValue={localPeople} onChange={(event) => setPeople(event.target.value)}></input>
                         <img src={Group} className='header-bottom-items-img'></img>

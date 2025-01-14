@@ -1,0 +1,52 @@
+.Agreement {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.Agreement-Box {
+    margin: 40px;
+    width: 100%;
+    max-width: 1100px;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 6px;
+    box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.034);
+}
+
+.Agreement-Box h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #1A2C42;
+    text-align: center;
+}
+
+.Agreement-Box h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #1A2C42;
+}
+
+.Agreement-Box p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.Agreement-Box section {
+    margin-bottom: 20px;
+}
+
+.Agreement-Box ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.Agreement-Box li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #555;
+}
