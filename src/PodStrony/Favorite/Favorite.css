@@ -105,10 +105,11 @@
 .noFavourite{
     display: flex;
     justify-content: center;
-    width: 500px;
+    width: 510px;
+    padding: 10px;
     background-color: #1A2C42;
     color: #ffffff;
-    transform: translate(80%, 50%);
+    transform: translate(70%, 50%);
 }
 .favourite-hotels-box-line{
     width: 1300px;

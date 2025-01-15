@@ -7,7 +7,6 @@ body{
     display: flex;
     justify-content: center;
     margin-top: 50px;
-
 }
 .infoHotel-bottom-left-top{
     display: flex;
@@ -70,8 +69,8 @@ body{
     margin: 10px;
     width: 250px;
     height: 510px;
-    border: 1px solid rgb(134, 134, 134);
     border-radius: 6px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.103);
 }
 .infoHotel-bottom{
     display: flex;
@@ -82,7 +81,32 @@ body{
     text-align: end;
     align-items: end; 
     margin: 20px;
-    margin-top: 290px;
+    margin-top: 40px;
+}
+.infoHotel-details {
+    text-align: center;
+    padding: 20px;
+    background-color: #e9f3ff;
+    margin-top: 20px;
+}
+
+.infoHotel-details h2 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #1A2C42;
+}
+
+.infoHotel-details p {
+    text-align: justify;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #555;
+}
+.infoHotel-details p span{
+    text-align: justify;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #378837;
 }
 .infoHotel-bottom-right-bottom-bottom input{
     background-color: #2195f3d3;
@@ -93,6 +117,11 @@ body{
     padding: 15px 25px;
     font-size: 1rem;
     margin-top: -10px;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+}
+.infoHotel-bottom-right-bottom-bottom input:hover{
+    background-color: rgba(67, 170, 255, 0.827);
 }
 .infoHotel-bottom-right-bottom-top h1{
     font-size: 1.5rem;
@@ -132,15 +161,14 @@ body{
 .opinions-box{
     display: flex;
     justify-content: center;
-    margin: 20px;
+    margin-top: 70px;
 }
 
 .opinions{
     padding: 20px;
-    border: solid 1px rgba(0, 0, 0, 0.11);
     width: 1200px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.082);
+    border-radius: 6px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.068);
 }
 
 .opinions-contents{
@@ -202,9 +230,8 @@ body{
 }
 .statute{
     width: 1200px;
-    border: solid 1px rgba(0, 0, 0, 0.11);
-    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.13);
-    border-radius: 10px;
+    border-radius: 6px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.068);
     padding: 20px;
 }
 .statute-cart-left{

@@ -116,26 +116,28 @@ function Info() {
                                     <h2>{hotel.guestRating}</h2>
                                 </div>
                             </div>
-                                <div className='Cart-right-top-second'>
-                                        <p>Komfort {hotel.comfort}</p>
-                                </div>
-                            </div>                              
+                            <div className='Cart-right-top-second'>
+                                <p>Komfort: {hotel.comfort}</p>
+                            </div>
+                        </div>                              
+                    </div>
+                    <div className='infoHotel-details'>
+                        <h2>Rezerwuj Teraz i Oszczędzaj</h2>
+                        <p>Skorzystaj z naszych specjalnych ofert i zniżek. Rezerwując teraz, możesz zaoszczędzić nawet do <span>30%</span> na swoim pobycie. Nie czekaj, zarezerwuj już dziś!</p>
                     </div>
                     <div className='infoHotel-bottom-right-bottom'>
                         <div className='infoHotel-bottom-right-bottom-top'>
-                            <h1>{localStorage.getItem('Price') ? (hotel.pricePerNight * localStorage.getItem('Price')) + " zł"  : "Brak informacji"}</h1>
+                            <h1>{localStorage.getItem('Price') ? (hotel.pricePerNight * localStorage.getItem('Price')) + " zł" : "Brak informacji"}</h1>
                         </div>    
                         <div className='infoHotel-bottom-right-bottom-bottom'>
-                           <Link to='/rezerwacja-check-1'>
-                            <input
-                                type='submit'
-                                value="Zarezerwuj Teraz"
-                                >
-                                </input>
-                           </Link>
+                            <Link to='/rezerwacja-check-1'>
+                                <input
+                                    type='submit'
+                                    value="Zarezerwuj Teraz"
+                                />
+                            </Link>
                         </div>                          
                     </div>
-                    
                 </div>
               </div>
           </div>
@@ -310,7 +312,7 @@ function Info() {
                                 width: location + 'px',
                                 position: 'absolute',
                                 height: '10px',
-                                backgroundColor: location < 200 ? '#f34b21d3' : location > 280 ? 'green' : '#2195f3d3',
+                                backgroundColor: location < 200 ? '#f34b21d3' : location > 280 ? '#3a9112' : '#2195f3d3',
                                 borderRadius: '200px'
                             }}
                             ></div>

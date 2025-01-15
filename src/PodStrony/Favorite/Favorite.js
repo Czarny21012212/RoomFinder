@@ -74,7 +74,7 @@ function Favourite() {
     const noFavourite = () => {
         return(
             <div className='noFavourite'>
-                <h1>Nie masz ulubionych hoteli</h1>
+                <h1>Nie posiadasz ulubionych hoteli</h1>
             </div>
         );
 
@@ -91,7 +91,7 @@ function Favourite() {
                     
                     <ul className="nav-list">
                             <li><Link to={'/Home'}><img src={Home} alt="Home"/>Strona Główna</Link></li>
-                            <li><Link to={'/'}><img src={Hotel2} alt="Hotel"/>Hotele</Link></li>
+                            <li><Link to={'/Hotel-Search'}><img src={Hotel2} alt="Hotel"/>Hotele</Link></li>
                             <li><Link to={'/TwojeRezerwacja'}><img src={YourReservation} alt="Reservation"/>Twoja Rezerwacja</Link></li>
                             <li><Link to={'/Zasady-Umowy'}><img src={Information} alt="Info"/>Zasady umowy</Link></li>
                         </ul>
