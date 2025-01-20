@@ -63,13 +63,13 @@ function Info() {
                         
                     </div>
                     <div className='header-center'>
-                        <ul className="nav-list">
-                            <li><a href="#"><img src={Home} alt="Home"/>Strona Główna</a></li>
-                            <li><Link to={'/'}><img src={Hotel2} alt="Hotel"/>Hotele</Link></li>
-                            <li><Link to={'/TwojeRezerwacja'} className='Now'><img src={YourReservation} alt="Reservation"/>Twoja Rezerwacja</Link></li>
-                            <li><a href="#"><img src={Information} alt="Info"/>Zasady umowy</a></li>
+                    <ul className="nav-list">
+                            <li><Link to={'/Home'}><img src={Home} alt="Home"/>Strona Główna</Link></li>
+                            <li><Link to={'/Hotel-Search'}><img src={Hotel2} alt="Hotel"/>Hotele</Link></li>
+                            <li><Link to={'/TwojeRezerwacja'}><img src={YourReservation} alt="Reservation"/>Twoja Rezerwacja</Link></li>
+                            <li><Link to={'/Zasady-Umowy'}><img src={Information} alt="Info"/>Zasady umowy</Link></li>
                         </ul>
-                        <Link to={`/ulubione`} className='favouriteLink'>
+                    <Link to={`/ulubione`} className='favouriteLink'>
                             <p className='favouriteLinkP'><img className='heart' src={Heart}></img></p>
                         </Link>
                     </div>
